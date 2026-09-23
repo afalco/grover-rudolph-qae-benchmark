@@ -17,8 +17,8 @@ This repository supports the IBM Quantum Credits project:
   time, depth, two-qubit depth, two-qubit gate count, SWAP count, layout, and
   estimated circuit duration.
 - Track structural metrics for the encoding oracle: multilinear support, maximum
-  degree, embedding stratum \(m_1\), and weighted canonical length
-  \(L_{\mathrm{can}}\).
+  degree, embedding stratum $m_1$, and weighted canonical length
+  $L_{\mathrm{can}}$.
 - Run selected instances on IBM Quantum backends and evaluate error mitigation
   and postselection strategies.
 
@@ -76,26 +76,26 @@ history is authoritative.
 ## Grover-Rudolph Case Names
 
 Names of the form `gr_<profile>_n<n>` denote finite probability laws on a
-dyadic midpoint grid with `n` qubits and \(N=2^n\) cells:
+dyadic midpoint grid with `n` qubits and $N=2^n$ cells:
 
-\[
+$$
 x_i = \frac{i+1/2}{N}, \qquad i=0,\ldots,N-1.
-\]
+$$
 
-A nonnegative profile \(F\) is sampled on this grid and normalized as
+A nonnegative profile $F$ is sampled on this grid and normalized as
 
-\[
+$$
 p_i = \frac{F(x_i)}{\sum_j F(x_j)}.
-\]
+$$
 
 The Grover-Rudolph circuit prepares
 
-\[
+$$
 \sum_i \sqrt{p_i}\,|i\rangle,
-\]
+$$
 
 so measuring in the computational basis should reproduce the discrete
-probability law \(p\). The larger-grid cases currently used are:
+probability law $p$. The larger-grid cases currently used are:
 
 ```text
 gr_sin2_half_n3: n=3, N=8,  F(x)=sin^2(pi x / 2)
@@ -105,8 +105,8 @@ gr_beta_bump_n4: n=4, N=16, F(x)=x (1 - x)^4
 ```
 
 For the amplified `gr_affine_n4` test, the marked event is the upper half of
-the grid, \(x_i \ge 1/2\), whose exact probability is
-\(a=0.6803797468\ldots\).
+the grid, $x_i \ge 1/2$, whose exact probability is
+$a=0.6803797468\ldots$.
 
 ## IBM Runtime Usage
 
@@ -1283,10 +1283,10 @@ results/phase7/qoi_decision_table/phase7_qoi_decision_table.md
 
 Decision rule for this phase:
 
-- if the higher-shot \(n=3\) distributions keep TVD below \(0.04\) and at
-  least four of five quantities have error below \(0.01\), keep them in the
+- if the higher-shot $n=3$ distributions keep TVD below $0.04$ and at
+  least four of five quantities have error below $0.01$, keep them in the
   publication set;
-- if mitigated `gr_affine_n4` keeps `upper_half` below \(0.01\) and inside the
+- if mitigated `gr_affine_n4` keeps `upper_half` below $0.01$ and inside the
   bootstrap interval, keep the direct functional estimator as the hardware
   workflow;
 - do not escalate to amplified QAE until the Grover-iterate bias identified in
@@ -1329,7 +1329,7 @@ gr_affine_n4: TVD=0.028017, H=0.023874, Fcl=0.998860, max cell=0.008197
 ```
 
 This improves the previous mitigated Phase 6 distribution distance
-(`TVD=0.034112`) and keeps the maximum cell deviation below \(0.01\). However,
+(`TVD=0.034112`) and keeps the maximum cell deviation below $0.01$. However,
 the improvement is not uniform across quantities of interest:
 
 ```text
@@ -1842,7 +1842,7 @@ gr_sin2_n3 / sin_pi_x     a=0.848596 max_k=2 depth=288 2q=86  local_qae_simulati
 ```
 
 Interpretation: the upper-half tests have low angle degree but are QAE
-degenerate because \(a=1/2\), so \(p_k(a)=1/2\) for every amplification level.
+degenerate because $a=1/2$, so $p_k(a)=1/2$ for every amplification level.
 The only current non-degenerate local QAE candidate is
 `gr_sin2_n3 / sin_pi_x`. The 32-cell affine upper-half case has useful
 amplification contrast, but the augmented circuit is already a depth/CZ watch
@@ -1887,7 +1887,7 @@ ibm_fez:
 
 Interpretation: amplified QAE for this augmented finite-law integral should not
 be submitted to hardware. The backend-noise models collapse the marked
-probabilities toward roughly one half, and the full \(K=\{0,1,2\}\) schedule is
+probabilities toward roughly one half, and the full $K=\{0,1,2\}$ schedule is
 not viable under the current cost thresholds.
 
 ## Phase 14: Direct Integration Scaling Audit
@@ -2141,7 +2141,7 @@ Each row reports `quadrature_value`, `true_integral`,
 `discretization_error`, `mlae_estimation_error`, `total_error`, depth,
 two-qubit gates, two-qubit depth, total shots, oracle queries, and candidate
 status. Simpson is treated as the paper's combined rule
-\((L+4M+R)/6\), so its circuit cost is the accumulated cost of the left,
+$(L+4M+R)/6$, so its circuit cost is the accumulated cost of the left,
 midpoint, and right estimates.
 
 The first QPU microcampaign is:
@@ -2612,7 +2612,7 @@ K={0,1}+noisy-sim k=2           a_hat=0.527080  err=0.022920
 K={0,1}+empirical-projected k=2 a_hat=0.580335  err=0.030335
 ```
 
-Conclusion: an ideal \(k=2\) would help, but the backend-noise and empirical
+Conclusion: an ideal $k=2$ would help, but the backend-noise and empirical
 projections disagree strongly.  Together with depth 622 and 255 two-qubit
 gates, this keeps `k=2` in the rejection/diagnostic category rather than as a
 candidate for QPU submission.
