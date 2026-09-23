@@ -1,0 +1,54 @@
+{
+  "campaign_id": "phase3_gr_affine_n4_mitigation_ibm_fez",
+  "description": "Focused repeat of the 16-point affine Grover-Rudolph distribution with light Runtime mitigation. This is still distribution measurement only, with no QAE amplification.",
+  "backend": "ibm_fez",
+  "shots": 4096,
+  "optimization_level": 2,
+  "implementation": "ucry",
+  "seed": 12345,
+  "submit_to_qpu": false,
+  "runtime_options": {
+    "dynamical_decoupling": {
+      "enable": true,
+      "sequence_type": "XY4",
+      "scheduling_method": "alap"
+    },
+    "twirling": {
+      "enable_gates": true,
+      "enable_measure": true,
+      "num_randomizations": 32,
+      "shots_per_randomization": 128,
+      "strategy": "active-accum"
+    }
+  },
+  "rationale": [
+    "The first distribution campaign measured gr_affine_n4 with TVD 0.047882, above the Phase 0-GR noisy estimate 0.028098.",
+    "The n=3 circuits were stable, so the next hardware action should focus on the first 16-point circuit only.",
+    "4096 shots reduce sampling uncertainty while keeping the campaign small.",
+    "Dynamical decoupling and twirling test whether the observed TVD is reducible without changing the Grover-Rudolph loader."
+  ],
+  "selected_cases": [
+    {
+      "case_id": "gr_affine_n4",
+      "label": "affine positive density, 16 midpoint cells",
+      "num_qubits": 4,
+      "function": {
+        "kind": "affine",
+        "offset": 0.11,
+        "slope": 0.57
+      },
+      "purpose": "Focused 16-point Grover-Rudolph distribution repeat with Runtime mitigation."
+    }
+  ],
+  "baseline_evidence": {
+    "phase0_gr_audit": "results/phase0_gr/phase0_gr_audit_20260805T102916Z.json",
+    "first_distribution_run": "results/hardware/phase3_gr_distribution_ibm_fez/20260805T103539Z/fetched_gr_distribution_results.json",
+    "baseline_tvd": 0.047882,
+    "phase0_noisy_tvd": 0.028098
+  },
+  "stopping_rules": [
+    "Do not add QAE amplification until this repeat is retrieved and compared to the first gr_affine_n4 readout.",
+    "If TVD remains near 0.05 or worsens, perform a layout/seed audit for gr_affine_n4 before further QPU use.",
+    "If TVD drops toward the Phase 0 noisy estimate, use the same Runtime options for the first amplified n=4 test."
+  ]
+}

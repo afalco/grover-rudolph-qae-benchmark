@@ -1,0 +1,36 @@
+{
+  "name": "phase11_dual_angle_strategy",
+  "description": "Credit-free strategy table combining angle-structure classes with direct Grover-Rudolph sampling and MC/QMC baseline evidence.",
+  "source_config": "experiments/phase9_integration_scaling_audit.json",
+  "grid": "midpoint",
+  "profile_input_kind": "qae_function",
+  "thresholds": {
+    "low_angle_degree": 2,
+    "moderate_angle_degree": 3,
+    "max_direct_sampling_noisy_tvd": 0.05,
+    "max_direct_sampling_noisy_qoi_error": 0.02,
+    "mc_competitive_ratio": 1.25,
+    "near_mc_ratio": 3.0
+  },
+  "phase9_best_table": "latest:results/phase9/integration_scaling_audit/phase9_integration_scaling_best_*.csv",
+  "phase9_qoi_table": "latest:results/phase9/integration_scaling_audit/phase9_integration_scaling_qoi_*.csv",
+  "phase10_distribution_decision_table": "results/phase10/decision_table/phase10_distribution_decision_table.csv",
+  "phase10_qoi_decision_table": "results/phase10/decision_table/phase10_qoi_decision_table.csv",
+  "out_dir": "results/phase11/dual_angle_strategy",
+  "quantities": [
+    "upper_half",
+    "mean_x",
+    "second_moment_x2",
+    "sin_pi_x",
+    "call_x_minus_half"
+  ],
+  "cases": [
+    "gr_sin2_n3",
+    "gr_sin2_n4",
+    "gr_sin2_n5",
+    "gr_affine_n4",
+    "gr_affine_n5",
+    "gr_beta_bump_n4",
+    "gr_beta_bump_n5"
+  ]
+}

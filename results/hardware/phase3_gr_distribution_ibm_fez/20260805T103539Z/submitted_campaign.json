@@ -1,0 +1,265 @@
+[
+  {
+    "backend": "ibm_fez",
+    "backend_status": {
+      "operational": true,
+      "pending_jobs": 17,
+      "status_msg": "active"
+    },
+    "campaign_id": "phase3_gr_distribution_ibm_fez",
+    "campaign_type": "gr_distribution_measurement",
+    "case_id": "gr_sin2_n3",
+    "conditional_rotation_count": 7,
+    "grid_points": 8,
+    "implementation": "ucry",
+    "initial_layout": null,
+    "job_id": "d9ph40rbvhrs73a2ke90",
+    "label": "sin2(pi x), 8 midpoint cells",
+    "logical_metrics": {
+      "depth": 4,
+      "multi_qubit_gate_count": 1,
+      "num_clbits": 3,
+      "num_qubits": 3,
+      "one_qubit_gate_count": 1,
+      "operation_counts": {
+        "measure": 3,
+        "ry": 1,
+        "ucry": 2
+      },
+      "size": 6,
+      "swap_count": 0,
+      "two_qubit_gate_count": 1,
+      "width": 6
+    },
+    "nonzero_conditional_rotation_count": 7,
+    "num_qubits": 3,
+    "optimization_level": 2,
+    "prepared_utc": "2026-08-05T10:35:39.998744+00:00",
+    "purpose": "Lowest-cost n=3 Grover-Rudolph distribution candidate from Phase 0-GR.",
+    "qasm_path": "/Users/antoniofalco/Library/CloudStorage/Dropbox/TENSORS/Quantum_TENSORS/IBM_Quantum_Proposal/grover-rudolph-qae-benchmark/results/hardware/phase3_gr_distribution_ibm_fez/20260805T103539Z/circuits/gr_sin2_n3_transpiled.qasm",
+    "seed": 12345,
+    "shots": 2048,
+    "source": "function:sin2",
+    "submitted": true,
+    "submitted_utc": "2026-08-05T10:35:47.543725+00:00",
+    "target_probabilities": [
+      0.009515058436089152,
+      0.07716457095436376,
+      0.1728354290456362,
+      0.2404849415639108,
+      0.2404849415639108,
+      0.17283542904563623,
+      0.07716457095436376,
+      0.009515058436089187
+    ],
+    "transpile_seconds": 0.7131172920344397,
+    "transpiled_metrics": {
+      "depth": 31,
+      "multi_qubit_gate_count": 0,
+      "num_clbits": 3,
+      "num_qubits": 156,
+      "one_qubit_gate_count": 33,
+      "operation_counts": {
+        "cz": 7,
+        "measure": 3,
+        "rz": 17,
+        "sx": 14,
+        "x": 2
+      },
+      "size": 43,
+      "swap_count": 0,
+      "two_qubit_gate_count": 7,
+      "width": 159
+    },
+    "transpiled_two_qubit_depth": 7,
+    "usage_before_submission": {
+      "estimated_remaining_seconds": 9380.0,
+      "usage_allocation_seconds": 10800,
+      "usage_consumed_seconds": 1420,
+      "usage_limit_reached": false,
+      "usage_limit_seconds": 10800,
+      "usage_period": {
+        "end_time": "2027-08-02T17:13:13.026Z",
+        "start_time": "2026-08-02T17:13:13.026Z"
+      }
+    }
+  },
+  {
+    "backend": "ibm_fez",
+    "backend_status": {
+      "operational": true,
+      "pending_jobs": 17,
+      "status_msg": "active"
+    },
+    "campaign_id": "phase3_gr_distribution_ibm_fez",
+    "campaign_type": "gr_distribution_measurement",
+    "case_id": "gr_sin2_half_n3",
+    "conditional_rotation_count": 7,
+    "grid_points": 8,
+    "implementation": "ucry",
+    "initial_layout": null,
+    "job_id": "d9ph413bvhrs73a2keag",
+    "label": "sin2(pi x / 2), 8 midpoint cells",
+    "logical_metrics": {
+      "depth": 4,
+      "multi_qubit_gate_count": 1,
+      "num_clbits": 3,
+      "num_qubits": 3,
+      "one_qubit_gate_count": 1,
+      "operation_counts": {
+        "measure": 3,
+        "ry": 1,
+        "ucry": 2
+      },
+      "size": 6,
+      "swap_count": 0,
+      "two_qubit_gate_count": 1,
+      "width": 6
+    },
+    "nonzero_conditional_rotation_count": 7,
+    "num_qubits": 3,
+    "optimization_level": 2,
+    "prepared_utc": "2026-08-05T10:35:40.024750+00:00",
+    "purpose": "Smooth monotone n=3 distribution candidate.",
+    "qasm_path": "/Users/antoniofalco/Library/CloudStorage/Dropbox/TENSORS/Quantum_TENSORS/IBM_Quantum_Proposal/grover-rudolph-qae-benchmark/results/hardware/phase3_gr_distribution_ibm_fez/20260805T103539Z/circuits/gr_sin2_half_n3_transpiled.qasm",
+    "seed": 12345,
+    "shots": 2048,
+    "source": "function:sin2_half",
+    "submitted": true,
+    "submitted_utc": "2026-08-05T10:35:48.720454+00:00",
+    "target_probabilities": [
+      0.0024018399495961944,
+      0.021066298462181842,
+      0.05555372087254973,
+      0.10061370974798398,
+      0.14938629025201608,
+      0.19444627912745027,
+      0.22893370153781817,
+      0.2475981600504038
+    ],
+    "transpile_seconds": 0.025105790933594108,
+    "transpiled_metrics": {
+      "depth": 36,
+      "multi_qubit_gate_count": 0,
+      "num_clbits": 3,
+      "num_qubits": 156,
+      "one_qubit_gate_count": 40,
+      "operation_counts": {
+        "cz": 7,
+        "measure": 3,
+        "rz": 20,
+        "sx": 18,
+        "x": 2
+      },
+      "size": 50,
+      "swap_count": 0,
+      "two_qubit_gate_count": 7,
+      "width": 159
+    },
+    "transpiled_two_qubit_depth": 7,
+    "usage_before_submission": {
+      "estimated_remaining_seconds": 9380.0,
+      "usage_allocation_seconds": 10800,
+      "usage_consumed_seconds": 1420,
+      "usage_limit_reached": false,
+      "usage_limit_seconds": 10800,
+      "usage_period": {
+        "end_time": "2027-08-02T17:13:13.026Z",
+        "start_time": "2026-08-02T17:13:13.026Z"
+      }
+    }
+  },
+  {
+    "backend": "ibm_fez",
+    "backend_status": {
+      "operational": true,
+      "pending_jobs": 17,
+      "status_msg": "active"
+    },
+    "campaign_id": "phase3_gr_distribution_ibm_fez",
+    "campaign_type": "gr_distribution_measurement",
+    "case_id": "gr_affine_n4",
+    "conditional_rotation_count": 15,
+    "grid_points": 16,
+    "implementation": "ucry",
+    "initial_layout": null,
+    "job_id": "d9ph41d7skus73ckv62g",
+    "label": "affine positive density, 16 midpoint cells",
+    "logical_metrics": {
+      "depth": 5,
+      "multi_qubit_gate_count": 2,
+      "num_clbits": 4,
+      "num_qubits": 4,
+      "one_qubit_gate_count": 1,
+      "operation_counts": {
+        "measure": 4,
+        "ry": 1,
+        "ucry": 3
+      },
+      "size": 8,
+      "swap_count": 0,
+      "two_qubit_gate_count": 1,
+      "width": 8
+    },
+    "nonzero_conditional_rotation_count": 15,
+    "num_qubits": 4,
+    "optimization_level": 2,
+    "prepared_utc": "2026-08-05T10:35:40.032073+00:00",
+    "purpose": "First nontrivial 16-point Grover-Rudolph grid candidate.",
+    "qasm_path": "/Users/antoniofalco/Library/CloudStorage/Dropbox/TENSORS/Quantum_TENSORS/IBM_Quantum_Proposal/grover-rudolph-qae-benchmark/results/hardware/phase3_gr_distribution_ibm_fez/20260805T103539Z/circuits/gr_affine_n4_transpiled.qasm",
+    "seed": 12345,
+    "shots": 2048,
+    "source": "function:affine",
+    "submitted": true,
+    "submitted_utc": "2026-08-05T10:35:49.714421+00:00",
+    "target_probabilities": [
+      0.02022349683544304,
+      0.025860363924050642,
+      0.03149723101265823,
+      0.03713409810126583,
+      0.04277096518987343,
+      0.04840783227848102,
+      0.05404469936708862,
+      0.05968156645569621,
+      0.0653184335443038,
+      0.0709553006329114,
+      0.076592167721519,
+      0.0822290348101266,
+      0.0878659018987342,
+      0.09350276898734179,
+      0.09913963607594937,
+      0.10477650316455697
+    ],
+    "transpile_seconds": 0.00591900001745671,
+    "transpiled_metrics": {
+      "depth": 76,
+      "multi_qubit_gate_count": 0,
+      "num_clbits": 4,
+      "num_qubits": 156,
+      "one_qubit_gate_count": 77,
+      "operation_counts": {
+        "cz": 16,
+        "measure": 4,
+        "rz": 38,
+        "sx": 37,
+        "x": 2
+      },
+      "size": 97,
+      "swap_count": 0,
+      "two_qubit_gate_count": 16,
+      "width": 160
+    },
+    "transpiled_two_qubit_depth": 16,
+    "usage_before_submission": {
+      "estimated_remaining_seconds": 9380.0,
+      "usage_allocation_seconds": 10800,
+      "usage_consumed_seconds": 1420,
+      "usage_limit_reached": false,
+      "usage_limit_seconds": 10800,
+      "usage_period": {
+        "end_time": "2027-08-02T17:13:13.026Z",
+        "start_time": "2026-08-02T17:13:13.026Z"
+      }
+    }
+  }
+]

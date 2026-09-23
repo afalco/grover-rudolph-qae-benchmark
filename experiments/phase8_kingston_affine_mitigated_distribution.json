@@ -1,0 +1,54 @@
+{
+  "campaign_id": "phase8_kingston_affine_mitigated_distribution",
+  "description": "Phase 8 cross-backend validation on ibm_kingston for mitigated gr_affine_n4 direct-distribution loading. This repeats the strongest Phase 7 ibm_fez global distribution claim on a second backend.",
+  "backend": "ibm_kingston",
+  "shots": 8192,
+  "optimization_level": 2,
+  "implementation": "ucry",
+  "seed": 12345,
+  "submit_to_qpu": false,
+  "runtime_options": {
+    "dynamical_decoupling": {
+      "enable": true,
+      "sequence_type": "XY4",
+      "scheduling_method": "alap"
+    },
+    "twirling": {
+      "enable_gates": true,
+      "enable_measure": true,
+      "num_randomizations": 32,
+      "shots_per_randomization": 256,
+      "strategy": "active-accum"
+    }
+  },
+  "rationale": [
+    "Mitigated gr_affine_n4 was the only Phase 7 paper-quality global distribution result on ibm_fez.",
+    "A Kingston repeat tests whether that claim is backend-specific or reproducible across comparable Heron-class devices.",
+    "The campaign measures only direct distribution loading and selected quantity-of-interest functionals."
+  ],
+  "selected_cases": [
+    {
+      "case_id": "gr_affine_n4",
+      "label": "affine probability law, 16 midpoint cells",
+      "num_qubits": 4,
+      "function": {
+        "kind": "affine",
+        "offset": 0.11,
+        "slope": 0.57
+      },
+      "purpose": "Cross-backend validation of the strongest mitigated sixteen-cell distribution result."
+    }
+  ],
+  "qoi_targets": [
+    "call_x_minus_half",
+    "mean_x",
+    "second_moment_x2",
+    "sin_pi_x",
+    "upper_half"
+  ],
+  "stopping_rules": [
+    "If TVD stays below 0.03 and max cell deviation below 0.01, promote gr_affine_n4 as cross-backend paper-quality distribution evidence.",
+    "If TVD worsens above 0.04, treat the Fez result as backend-dependent and report Kingston as a diagnostic control.",
+    "Do not attach Grover amplification in this campaign."
+  ]
+}

@@ -1,0 +1,43 @@
+{
+  "campaign_id": "phase1_g1_stress_ibm_fez_opt2",
+  "description": "Optimization-level-2 g1 stress campaign including the deferred k=2 amplification level.",
+  "backend": "ibm_fez",
+  "shots": 2048,
+  "optimization_level": 2,
+  "seed": 12345,
+  "submit_to_qpu": false,
+  "rationale": [
+    "The controlled g0 repeat showed that optimization_level=2 can substantially reduce compilation-sensitive hardware bias.",
+    "The first g1 campaign with optimization_level=0 produced a usable MLAE estimate but both k=0 and k=1 were in the watch region.",
+    "Running g1 k=0,1,2 under the same optimization setting avoids mixing compilation regimes in the MLAE estimate.",
+    "g1 is the natural next stress test before attempting the deeper quadratic g2 k=2 circuit."
+  ],
+  "selected_jobs": [
+    {
+      "case_id": "g1",
+      "ks": [0, 1, 2],
+      "purpose": "Affine encoding stress test with a consistent optimization_level=2 MLAE schedule."
+    }
+  ],
+  "deferred_jobs": [
+    {
+      "case_id": "g2",
+      "ks": [2],
+      "reason": "Defer until the opt2 g1 stress schedule is retrieved and assessed."
+    },
+    {
+      "case_id": "g0",
+      "ks": [1],
+      "reason": "Known degeneracy at a=1/4; use only as an explicit failure-mode demonstration."
+    }
+  ],
+  "phase1_evidence": {
+    "first_campaign_readout": "docs/phase1_first_campaign_readout.md",
+    "g0_opt2_repeat_results": "results/hardware/phase1_g0_repeat_ibm_fez_opt2/20260805T085729Z/fetched_campaign_results.json"
+  },
+  "stopping_rules": [
+    "Prepare this campaign without --submit and compare depths against the original opt0 g1 circuits.",
+    "Submit only if g1 k=2 remains substantially cheaper than the deferred g2 k=2 circuit.",
+    "If g1 k=2 returns a large deviation, pause before submitting g2 k=2 and move to layout or mitigation experiments."
+  ]
+}

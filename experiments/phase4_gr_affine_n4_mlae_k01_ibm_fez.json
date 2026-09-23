@@ -1,0 +1,49 @@
+{
+  "campaign_id": "phase4_gr_affine_n4_mlae_k01_ibm_fez",
+  "description": "First minimal MLAE campaign for the 16-point affine Grover-Rudolph loader. The marked event is the upper half of the dyadic grid, x >= 1/2.",
+  "backend": "ibm_fez",
+  "shots": 2048,
+  "optimization_level": 2,
+  "implementation": "ucry",
+  "reflection_method": "mcx",
+  "event": "upper_half",
+  "seed": 12345,
+  "submit_to_qpu": false,
+  "runtime_options": {
+    "dynamical_decoupling": {
+      "enable": true,
+      "sequence_type": "XY4",
+      "scheduling_method": "alap"
+    },
+    "twirling": {
+      "enable_gates": true,
+      "enable_measure": true,
+      "num_randomizations": 32,
+      "shots_per_randomization": 64,
+      "strategy": "active-accum"
+    }
+  },
+  "selected_cases": [
+    {
+      "case_id": "gr_affine_n4",
+      "label": "affine positive density, 16 midpoint cells",
+      "num_qubits": 4,
+      "function": {
+        "kind": "affine",
+        "offset": 0.11,
+        "slope": 0.57
+      },
+      "ks": [0, 1],
+      "purpose": "Minimal MLAE schedule after the mitigated distribution readout improved TVD to 0.034112."
+    }
+  ],
+  "baseline_evidence": {
+    "mitigated_distribution_run": "results/hardware/phase3_gr_affine_n4_mitigation_ibm_fez/20260805T112409Z/fetched_gr_distribution_results.json",
+    "mitigated_distribution_tvd": 0.034112
+  },
+  "stopping_rules": [
+    "Do not submit k=2 until k=0,1 are retrieved and the MLAE estimate is reviewed.",
+    "If k=0 deviates strongly from the measured distribution mass, pause before deeper amplified circuits.",
+    "If k=1 is unstable, repeat the distribution campaign or run a layout audit before adding amplification depth."
+  ]
+}

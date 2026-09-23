@@ -1,0 +1,54 @@
+{
+  "experiment_id": "phase1b_gr_larger_grids",
+  "description": "Simulator comparison on larger Grover-Rudolph-style midpoint grids.",
+  "cases": [],
+  "custom_cases": [
+    {
+      "case_id": "gr_sin2_half_n3",
+      "grid_points": 8,
+      "function": {
+        "kind": "sin2_half"
+      },
+      "notes": "Midpoint grid with 8 points for sin^2(pi x/2)."
+    },
+    {
+      "case_id": "gr_sin2_n3",
+      "grid_points": 8,
+      "function": {
+        "kind": "sin2"
+      },
+      "notes": "Midpoint grid with 8 points for sin^2(pi x)."
+    },
+    {
+      "case_id": "gr_affine_n4",
+      "grid_points": 16,
+      "function": {
+        "kind": "affine",
+        "offset": 0.11,
+        "slope": 0.57
+      },
+      "notes": "Non-special affine bounded integrand on 16 midpoint grid points."
+    },
+    {
+      "case_id": "gr_beta_bump_n4",
+      "grid_points": 16,
+      "function": {
+        "kind": "beta_bump",
+        "alpha": 2.3,
+        "beta": 4.7,
+        "scale": 6.0
+      },
+      "notes": "Smooth nonuniform positive bump clipped to [0,1] on 16 midpoint grid points."
+    }
+  ],
+  "seed": 12345,
+  "repetitions": 200,
+  "shots_per_circuit": 2048,
+  "mlae_schedules": [[0, 1], [0, 2], [0, 1, 2]],
+  "iqae_max_k": 4,
+  "iqae_steps": 3,
+  "mle_grid_size": 5001,
+  "posterior_grid_size": 401,
+  "canonical_qae_evaluation_qubits": [2, 3, 4, 5],
+  "classical_sample_sizes": [63, 250, 1000, 4095]
+}

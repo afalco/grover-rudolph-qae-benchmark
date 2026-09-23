@@ -1,0 +1,30 @@
+{
+  "name": "phase9_affine_n5_layout_audit_ibm_kingston",
+  "description": "Credit-free layout, optimization-level, and seed audit for the Phase 9 affine n=5 direct-distribution candidate on ibm_kingston.",
+  "backend": "ibm_kingston",
+  "shots": 4096,
+  "implementation": "ucry",
+  "optimization_levels": [1, 2, 3],
+  "seeds": [12345, 23456, 34567, 45678, 56789, 67890],
+  "observables": [
+    "call_x_minus_half",
+    "mean_x",
+    "second_moment_x2",
+    "sin_pi_x",
+    "upper_half"
+  ],
+  "max_depth": 1200,
+  "max_two_qubit_gates": 350,
+  "out_dir": "results/phase9/layout_audit",
+  "case": {
+    "case_id": "gr_affine_n5",
+    "label": "affine positive law, 32 midpoint cells",
+    "num_qubits": 5,
+    "function": {
+      "kind": "affine",
+      "offset": 0.11,
+      "slope": 0.57
+    },
+    "notes": "Phase 9 first n=5 direct algebraic-integration scaling candidate."
+  }
+}

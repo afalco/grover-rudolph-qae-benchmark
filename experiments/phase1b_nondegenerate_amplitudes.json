@@ -1,0 +1,32 @@
+{
+  "experiment_id": "phase1b_nondegenerate_amplitudes",
+  "description": "Simulator comparison on non-special synthetic amplitudes to avoid Phase 1 grid degeneracies.",
+  "cases": [],
+  "custom_cases": [
+    {
+      "case_id": "a17",
+      "a_exact": 0.17,
+      "notes": "Synthetic Bernoulli amplitude."
+    },
+    {
+      "case_id": "a33",
+      "a_exact": 0.33,
+      "notes": "Synthetic Bernoulli amplitude."
+    },
+    {
+      "case_id": "a61",
+      "a_exact": 0.61,
+      "notes": "Synthetic Bernoulli amplitude."
+    }
+  ],
+  "seed": 12345,
+  "repetitions": 200,
+  "shots_per_circuit": 2048,
+  "mlae_schedules": [[0, 1], [0, 2], [0, 1, 2]],
+  "iqae_max_k": 4,
+  "iqae_steps": 3,
+  "mle_grid_size": 5001,
+  "posterior_grid_size": 401,
+  "canonical_qae_evaluation_qubits": [2, 3, 4, 5],
+  "classical_sample_sizes": [63, 250, 1000, 4095]
+}

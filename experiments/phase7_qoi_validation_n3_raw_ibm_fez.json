@@ -1,0 +1,49 @@
+{
+  "campaign_id": "phase7_qoi_validation_n3_raw_ibm_fez",
+  "description": "Phase 7 direct-distribution validation for n=3 Grover-Rudolph laws supporting quantity-of-interest functionals. This campaign intentionally avoids Runtime DD/twirling because Phase 5 showed that mitigation is not uniformly beneficial for these short circuits.",
+  "backend": "ibm_fez",
+  "shots": 8192,
+  "optimization_level": 2,
+  "implementation": "ucry",
+  "seed": 12345,
+  "submit_to_qpu": false,
+  "runtime_options": {},
+  "rationale": [
+    "Phase 6 identified gr_sin2_half_n3 raw and gr_sin2_n3 raw/mitigated as the most reliable sources of publishable or usable quantity-of-interest functionals.",
+    "For gr_sin2_half_n3 the raw run had better Hellinger/classical fidelity and stronger QoI coverage than the mitigated repeat.",
+    "For gr_sin2_n3 mitigation improved selected simple functionals but worsened TVD and sin_pi_x; a higher-shot raw repeat is the cleanest control.",
+    "The campaign measures distributions only. It does not run Grover amplification or QAE."
+  ],
+  "selected_cases": [
+    {
+      "case_id": "gr_sin2_half_n3",
+      "label": "sin2(pi x / 2), 8 midpoint cells",
+      "num_qubits": 3,
+      "function": {
+        "kind": "sin2_half"
+      },
+      "purpose": "Higher-shot validation of direct functionals I_p(f) for the monotone n=3 profile."
+    },
+    {
+      "case_id": "gr_sin2_n3",
+      "label": "sin2(pi x), 8 midpoint cells",
+      "num_qubits": 3,
+      "function": {
+        "kind": "sin2"
+      },
+      "purpose": "Higher-shot raw control for the symmetric n=3 profile, especially call_x_minus_half and sin_pi_x."
+    }
+  ],
+  "qoi_targets": [
+    "call_x_minus_half",
+    "mean_x",
+    "second_moment_x2",
+    "sin_pi_x",
+    "upper_half"
+  ],
+  "stopping_rules": [
+    "Do not use this campaign to infer amplified-QAE viability.",
+    "If either distribution has TVD above 0.04, keep the corresponding case as diagnostic only.",
+    "If QoI estimates preserve errors below 0.01 for at least four of five targets, keep the case in the publication set."
+  ]
+}

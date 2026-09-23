@@ -1,0 +1,30 @@
+{
+  "name": "phase5_gr_beta_bump_n4_layout_audit_ibm_fez",
+  "description": "Credit-free layout, optimization, and seed audit for the exact gr_beta_bump_n4 distribution used in the Phase 5 hardware campaign.",
+  "backend": "ibm_fez",
+  "shots": 4096,
+  "implementation": "ucry",
+  "optimization_levels": [1, 2, 3],
+  "seeds": [12345, 23456, 34567, 45678, 56789, 67890],
+  "max_depth": 1200,
+  "max_two_qubit_gates": 350,
+  "out_dir": "results/phase5/layout_audit",
+  "observables": [
+    "upper_half",
+    "mean_x",
+    "second_moment_x2",
+    "sin_pi_x",
+    "call_x_minus_half"
+  ],
+  "case": {
+    "case_id": "gr_beta_bump_n4",
+    "label": "beta-like localized bump, 16 midpoint cells",
+    "num_qubits": 4,
+    "function": {
+      "kind": "beta_bump",
+      "alpha": 2.0,
+      "beta": 5.0
+    },
+    "notes": "This is the exact localized profile executed in Phase 5: F(x)=x(1-x)^4 on the 16-cell midpoint grid."
+  }
+}

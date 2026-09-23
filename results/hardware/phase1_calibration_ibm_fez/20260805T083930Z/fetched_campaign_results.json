@@ -1,0 +1,610 @@
+{
+  "campaign_run": "/Users/antoniofalco/Library/CloudStorage/Dropbox/TENSORS/Quantum_TENSORS/IBM_Quantum_Proposal/grover-rudolph-qae-benchmark/results/hardware/phase1_calibration_ibm_fez/20260805T083930Z",
+  "fetched_utc": "2026-08-05T08:46:06.665390+00:00",
+  "mlae_estimates": [
+    {
+      "a_exact": 0.25,
+      "a_hat": 0.19298992547185334,
+      "abs_error": 0.05701007452814666,
+      "case_id": "g0",
+      "ks": [
+        0,
+        2
+      ],
+      "neg_log_likelihood": 2573.0043993345357
+    },
+    {
+      "a_exact": 0.5,
+      "a_hat": 0.4896828378720063,
+      "abs_error": 0.010317162127993718,
+      "case_id": "g1",
+      "ks": [
+        0,
+        1
+      ],
+      "neg_log_likelihood": 2834.777991812666
+    },
+    {
+      "a_exact": 0.5,
+      "a_hat": 0.48421307047151607,
+      "abs_error": 0.01578692952848393,
+      "case_id": "g2",
+      "ks": [
+        0,
+        1
+      ],
+      "neg_log_likelihood": 2828.9300616762844
+    }
+  ],
+  "rows": [
+    {
+      "a_exact": 0.25,
+      "backend": "ibm_fez",
+      "backend_status": {
+        "operational": true,
+        "pending_jobs": 1,
+        "status_msg": "active"
+      },
+      "campaign_id": "phase1_calibration_ibm_fez",
+      "case_id": "g0",
+      "counts": {
+        "000": 370,
+        "001": 364,
+        "010": 395,
+        "011": 393,
+        "100": 128,
+        "101": 129,
+        "110": 116,
+        "111": 153
+      },
+      "expected_p_k": 0.24999999999999994,
+      "fetch_status": "DONE",
+      "fetched_utc": "2026-08-05T08:46:01.502379+00:00",
+      "initial_layout": null,
+      "job_id": "d9pfdjt7skus73cksvp0",
+      "k": 0,
+      "label": "g0_constant_quarter",
+      "logical_metrics": {
+        "depth": 2,
+        "multi_qubit_gate_count": 0,
+        "num_clbits": 3,
+        "num_qubits": 3,
+        "one_qubit_gate_count": 3,
+        "operation_counts": {
+          "h": 2,
+          "measure": 3,
+          "ry": 1
+        },
+        "size": 6,
+        "swap_count": 0,
+        "two_qubit_gate_count": 0,
+        "width": 6
+      },
+      "m_ancilla": 526,
+      "optimization_level": 0,
+      "p_abs_dev": 0.0068359375000000555,
+      "p_hat": 0.2568359375,
+      "prepared_utc": "2026-08-05T08:39:31.876928+00:00",
+      "purpose": "Amplitude calibration and degeneracy-avoiding MLAE schedule.",
+      "qasm_path": "/Users/antoniofalco/Library/CloudStorage/Dropbox/TENSORS/Quantum_TENSORS/IBM_Quantum_Proposal/grover-rudolph-qae-benchmark/results/hardware/phase1_calibration_ibm_fez/20260805T083930Z/circuits/g0_k0_transpiled.qasm",
+      "result_path": "/Users/antoniofalco/Library/CloudStorage/Dropbox/TENSORS/Quantum_TENSORS/IBM_Quantum_Proposal/grover-rudolph-qae-benchmark/results/hardware/phase1_calibration_ibm_fez/20260805T083930Z/results/result_g0_k0_d9pfdjt7skus73cksvp0.json",
+      "seed": 12345,
+      "shots": 2048,
+      "structural_metrics": {
+        "canonical_length": 1.480960979386122,
+        "maximum_degree": 0,
+        "minimum_m1_stratum": 4,
+        "multilinear_support": 1
+      },
+      "submitted": true,
+      "submitted_utc": "2026-08-05T08:39:44.077733+00:00",
+      "transpile_seconds": 1.020826124935411,
+      "transpiled_metrics": {
+        "depth": 6,
+        "multi_qubit_gate_count": 0,
+        "num_clbits": 3,
+        "num_qubits": 156,
+        "one_qubit_gate_count": 11,
+        "operation_counts": {
+          "measure": 3,
+          "rz": 7,
+          "sx": 4
+        },
+        "size": 14,
+        "swap_count": 0,
+        "two_qubit_gate_count": 0,
+        "width": 159
+      },
+      "transpiled_two_qubit_depth": 0,
+      "usage_before_submission": {
+        "estimated_remaining_seconds": 9434.0,
+        "usage_allocation_seconds": 10800,
+        "usage_consumed_seconds": 1366,
+        "usage_limit_reached": false,
+        "usage_limit_seconds": 10800,
+        "usage_period": {
+          "end_time": "2027-08-02T17:13:13.026Z",
+          "start_time": "2026-08-02T17:13:13.026Z"
+        }
+      }
+    },
+    {
+      "a_exact": 0.25,
+      "backend": "ibm_fez",
+      "backend_status": {
+        "operational": true,
+        "pending_jobs": 1,
+        "status_msg": "active"
+      },
+      "campaign_id": "phase1_calibration_ibm_fez",
+      "case_id": "g0",
+      "counts": {
+        "000": 186,
+        "001": 172,
+        "010": 255,
+        "011": 211,
+        "100": 191,
+        "101": 200,
+        "110": 436,
+        "111": 397
+      },
+      "expected_p_k": 0.25000000000000033,
+      "fetch_status": "DONE",
+      "fetched_utc": "2026-08-05T08:46:02.486232+00:00",
+      "initial_layout": null,
+      "job_id": "d9pfdke28h6s739r88kg",
+      "k": 2,
+      "label": "g0_constant_quarter",
+      "logical_metrics": {
+        "depth": 18,
+        "multi_qubit_gate_count": 2,
+        "num_clbits": 3,
+        "num_qubits": 3,
+        "one_qubit_gate_count": 33,
+        "operation_counts": {
+          "ccx": 2,
+          "h": 14,
+          "measure": 3,
+          "ry": 5,
+          "x": 12,
+          "z": 2
+        },
+        "size": 38,
+        "swap_count": 0,
+        "two_qubit_gate_count": 0,
+        "width": 6
+      },
+      "m_ancilla": 1224,
+      "optimization_level": 0,
+      "p_abs_dev": 0.34765624999999967,
+      "p_hat": 0.59765625,
+      "prepared_utc": "2026-08-05T08:39:31.885980+00:00",
+      "purpose": "Amplitude calibration and degeneracy-avoiding MLAE schedule.",
+      "qasm_path": "/Users/antoniofalco/Library/CloudStorage/Dropbox/TENSORS/Quantum_TENSORS/IBM_Quantum_Proposal/grover-rudolph-qae-benchmark/results/hardware/phase1_calibration_ibm_fez/20260805T083930Z/circuits/g0_k2_transpiled.qasm",
+      "result_path": "/Users/antoniofalco/Library/CloudStorage/Dropbox/TENSORS/Quantum_TENSORS/IBM_Quantum_Proposal/grover-rudolph-qae-benchmark/results/hardware/phase1_calibration_ibm_fez/20260805T083930Z/results/result_g0_k2_d9pfdke28h6s739r88kg.json",
+      "seed": 12345,
+      "shots": 2048,
+      "structural_metrics": {
+        "canonical_length": 1.480960979386122,
+        "maximum_degree": 0,
+        "minimum_m1_stratum": 4,
+        "multilinear_support": 1
+      },
+      "submitted": true,
+      "submitted_utc": "2026-08-05T08:39:45.514294+00:00",
+      "transpile_seconds": 0.007716000080108643,
+      "transpiled_metrics": {
+        "depth": 180,
+        "multi_qubit_gate_count": 0,
+        "num_clbits": 3,
+        "num_qubits": 156,
+        "one_qubit_gate_count": 203,
+        "operation_counts": {
+          "cz": 24,
+          "measure": 3,
+          "rz": 115,
+          "sx": 76,
+          "x": 12
+        },
+        "size": 230,
+        "swap_count": 0,
+        "two_qubit_gate_count": 24,
+        "width": 159
+      },
+      "transpiled_two_qubit_depth": 24,
+      "usage_before_submission": {
+        "estimated_remaining_seconds": 9434.0,
+        "usage_allocation_seconds": 10800,
+        "usage_consumed_seconds": 1366,
+        "usage_limit_reached": false,
+        "usage_limit_seconds": 10800,
+        "usage_period": {
+          "end_time": "2027-08-02T17:13:13.026Z",
+          "start_time": "2026-08-02T17:13:13.026Z"
+        }
+      }
+    },
+    {
+      "a_exact": 0.5,
+      "backend": "ibm_fez",
+      "backend_status": {
+        "operational": true,
+        "pending_jobs": 1,
+        "status_msg": "active"
+      },
+      "campaign_id": "phase1_calibration_ibm_fez",
+      "case_id": "g1",
+      "counts": {
+        "000": 408,
+        "001": 172,
+        "010": 312,
+        "011": 43,
+        "100": 95,
+        "101": 305,
+        "110": 237,
+        "111": 476
+      },
+      "expected_p_k": 0.5000000000000001,
+      "fetch_status": "DONE",
+      "fetched_utc": "2026-08-05T08:46:03.695840+00:00",
+      "initial_layout": null,
+      "job_id": "d9pfdkjbvhrs73a2i9ag",
+      "k": 0,
+      "label": "sin2_pi_x_over_2",
+      "logical_metrics": {
+        "depth": 10,
+        "multi_qubit_gate_count": 0,
+        "num_clbits": 3,
+        "num_qubits": 3,
+        "one_qubit_gate_count": 7,
+        "operation_counts": {
+          "cx": 4,
+          "h": 2,
+          "measure": 3,
+          "ry": 5
+        },
+        "size": 14,
+        "swap_count": 0,
+        "two_qubit_gate_count": 4,
+        "width": 6
+      },
+      "m_ancilla": 1113,
+      "optimization_level": 0,
+      "p_abs_dev": 0.04345703124999989,
+      "p_hat": 0.54345703125,
+      "prepared_utc": "2026-08-05T08:39:31.888831+00:00",
+      "purpose": "Affine encoding continuity benchmark.",
+      "qasm_path": "/Users/antoniofalco/Library/CloudStorage/Dropbox/TENSORS/Quantum_TENSORS/IBM_Quantum_Proposal/grover-rudolph-qae-benchmark/results/hardware/phase1_calibration_ibm_fez/20260805T083930Z/circuits/g1_k0_transpiled.qasm",
+      "result_path": "/Users/antoniofalco/Library/CloudStorage/Dropbox/TENSORS/Quantum_TENSORS/IBM_Quantum_Proposal/grover-rudolph-qae-benchmark/results/hardware/phase1_calibration_ibm_fez/20260805T083930Z/results/result_g1_k0_d9pfdkjbvhrs73a2i9ag.json",
+      "seed": 12345,
+      "shots": 2048,
+      "structural_metrics": {
+        "canonical_length": 2.9115548574621406,
+        "maximum_degree": 1,
+        "minimum_m1_stratum": 2,
+        "multilinear_support": 3
+      },
+      "submitted": true,
+      "submitted_utc": "2026-08-05T08:39:46.561012+00:00",
+      "transpile_seconds": 0.002238459070213139,
+      "transpiled_metrics": {
+        "depth": 60,
+        "multi_qubit_gate_count": 0,
+        "num_clbits": 3,
+        "num_qubits": 156,
+        "one_qubit_gate_count": 61,
+        "operation_counts": {
+          "cz": 7,
+          "measure": 3,
+          "rz": 35,
+          "sx": 26
+        },
+        "size": 71,
+        "swap_count": 0,
+        "two_qubit_gate_count": 7,
+        "width": 159
+      },
+      "transpiled_two_qubit_depth": 7,
+      "usage_before_submission": {
+        "estimated_remaining_seconds": 9434.0,
+        "usage_allocation_seconds": 10800,
+        "usage_consumed_seconds": 1366,
+        "usage_limit_reached": false,
+        "usage_limit_seconds": 10800,
+        "usage_period": {
+          "end_time": "2027-08-02T17:13:13.026Z",
+          "start_time": "2026-08-02T17:13:13.026Z"
+        }
+      }
+    },
+    {
+      "a_exact": 0.5,
+      "backend": "ibm_fez",
+      "backend_status": {
+        "operational": true,
+        "pending_jobs": 1,
+        "status_msg": "active"
+      },
+      "campaign_id": "phase1_calibration_ibm_fez",
+      "case_id": "g1",
+      "counts": {
+        "000": 266,
+        "001": 283,
+        "010": 256,
+        "011": 119,
+        "100": 213,
+        "101": 277,
+        "110": 178,
+        "111": 456
+      },
+      "expected_p_k": 0.4999999999999996,
+      "fetch_status": "DONE",
+      "fetched_utc": "2026-08-05T08:46:04.614696+00:00",
+      "initial_layout": null,
+      "job_id": "d9pfdkrbvhrs73a2i9bg",
+      "k": 1,
+      "label": "sin2_pi_x_over_2",
+      "logical_metrics": {
+        "depth": 34,
+        "multi_qubit_gate_count": 1,
+        "num_clbits": 3,
+        "num_qubits": 3,
+        "one_qubit_gate_count": 30,
+        "operation_counts": {
+          "ccx": 1,
+          "cx": 12,
+          "h": 8,
+          "measure": 3,
+          "ry": 15,
+          "x": 6,
+          "z": 1
+        },
+        "size": 46,
+        "swap_count": 0,
+        "two_qubit_gate_count": 12,
+        "width": 6
+      },
+      "m_ancilla": 1124,
+      "optimization_level": 0,
+      "p_abs_dev": 0.04882812500000039,
+      "p_hat": 0.548828125,
+      "prepared_utc": "2026-08-05T08:39:31.893300+00:00",
+      "purpose": "Affine encoding continuity benchmark.",
+      "qasm_path": "/Users/antoniofalco/Library/CloudStorage/Dropbox/TENSORS/Quantum_TENSORS/IBM_Quantum_Proposal/grover-rudolph-qae-benchmark/results/hardware/phase1_calibration_ibm_fez/20260805T083930Z/circuits/g1_k1_transpiled.qasm",
+      "result_path": "/Users/antoniofalco/Library/CloudStorage/Dropbox/TENSORS/Quantum_TENSORS/IBM_Quantum_Proposal/grover-rudolph-qae-benchmark/results/hardware/phase1_calibration_ibm_fez/20260805T083930Z/results/result_g1_k1_d9pfdkrbvhrs73a2i9bg.json",
+      "seed": 12345,
+      "shots": 2048,
+      "structural_metrics": {
+        "canonical_length": 2.9115548574621406,
+        "maximum_degree": 1,
+        "minimum_m1_stratum": 2,
+        "multilinear_support": 3
+      },
+      "submitted": true,
+      "submitted_utc": "2026-08-05T08:39:47.746084+00:00",
+      "transpile_seconds": 0.002937125042080879,
+      "transpiled_metrics": {
+        "depth": 241,
+        "multi_qubit_gate_count": 0,
+        "num_clbits": 3,
+        "num_qubits": 156,
+        "one_qubit_gate_count": 245,
+        "operation_counts": {
+          "cz": 27,
+          "measure": 3,
+          "rz": 145,
+          "sx": 94,
+          "x": 6
+        },
+        "size": 275,
+        "swap_count": 0,
+        "two_qubit_gate_count": 27,
+        "width": 159
+      },
+      "transpiled_two_qubit_depth": 27,
+      "usage_before_submission": {
+        "estimated_remaining_seconds": 9434.0,
+        "usage_allocation_seconds": 10800,
+        "usage_consumed_seconds": 1366,
+        "usage_limit_reached": false,
+        "usage_limit_seconds": 10800,
+        "usage_period": {
+          "end_time": "2027-08-02T17:13:13.026Z",
+          "start_time": "2026-08-02T17:13:13.026Z"
+        }
+      }
+    },
+    {
+      "a_exact": 0.5,
+      "backend": "ibm_fez",
+      "backend_status": {
+        "operational": true,
+        "pending_jobs": 1,
+        "status_msg": "active"
+      },
+      "campaign_id": "phase1_calibration_ibm_fez",
+      "case_id": "g2",
+      "counts": {
+        "000": 481,
+        "001": 155,
+        "010": 76,
+        "011": 362,
+        "100": 126,
+        "101": 361,
+        "110": 377,
+        "111": 110
+      },
+      "expected_p_k": 0.5000000000000001,
+      "fetch_status": "DONE",
+      "fetched_utc": "2026-08-05T08:46:05.527361+00:00",
+      "initial_layout": null,
+      "job_id": "d9pfdl628h6s739r88lg",
+      "k": 0,
+      "label": "sin2_pi_x",
+      "logical_metrics": {
+        "depth": 11,
+        "multi_qubit_gate_count": 1,
+        "num_clbits": 3,
+        "num_qubits": 3,
+        "one_qubit_gate_count": 7,
+        "operation_counts": {
+          "ccx": 1,
+          "cx": 4,
+          "h": 2,
+          "measure": 3,
+          "ry": 5
+        },
+        "size": 15,
+        "swap_count": 0,
+        "two_qubit_gate_count": 4,
+        "width": 6
+      },
+      "m_ancilla": 974,
+      "optimization_level": 0,
+      "p_abs_dev": 0.02441406250000011,
+      "p_hat": 0.4755859375,
+      "prepared_utc": "2026-08-05T08:39:31.912645+00:00",
+      "purpose": "Quadratic encoding continuity benchmark with moderate depth.",
+      "qasm_path": "/Users/antoniofalco/Library/CloudStorage/Dropbox/TENSORS/Quantum_TENSORS/IBM_Quantum_Proposal/grover-rudolph-qae-benchmark/results/hardware/phase1_calibration_ibm_fez/20260805T083930Z/circuits/g2_k0_transpiled.qasm",
+      "result_path": "/Users/antoniofalco/Library/CloudStorage/Dropbox/TENSORS/Quantum_TENSORS/IBM_Quantum_Proposal/grover-rudolph-qae-benchmark/results/hardware/phase1_calibration_ibm_fez/20260805T083930Z/results/result_g2_k0_d9pfdl628h6s739r88lg.json",
+      "seed": 12345,
+      "shots": 2048,
+      "structural_metrics": {
+        "canonical_length": 6.473754857208568,
+        "maximum_degree": 2,
+        "minimum_m1_stratum": 1,
+        "multilinear_support": 4
+      },
+      "submitted": true,
+      "submitted_utc": "2026-08-05T08:39:48.776060+00:00",
+      "transpile_seconds": 0.018361333059147,
+      "transpiled_metrics": {
+        "depth": 116,
+        "multi_qubit_gate_count": 0,
+        "num_clbits": 3,
+        "num_qubits": 156,
+        "one_qubit_gate_count": 116,
+        "operation_counts": {
+          "cz": 16,
+          "measure": 3,
+          "rz": 70,
+          "sx": 46
+        },
+        "size": 135,
+        "swap_count": 0,
+        "two_qubit_gate_count": 16,
+        "width": 159
+      },
+      "transpiled_two_qubit_depth": 16,
+      "usage_before_submission": {
+        "estimated_remaining_seconds": 9434.0,
+        "usage_allocation_seconds": 10800,
+        "usage_consumed_seconds": 1366,
+        "usage_limit_reached": false,
+        "usage_limit_seconds": 10800,
+        "usage_period": {
+          "end_time": "2027-08-02T17:13:13.026Z",
+          "start_time": "2026-08-02T17:13:13.026Z"
+        }
+      }
+    },
+    {
+      "a_exact": 0.5,
+      "backend": "ibm_fez",
+      "backend_status": {
+        "operational": true,
+        "pending_jobs": 1,
+        "status_msg": "active"
+      },
+      "campaign_id": "phase1_calibration_ibm_fez",
+      "case_id": "g2",
+      "counts": {
+        "000": 296,
+        "001": 162,
+        "010": 207,
+        "011": 268,
+        "100": 418,
+        "101": 293,
+        "110": 149,
+        "111": 255
+      },
+      "expected_p_k": 0.4999999999999996,
+      "fetch_status": "DONE",
+      "fetched_utc": "2026-08-05T08:46:06.295454+00:00",
+      "initial_layout": null,
+      "job_id": "d9pfdlbbvhrs73a2i9c0",
+      "k": 1,
+      "label": "sin2_pi_x",
+      "logical_metrics": {
+        "depth": 37,
+        "multi_qubit_gate_count": 4,
+        "num_clbits": 3,
+        "num_qubits": 3,
+        "one_qubit_gate_count": 30,
+        "operation_counts": {
+          "ccx": 4,
+          "cx": 12,
+          "h": 8,
+          "measure": 3,
+          "ry": 15,
+          "x": 6,
+          "z": 1
+        },
+        "size": 49,
+        "swap_count": 0,
+        "two_qubit_gate_count": 12,
+        "width": 6
+      },
+      "m_ancilla": 1115,
+      "optimization_level": 0,
+      "p_abs_dev": 0.04443359375000039,
+      "p_hat": 0.54443359375,
+      "prepared_utc": "2026-08-05T08:39:31.917804+00:00",
+      "purpose": "Quadratic encoding continuity benchmark with moderate depth.",
+      "qasm_path": "/Users/antoniofalco/Library/CloudStorage/Dropbox/TENSORS/Quantum_TENSORS/IBM_Quantum_Proposal/grover-rudolph-qae-benchmark/results/hardware/phase1_calibration_ibm_fez/20260805T083930Z/circuits/g2_k1_transpiled.qasm",
+      "result_path": "/Users/antoniofalco/Library/CloudStorage/Dropbox/TENSORS/Quantum_TENSORS/IBM_Quantum_Proposal/grover-rudolph-qae-benchmark/results/hardware/phase1_calibration_ibm_fez/20260805T083930Z/results/result_g2_k1_d9pfdlbbvhrs73a2i9c0.json",
+      "seed": 12345,
+      "shots": 2048,
+      "structural_metrics": {
+        "canonical_length": 6.473754857208568,
+        "maximum_degree": 2,
+        "minimum_m1_stratum": 1,
+        "multilinear_support": 4
+      },
+      "submitted": true,
+      "submitted_utc": "2026-08-05T08:39:49.881376+00:00",
+      "transpile_seconds": 0.0027452498907223344,
+      "transpiled_metrics": {
+        "depth": 421,
+        "multi_qubit_gate_count": 0,
+        "num_clbits": 3,
+        "num_qubits": 156,
+        "one_qubit_gate_count": 428,
+        "operation_counts": {
+          "cz": 63,
+          "measure": 3,
+          "rz": 250,
+          "sx": 172,
+          "x": 6
+        },
+        "size": 494,
+        "swap_count": 0,
+        "two_qubit_gate_count": 63,
+        "width": 159
+      },
+      "transpiled_two_qubit_depth": 63,
+      "usage_before_submission": {
+        "estimated_remaining_seconds": 9434.0,
+        "usage_allocation_seconds": 10800,
+        "usage_consumed_seconds": 1366,
+        "usage_limit_reached": false,
+        "usage_limit_seconds": 10800,
+        "usage_period": {
+          "end_time": "2027-08-02T17:13:13.026Z",
+          "start_time": "2026-08-02T17:13:13.026Z"
+        }
+      }
+    }
+  ],
+  "submitted_campaign": "/Users/antoniofalco/Library/CloudStorage/Dropbox/TENSORS/Quantum_TENSORS/IBM_Quantum_Proposal/grover-rudolph-qae-benchmark/results/hardware/phase1_calibration_ibm_fez/20260805T083930Z/submitted_campaign.json"
+}

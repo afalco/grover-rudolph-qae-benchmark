@@ -1,0 +1,166 @@
+{
+  "campaign_run": "/Users/antoniofalco/Library/CloudStorage/Dropbox/TENSORS/Quantum_TENSORS/IBM_Quantum_Proposal/grover-rudolph-qae-benchmark/results/hardware/phase4_gr_affine_n4_k1_repeat_opt3_seed12345_ibm_fez/20260805T161506Z",
+  "fetched_utc": "2026-08-05T16:17:54.293847+00:00",
+  "mlae_estimates": [
+    {
+      "a_exact": 0.6803797468354431,
+      "a_hat": 0.639942009464479,
+      "abs_error": 0.04043773737096412,
+      "case_id": "gr_affine_n4",
+      "event": "upper_half",
+      "ks": [
+        1
+      ],
+      "neg_log_likelihood": 767.7245213737175
+    }
+  ],
+  "rows": [
+    {
+      "a_exact": 0.6803797468354431,
+      "backend": "ibm_fez",
+      "backend_status": {
+        "operational": true,
+        "pending_jobs": 1,
+        "status_msg": "active"
+      },
+      "campaign_id": "phase4_gr_affine_n4_k1_repeat_opt3_seed12345_ibm_fez",
+      "campaign_type": "gr_event_mlae",
+      "case_id": "gr_affine_n4",
+      "counts": {
+        "0000": 111,
+        "0001": 28,
+        "0010": 221,
+        "0011": 29,
+        "0100": 190,
+        "0101": 33,
+        "0110": 287,
+        "0111": 31,
+        "1000": 145,
+        "1001": 25,
+        "1010": 252,
+        "1011": 36,
+        "1100": 238,
+        "1101": 30,
+        "1110": 350,
+        "1111": 42
+      },
+      "event": "upper_half",
+      "expected_p_k": 0.05276458860252412,
+      "fetch_status": "DONE",
+      "fetched_utc": "2026-08-05T16:17:53.845237+00:00",
+      "grid_points": 16,
+      "implementation": "ucry",
+      "job_id": "d9pm34cpcc1s73a7sir0",
+      "k": 1,
+      "label": "affine positive density, 16 midpoint cells",
+      "logical_metrics": {
+        "depth": 17,
+        "multi_qubit_gate_count": 7,
+        "num_clbits": 4,
+        "num_qubits": 4,
+        "one_qubit_gate_count": 14,
+        "operation_counts": {
+          "h": 2,
+          "mcx": 1,
+          "measure": 4,
+          "ry": 3,
+          "ucry": 6,
+          "ucry_dg": 3,
+          "x": 8,
+          "z": 1
+        },
+        "size": 28,
+        "swap_count": 0,
+        "two_qubit_gate_count": 3,
+        "width": 8
+      },
+      "marked_count": 254,
+      "marked_indices": [
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15
+      ],
+      "num_qubits": 4,
+      "optimization_level": 3,
+      "p_abs_dev": 0.07125884889747588,
+      "p_hat": 0.1240234375,
+      "prepared_utc": "2026-08-05T16:15:07.614213+00:00",
+      "purpose": "Repeat only k=1 with opt=3, seed=12345 after diagnosis reduced depth from 225 to 152 and two-qubit gates from 51 to 35.",
+      "qasm_path": "/Users/antoniofalco/Library/CloudStorage/Dropbox/TENSORS/Quantum_TENSORS/IBM_Quantum_Proposal/grover-rudolph-qae-benchmark/results/hardware/phase4_gr_affine_n4_k1_repeat_opt3_seed12345_ibm_fez/20260805T161506Z/circuits/gr_affine_n4_upper_half_k1_transpiled.qasm",
+      "result_path": "/Users/antoniofalco/Library/CloudStorage/Dropbox/TENSORS/Quantum_TENSORS/IBM_Quantum_Proposal/grover-rudolph-qae-benchmark/results/hardware/phase4_gr_affine_n4_k1_repeat_opt3_seed12345_ibm_fez/20260805T161506Z/results/result_gr_affine_n4_k1_d9pm34cpcc1s73a7sir0.json",
+      "runtime_options": {
+        "dynamical_decoupling": {
+          "enable": true,
+          "scheduling_method": "alap",
+          "sequence_type": "XY4"
+        },
+        "twirling": {
+          "enable_gates": true,
+          "enable_measure": true,
+          "num_randomizations": 32,
+          "shots_per_randomization": 64,
+          "strategy": "active-accum"
+        }
+      },
+      "seed": 12345,
+      "shots": 2048,
+      "submitted": true,
+      "submitted_utc": "2026-08-05T16:15:14.033397+00:00",
+      "target_probabilities": [
+        0.02022349683544304,
+        0.025860363924050642,
+        0.03149723101265823,
+        0.03713409810126583,
+        0.04277096518987343,
+        0.04840783227848102,
+        0.05404469936708862,
+        0.05968156645569621,
+        0.0653184335443038,
+        0.0709553006329114,
+        0.076592167721519,
+        0.0822290348101266,
+        0.0878659018987342,
+        0.09350276898734179,
+        0.09913963607594937,
+        0.10477650316455697
+      ],
+      "transpile_seconds": 1.0615080839488655,
+      "transpiled_metrics": {
+        "depth": 152,
+        "multi_qubit_gate_count": 0,
+        "num_clbits": 4,
+        "num_qubits": 156,
+        "one_qubit_gate_count": 160,
+        "operation_counts": {
+          "cz": 35,
+          "measure": 4,
+          "rz": 72,
+          "sx": 86,
+          "x": 2
+        },
+        "size": 199,
+        "swap_count": 0,
+        "two_qubit_gate_count": 35,
+        "width": 160
+      },
+      "transpiled_two_qubit_depth": 35,
+      "usage_before_submission": {
+        "estimated_remaining_seconds": 9362.0,
+        "usage_allocation_seconds": 10800,
+        "usage_consumed_seconds": 1438,
+        "usage_limit_reached": false,
+        "usage_limit_seconds": 10800,
+        "usage_period": {
+          "end_time": "2027-08-02T17:13:13.026Z",
+          "start_time": "2026-08-02T17:13:13.026Z"
+        }
+      }
+    }
+  ],
+  "submitted_campaign": "/Users/antoniofalco/Library/CloudStorage/Dropbox/TENSORS/Quantum_TENSORS/IBM_Quantum_Proposal/grover-rudolph-qae-benchmark/results/hardware/phase4_gr_affine_n4_k1_repeat_opt3_seed12345_ibm_fez/20260805T161506Z/submitted_campaign.json"
+}

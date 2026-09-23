@@ -1,0 +1,56 @@
+{
+  "campaign_id": "phase14_affine_n6_distribution_ibm_kingston",
+  "description": "Phase 14 direct-distribution QPU microcampaign on ibm_kingston. This extends the paper-quality affine scaling line from n=5, 32 midpoint cells, to n=6, 64 midpoint cells.",
+  "backend": "ibm_kingston",
+  "shots": 8192,
+  "optimization_level": 2,
+  "implementation": "ucry",
+  "seed": 34567,
+  "submit_to_qpu": false,
+  "runtime_options": {
+    "dynamical_decoupling": {
+      "enable": true,
+      "sequence_type": "XY4",
+      "scheduling_method": "alap"
+    },
+    "twirling": {
+      "enable_gates": true,
+      "enable_measure": true,
+      "num_randomizations": 32,
+      "shots_per_randomization": 256,
+      "strategy": "active-accum"
+    }
+  },
+  "rationale": [
+    "gr_affine_n6 passed the Phase 14 backend-aware audit on ibm_kingston.",
+    "The selected opt=2, seed=34567 candidate had depth 361, 103 two-qubit gates, predicted noisy TVD 0.046682, and maximum noisy quantity-of-interest error 0.014242.",
+    "This is the direct continuation of the Phase 9 gr_affine_n5 scaling result from 32 to 64 midpoint cells.",
+    "The campaign measures only the direct Grover-Rudolph distribution; amplified QAE remains deferred after Phase 13."
+  ],
+  "selected_cases": [
+    {
+      "case_id": "gr_affine_n6",
+      "label": "affine positive law, 64 midpoint cells",
+      "num_qubits": 6,
+      "function": {
+        "kind": "affine",
+        "offset": 0.11,
+        "slope": 0.57
+      },
+      "purpose": "Direct algebraic-integration scaling candidate at n=6."
+    }
+  ],
+  "qoi_targets": [
+    "call_x_minus_half",
+    "mean_x",
+    "second_moment_x2",
+    "sin_pi_x",
+    "upper_half"
+  ],
+  "stopping_rules": [
+    "Submit only after confirming the dry-run depth and two-qubit count match the Phase 14 backend-aware audit.",
+    "Promote as a Phase 14 direct-distribution scaling result only if TVD stays below 0.06 and max cell deviation stays below 0.025.",
+    "Use quantity-specific errors for all integration claims.",
+    "Do not attach Grover amplification in this campaign."
+  ]
+}

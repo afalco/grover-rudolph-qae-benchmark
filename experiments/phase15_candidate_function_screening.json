@@ -1,0 +1,55 @@
+{
+  "name": "phase15_candidate_function_screening",
+  "description": "Credit-free screening of alternative smooth n=6 Grover-Rudolph probability profiles after the Phase 14 affine result.",
+  "shots": 8192,
+  "seed": 20260809,
+  "optimization_levels": [1, 2, 3],
+  "seeds": [12345, 23456, 34567, 45678],
+  "implementation": "ucry",
+  "basis_gates": ["cz", "id", "rz", "sx", "x"],
+  "continuous_grid_points": 200000,
+  "mc_trials": 120,
+  "max_depth": 900,
+  "max_two_qubit_gates": 260,
+  "max_discretization_error": 0.015,
+  "max_noisy_tvd": 0.06,
+  "max_noisy_qoi_error": 0.025,
+  "out_dir": "results/phase15/candidate_function_screening",
+  "quantities": [
+    "upper_half",
+    "mean_x",
+    "second_moment_x2",
+    "sin_pi_x",
+    "call_x_minus_half"
+  ],
+  "cases": [
+    {
+      "case_id": "gr_affine_n6",
+      "label": "affine positive law, 64 midpoint cells",
+      "num_qubits": 6,
+      "function": {"kind": "affine", "offset": 0.11, "slope": 0.57},
+      "notes": "Phase 14 reference result."
+    },
+    {
+      "case_id": "gr_sin2_n6",
+      "label": "sin2(pi x), 64 midpoint cells",
+      "num_qubits": 6,
+      "function": {"kind": "sin2"},
+      "notes": "Smooth symmetric profile; should reduce one-sided tail bias."
+    },
+    {
+      "case_id": "gr_gaussian_mid_sigma025_n6",
+      "label": "centered Gaussian-like law, sigma 0.25, 64 midpoint cells",
+      "num_qubits": 6,
+      "function": {"kind": "gaussian", "mean": 0.5, "sigma": 0.25},
+      "notes": "Broad centered smooth profile intended to avoid strong endpoint sensitivity."
+    },
+    {
+      "case_id": "gr_gaussian_mid_sigma018_n6",
+      "label": "centered Gaussian-like law, sigma 0.18, 64 midpoint cells",
+      "num_qubits": 6,
+      "function": {"kind": "gaussian", "mean": 0.5, "sigma": 0.18},
+      "notes": "More localized centered smooth profile; intermediate stress case."
+    }
+  ]
+}

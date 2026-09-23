@@ -1,0 +1,26 @@
+{
+  "experiment_id": "phase15_quadrature_qae_audit",
+  "description": "Quadrature-rule QAE/MLAE audit for angle-structured integration of g under uniform quadrature.",
+  "cases": [
+    {"case_id": "g0", "kind": "constant_quarter", "family": "calibration", "angle_class_hint": "G_n^(0)"},
+    {"case_id": "g1", "kind": "sin2_half", "family": "calibration", "angle_class_hint": "G_n^(1)"},
+    {"case_id": "g2", "kind": "sin2", "family": "calibration", "angle_class_hint": "G_n^(2)"},
+    {"case_id": "affine_shifted", "kind": "affine", "family": "stress", "offset": 0.11, "slope": 0.57, "angle_class_hint": "full-grid angle degree expected for n>=4"},
+    {"case_id": "smooth_bump", "kind": "beta_bump", "family": "stress", "alpha": 2.0, "beta": 5.0, "scale": 1.0, "angle_class_hint": "non-polynomial angle map after arcsin-sqrt"},
+    {"case_id": "oscillatory_smooth", "kind": "oscillatory", "family": "stress", "base": 0.5, "sin_amp": 0.25, "cos_amp": 0.10, "angle_class_hint": "smooth but not low angle degree"}
+  ],
+  "num_qubits": [2, 3, 4, 5, 6],
+  "rules": ["left", "midpoint", "right", "simpson"],
+  "mlae_schedules": [[0, 1], [0, 1, 2]],
+  "shots_per_circuit": 2048,
+  "seed": 12345,
+  "mle_grid_size": 5001,
+  "optimization_levels": [2],
+  "transpiler_seeds": [12345],
+  "basis_gates": ["cz", "id", "rz", "sx", "x"],
+  "max_depth": 900,
+  "max_two_qubit_gates": 250,
+  "max_total_error_for_qpu": 0.03,
+  "max_estimation_error_for_qpu": 0.02,
+  "out_dir": "results/phase15/quadrature_qae_audit"
+}

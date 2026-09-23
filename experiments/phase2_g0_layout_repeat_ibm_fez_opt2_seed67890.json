@@ -1,0 +1,32 @@
+{
+  "campaign_id": "phase2_g0_layout_repeat_ibm_fez_opt2_seed67890",
+  "description": "Phase 2 microcampaign to test the best audited layout/transpiler seed for the residual g0 k=2 bias.",
+  "backend": "ibm_fez",
+  "shots": 2048,
+  "optimization_level": 2,
+  "seed": 67890,
+  "submit_to_qpu": false,
+  "rationale": [
+    "The accepted Phase 1 g0 opt2 repeat reduced the k=2 anomaly but still measured p_hat=0.297363, with absolute deviation 0.047363.",
+    "The Phase 2 layout audit identified optimization_level=2 and transpiler_seed=67890 as the best g0 k=2 candidate, with noisy simulated p=0.258545 and absolute deviation 0.008545.",
+    "The candidate has the same two-qubit count as the accepted Phase 1 g0 k=2 circuit and only a small depth increase from 71 to 76.",
+    "The campaign repeats g0 k=0 as a fresh calibration anchor and g0 k=2 as the sensitive circuit."
+  ],
+  "selected_jobs": [
+    {
+      "case_id": "g0",
+      "ks": [0, 2],
+      "purpose": "Test audited transpiler seed 67890 for the residual g0 k=2 bias."
+    }
+  ],
+  "phase2_evidence": {
+    "layout_audit_best": "results/phase2/layout_audit/phase2_layout_audit_best_20260805T092909Z.csv",
+    "layout_audit_full": "results/phase2/layout_audit/phase2_layout_audit_20260805T092909Z.json",
+    "phase1_summary": "results/hardware/phase1_summary/phase1_accepted_circuits.csv"
+  },
+  "stopping_rules": [
+    "Prepare without --submit and confirm g0 k=2 is close to depth 76 and 19 two-qubit gates.",
+    "Submit only these two circuits; do not combine with g1 or g2 because those Phase 1 results are already strong.",
+    "If g0 k=2 remains in the watch region, move next to mitigation rather than more random seed searches."
+  ]
+}

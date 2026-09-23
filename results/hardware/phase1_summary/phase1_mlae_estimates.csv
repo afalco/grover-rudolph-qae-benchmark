@@ -1,0 +1,4 @@
+campaign_id,case_id,ks,a_exact,a_hat,abs_error
+phase1_g0_repeat_ibm_fez_opt2,g0,"0,2",0.25,0.24105112690811448,0.008948873091885523
+phase1_g1_stress_ibm_fez_opt2,g1,"0,1,2",0.5,0.4990932413469453,0.0009067586530546734
+phase1_g2_stress_ibm_fez_opt2,g2,"0,1,2",0.5,0.4995117257327141,0.0004882742672859264

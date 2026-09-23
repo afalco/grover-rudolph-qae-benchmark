@@ -1,0 +1,125 @@
+[
+  {
+    "backend": "ibm_kingston",
+    "backend_status": {
+      "operational": true,
+      "pending_jobs": 2,
+      "status_msg": "active"
+    },
+    "campaign_id": "phase9_affine_n5_distribution_ibm_kingston",
+    "campaign_type": "gr_distribution_measurement",
+    "case_id": "gr_affine_n5",
+    "conditional_rotation_count": 31,
+    "grid_points": 32,
+    "implementation": "ucry",
+    "initial_layout": null,
+    "job_id": "d9rojjgpdb6s73e56i00",
+    "label": "affine positive law, 32 midpoint cells",
+    "logical_metrics": {
+      "depth": 6,
+      "multi_qubit_gate_count": 3,
+      "num_clbits": 5,
+      "num_qubits": 5,
+      "one_qubit_gate_count": 1,
+      "operation_counts": {
+        "measure": 5,
+        "ry": 1,
+        "ucry": 4
+      },
+      "size": 10,
+      "swap_count": 0,
+      "two_qubit_gate_count": 1,
+      "width": 10
+    },
+    "nonzero_conditional_rotation_count": 31,
+    "num_qubits": 5,
+    "optimization_level": 2,
+    "prepared_utc": "2026-08-08T19:55:51.491695+00:00",
+    "purpose": "First direct algebraic-integration scaling candidate at n=5.",
+    "qasm_path": "/Users/antoniofalco/Library/CloudStorage/Dropbox/TENSORS/Quantum_TENSORS/IBM_Quantum_Proposal/grover-rudolph-qae-benchmark/results/hardware/phase9_affine_n5_distribution_ibm_kingston/20260808T195550Z/circuits/gr_affine_n5_transpiled.qasm",
+    "runtime_options": {
+      "dynamical_decoupling": {
+        "enable": true,
+        "scheduling_method": "alap",
+        "sequence_type": "XY4"
+      },
+      "twirling": {
+        "enable_gates": true,
+        "enable_measure": true,
+        "num_randomizations": 32,
+        "shots_per_randomization": 256,
+        "strategy": "active-accum"
+      }
+    },
+    "seed": 45678,
+    "shots": 8192,
+    "source": "function:affine",
+    "submitted": true,
+    "submitted_utc": "2026-08-08T19:55:59.033770+00:00",
+    "target_probabilities": [
+      0.009407140031645571,
+      0.010816356803797469,
+      0.01222557357594937,
+      0.013634790348101266,
+      0.015044007120253167,
+      0.016453223892405063,
+      0.017862440664556962,
+      0.01927165743670886,
+      0.02068087420886076,
+      0.022090090981012656,
+      0.023499307753164556,
+      0.024908524525316455,
+      0.026317741297468354,
+      0.027726958069620257,
+      0.02913617484177215,
+      0.03054539161392405,
+      0.03195460838607595,
+      0.03336382515822785,
+      0.03477304193037975,
+      0.036182258702531646,
+      0.03759147547468354,
+      0.039000692246835444,
+      0.04040990901898734,
+      0.04181912579113924,
+      0.04322834256329114,
+      0.04463755933544304,
+      0.046046776107594944,
+      0.04745599287974684,
+      0.04886520965189873,
+      0.05027442642405063,
+      0.05168364319620253,
+      0.05309285996835443
+    ],
+    "transpile_seconds": 0.994387875078246,
+    "transpiled_metrics": {
+      "depth": 171,
+      "multi_qubit_gate_count": 0,
+      "num_clbits": 5,
+      "num_qubits": 156,
+      "one_qubit_gate_count": 183,
+      "operation_counts": {
+        "cz": 44,
+        "measure": 5,
+        "rz": 81,
+        "sx": 99,
+        "x": 3
+      },
+      "size": 232,
+      "swap_count": 0,
+      "two_qubit_gate_count": 44,
+      "width": 161
+    },
+    "transpiled_two_qubit_depth": 42,
+    "usage_before_submission": {
+      "estimated_remaining_seconds": 9327.0,
+      "usage_allocation_seconds": 10800,
+      "usage_consumed_seconds": 1473,
+      "usage_limit_reached": false,
+      "usage_limit_seconds": 10800,
+      "usage_period": {
+        "end_time": "2027-08-02T17:13:13.026Z",
+        "start_time": "2026-08-02T17:13:13.026Z"
+      }
+    }
+  }
+]

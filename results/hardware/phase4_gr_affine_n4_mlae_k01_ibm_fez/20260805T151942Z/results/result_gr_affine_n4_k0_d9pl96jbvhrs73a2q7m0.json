@@ -1,0 +1,140 @@
+{
+  "a_exact": 0.6803797468354431,
+  "backend": "ibm_fez",
+  "backend_status": {
+    "operational": true,
+    "pending_jobs": 45,
+    "status_msg": "active"
+  },
+  "campaign_id": "phase4_gr_affine_n4_mlae_k01_ibm_fez",
+  "campaign_type": "gr_event_mlae",
+  "case_id": "gr_affine_n4",
+  "counts": {
+    "0000": 39,
+    "0001": 129,
+    "0010": 101,
+    "0011": 201,
+    "0100": 72,
+    "0101": 165,
+    "0110": 124,
+    "0111": 167,
+    "1000": 64,
+    "1001": 147,
+    "1010": 108,
+    "1011": 188,
+    "1100": 78,
+    "1101": 149,
+    "1110": 132,
+    "1111": 184
+  },
+  "event": "upper_half",
+  "expected_p_k": 0.6803797468354431,
+  "fetch_status": "DONE",
+  "fetched_utc": "2026-08-05T16:04:20.623926+00:00",
+  "grid_points": 16,
+  "implementation": "ucry",
+  "job_id": "d9pl96jbvhrs73a2q7m0",
+  "k": 0,
+  "label": "affine positive density, 16 midpoint cells",
+  "logical_metrics": {
+    "depth": 5,
+    "multi_qubit_gate_count": 2,
+    "num_clbits": 4,
+    "num_qubits": 4,
+    "one_qubit_gate_count": 1,
+    "operation_counts": {
+      "measure": 4,
+      "ry": 1,
+      "ucry": 3
+    },
+    "size": 8,
+    "swap_count": 0,
+    "two_qubit_gate_count": 1,
+    "width": 8
+  },
+  "marked_count": 1330,
+  "marked_indices": [
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15
+  ],
+  "num_qubits": 4,
+  "optimization_level": 2,
+  "p_abs_dev": 0.03096568433544311,
+  "p_hat": 0.6494140625,
+  "prepared_utc": "2026-08-05T15:19:43.572088+00:00",
+  "purpose": "Minimal MLAE schedule after the mitigated distribution readout improved TVD to 0.034112.",
+  "qasm_path": "/Users/antoniofalco/Library/CloudStorage/Dropbox/TENSORS/Quantum_TENSORS/IBM_Quantum_Proposal/grover-rudolph-qae-benchmark/results/hardware/phase4_gr_affine_n4_mlae_k01_ibm_fez/20260805T151942Z/circuits/gr_affine_n4_upper_half_k0_transpiled.qasm",
+  "runtime_options": {
+    "dynamical_decoupling": {
+      "enable": true,
+      "scheduling_method": "alap",
+      "sequence_type": "XY4"
+    },
+    "twirling": {
+      "enable_gates": true,
+      "enable_measure": true,
+      "num_randomizations": 32,
+      "shots_per_randomization": 64,
+      "strategy": "active-accum"
+    }
+  },
+  "seed": 12345,
+  "shots": 2048,
+  "submitted": true,
+  "submitted_utc": "2026-08-05T15:19:54.383777+00:00",
+  "target_probabilities": [
+    0.02022349683544304,
+    0.025860363924050642,
+    0.03149723101265823,
+    0.03713409810126583,
+    0.04277096518987343,
+    0.04840783227848102,
+    0.05404469936708862,
+    0.05968156645569621,
+    0.0653184335443038,
+    0.0709553006329114,
+    0.076592167721519,
+    0.0822290348101266,
+    0.0878659018987342,
+    0.09350276898734179,
+    0.09913963607594937,
+    0.10477650316455697
+  ],
+  "transpile_seconds": 0.871127708000131,
+  "transpiled_metrics": {
+    "depth": 74,
+    "multi_qubit_gate_count": 0,
+    "num_clbits": 4,
+    "num_qubits": 156,
+    "one_qubit_gate_count": 74,
+    "operation_counts": {
+      "cz": 16,
+      "measure": 4,
+      "rz": 35,
+      "sx": 37,
+      "x": 2
+    },
+    "size": 94,
+    "swap_count": 0,
+    "two_qubit_gate_count": 16,
+    "width": 160
+  },
+  "transpiled_two_qubit_depth": 16,
+  "usage_before_submission": {
+    "estimated_remaining_seconds": 9368.0,
+    "usage_allocation_seconds": 10800,
+    "usage_consumed_seconds": 1432,
+    "usage_limit_reached": false,
+    "usage_limit_seconds": 10800,
+    "usage_period": {
+      "end_time": "2027-08-02T17:13:13.026Z",
+      "start_time": "2026-08-02T17:13:13.026Z"
+    }
+  }
+}

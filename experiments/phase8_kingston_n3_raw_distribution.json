@@ -1,0 +1,49 @@
+{
+  "campaign_id": "phase8_kingston_n3_raw_distribution",
+  "description": "Phase 8 cross-backend validation on ibm_kingston for the two n=3 Grover-Rudolph raw direct-distribution circuits. This campaign compares backend dependence against the Phase 7 ibm_fez results and does not run Grover amplification or QAE.",
+  "backend": "ibm_kingston",
+  "shots": 8192,
+  "optimization_level": 2,
+  "implementation": "ucry",
+  "seed": 12345,
+  "submit_to_qpu": false,
+  "runtime_options": {},
+  "rationale": [
+    "Phase 7 on ibm_fez showed that n=3 global distributions were not uniformly stable under higher-shot repetition.",
+    "ibm_kingston has the same cz-based basis family and currently has a short queue, making it a suitable cross-backend control.",
+    "The campaign tests whether n=3 drift is backend-specific or circuit-family-specific.",
+    "Only direct distribution loading is measured."
+  ],
+  "selected_cases": [
+    {
+      "case_id": "gr_sin2_half_n3",
+      "label": "sin2(pi x / 2), 8 midpoint cells",
+      "num_qubits": 3,
+      "function": {
+        "kind": "sin2_half"
+      },
+      "purpose": "Cross-backend raw validation of the monotone n=3 profile."
+    },
+    {
+      "case_id": "gr_sin2_n3",
+      "label": "sin2(pi x), 8 midpoint cells",
+      "num_qubits": 3,
+      "function": {
+        "kind": "sin2"
+      },
+      "purpose": "Cross-backend raw validation of the symmetric n=3 profile."
+    }
+  ],
+  "qoi_targets": [
+    "call_x_minus_half",
+    "mean_x",
+    "second_moment_x2",
+    "sin_pi_x",
+    "upper_half"
+  ],
+  "stopping_rules": [
+    "Do not infer amplified-QAE viability from this campaign.",
+    "If Kingston improves TVD and functional stability relative to Fez, prepare a focused cross-backend paper-quality comparison.",
+    "If Kingston reproduces the Phase 7 drift, classify the effect as circuit-family or mitigation-independent sensitivity rather than a Fez-only issue."
+  ]
+}

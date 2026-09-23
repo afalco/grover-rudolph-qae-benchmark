@@ -1,0 +1,109 @@
+[
+  {
+    "backend": "ibm_fez",
+    "backend_status": {
+      "operational": true,
+      "pending_jobs": 1,
+      "status_msg": "active"
+    },
+    "campaign_id": "phase7_gr_beta_bump_n4_validation_opt3_seed45678_ibm_fez",
+    "campaign_type": "gr_distribution_measurement",
+    "case_id": "gr_beta_bump_n4",
+    "conditional_rotation_count": 15,
+    "grid_points": 16,
+    "implementation": "ucry",
+    "initial_layout": null,
+    "job_id": "d9rm7p1dsedc73agrem0",
+    "label": "beta-like localized bump, 16 midpoint cells",
+    "logical_metrics": {
+      "depth": 5,
+      "multi_qubit_gate_count": 2,
+      "num_clbits": 4,
+      "num_qubits": 4,
+      "one_qubit_gate_count": 1,
+      "operation_counts": {
+        "measure": 4,
+        "ry": 1,
+        "ucry": 3
+      },
+      "size": 8,
+      "swap_count": 0,
+      "two_qubit_gate_count": 1,
+      "width": 8
+    },
+    "nonzero_conditional_rotation_count": 15,
+    "num_qubits": 4,
+    "optimization_level": 3,
+    "prepared_utc": "2026-08-08T17:13:51.010830+00:00",
+    "purpose": "Higher-shot Phase 7 replication of the localized n=4 profile for mean_x and upper_half functionals.",
+    "qasm_path": "/Users/antoniofalco/Library/CloudStorage/Dropbox/TENSORS/Quantum_TENSORS/IBM_Quantum_Proposal/grover-rudolph-qae-benchmark/results/hardware/phase7_gr_beta_bump_n4_validation_opt3_seed45678_ibm_fez/20260808T171350Z/circuits/gr_beta_bump_n4_transpiled.qasm",
+    "runtime_options": {
+      "dynamical_decoupling": {
+        "enable": true,
+        "scheduling_method": "alap",
+        "sequence_type": "XY4"
+      },
+      "twirling": {
+        "enable_gates": true,
+        "enable_measure": true,
+        "num_randomizations": 32,
+        "shots_per_randomization": 256,
+        "strategy": "active-accum"
+      }
+    },
+    "seed": 45678,
+    "shots": 8192,
+    "source": "function:beta_bump",
+    "submitted": true,
+    "submitted_utc": "2026-08-08T17:14:12.559806+00:00",
+    "target_probabilities": [
+      0.05135602400526728,
+      0.11799344036942132,
+      0.14776435377962843,
+      0.1520556956900847,
+      0.14005495275464447,
+      0.11896370515695068,
+      0.09421116494056517,
+      0.06966771433909887,
+      0.04785844410634209,
+      0.030176691846394762,
+      0.01709758034379671,
+      0.008391555893657912,
+      0.0033379266317887396,
+      0.000938400864830237,
+      0.000130625400384369,
+      1.7238771442807317e-06
+    ],
+    "transpile_seconds": 0.8867751250509173,
+    "transpiled_metrics": {
+      "depth": 68,
+      "multi_qubit_gate_count": 0,
+      "num_clbits": 4,
+      "num_qubits": 156,
+      "one_qubit_gate_count": 72,
+      "operation_counts": {
+        "cz": 16,
+        "measure": 4,
+        "rz": 32,
+        "sx": 38,
+        "x": 2
+      },
+      "size": 92,
+      "swap_count": 0,
+      "two_qubit_gate_count": 16,
+      "width": 160
+    },
+    "transpiled_two_qubit_depth": 16,
+    "usage_before_submission": {
+      "estimated_remaining_seconds": 9335.0,
+      "usage_allocation_seconds": 10800,
+      "usage_consumed_seconds": 1465,
+      "usage_limit_reached": false,
+      "usage_limit_seconds": 10800,
+      "usage_period": {
+        "end_time": "2027-08-02T17:13:13.026Z",
+        "start_time": "2026-08-02T17:13:13.026Z"
+      }
+    }
+  }
+]

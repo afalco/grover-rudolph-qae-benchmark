@@ -1,0 +1,309 @@
+{
+  "campaign_run": "/Users/antoniofalco/Library/CloudStorage/Dropbox/TENSORS/Quantum_TENSORS/IBM_Quantum_Proposal/grover-rudolph-qae-benchmark/results/hardware/phase1_g1_stress_ibm_fez_opt2/20260805T090601Z",
+  "fetched_utc": "2026-08-05T09:07:08.442557+00:00",
+  "mlae_estimates": [
+    {
+      "a_exact": 0.5,
+      "a_hat": 0.4990932413469453,
+      "abs_error": 0.0009067586530546734,
+      "case_id": "g1",
+      "ks": [
+        0,
+        1,
+        2
+      ],
+      "neg_log_likelihood": 4258.578395973216
+    }
+  ],
+  "rows": [
+    {
+      "a_exact": 0.5,
+      "backend": "ibm_fez",
+      "backend_status": {
+        "operational": true,
+        "pending_jobs": 0,
+        "status_msg": "active"
+      },
+      "campaign_id": "phase1_g1_stress_ibm_fez_opt2",
+      "case_id": "g1",
+      "counts": {
+        "000": 473,
+        "001": 169,
+        "010": 339,
+        "011": 34,
+        "100": 46,
+        "101": 363,
+        "110": 175,
+        "111": 449
+      },
+      "expected_p_k": 0.5000000000000001,
+      "fetch_status": "DONE",
+      "fetched_utc": "2026-08-05T09:07:05.746251+00:00",
+      "initial_layout": null,
+      "job_id": "d9pfq0m28h6s739r8lk0",
+      "k": 0,
+      "label": "sin2_pi_x_over_2",
+      "logical_metrics": {
+        "depth": 10,
+        "multi_qubit_gate_count": 0,
+        "num_clbits": 3,
+        "num_qubits": 3,
+        "one_qubit_gate_count": 7,
+        "operation_counts": {
+          "cx": 4,
+          "h": 2,
+          "measure": 3,
+          "ry": 5
+        },
+        "size": 14,
+        "swap_count": 0,
+        "two_qubit_gate_count": 4,
+        "width": 6
+      },
+      "m_ancilla": 1033,
+      "optimization_level": 2,
+      "p_abs_dev": 0.004394531249999889,
+      "p_hat": 0.50439453125,
+      "prepared_utc": "2026-08-05T09:06:02.075249+00:00",
+      "purpose": "Affine encoding stress test with a consistent optimization_level=2 MLAE schedule.",
+      "qasm_path": "/Users/antoniofalco/Library/CloudStorage/Dropbox/TENSORS/Quantum_TENSORS/IBM_Quantum_Proposal/grover-rudolph-qae-benchmark/results/hardware/phase1_g1_stress_ibm_fez_opt2/20260805T090601Z/circuits/g1_k0_transpiled.qasm",
+      "result_path": "/Users/antoniofalco/Library/CloudStorage/Dropbox/TENSORS/Quantum_TENSORS/IBM_Quantum_Proposal/grover-rudolph-qae-benchmark/results/hardware/phase1_g1_stress_ibm_fez_opt2/20260805T090601Z/results/result_g1_k0_d9pfq0m28h6s739r8lk0.json",
+      "seed": 12345,
+      "shots": 2048,
+      "structural_metrics": {
+        "canonical_length": 2.9115548574621406,
+        "maximum_degree": 1,
+        "minimum_m1_stratum": 2,
+        "multilinear_support": 3
+      },
+      "submitted": true,
+      "submitted_utc": "2026-08-05T09:06:10.822908+00:00",
+      "transpile_seconds": 0.9387039579451084,
+      "transpiled_metrics": {
+        "depth": 18,
+        "multi_qubit_gate_count": 0,
+        "num_clbits": 3,
+        "num_qubits": 156,
+        "one_qubit_gate_count": 19,
+        "operation_counts": {
+          "cz": 4,
+          "measure": 3,
+          "rz": 11,
+          "sx": 7,
+          "x": 1
+        },
+        "size": 26,
+        "swap_count": 0,
+        "two_qubit_gate_count": 4,
+        "width": 159
+      },
+      "transpiled_two_qubit_depth": 4,
+      "usage_before_submission": {
+        "estimated_remaining_seconds": 9410.0,
+        "usage_allocation_seconds": 10800,
+        "usage_consumed_seconds": 1390,
+        "usage_limit_reached": false,
+        "usage_limit_seconds": 10800,
+        "usage_period": {
+          "end_time": "2027-08-02T17:13:13.026Z",
+          "start_time": "2026-08-02T17:13:13.026Z"
+        }
+      }
+    },
+    {
+      "a_exact": 0.5,
+      "backend": "ibm_fez",
+      "backend_status": {
+        "operational": true,
+        "pending_jobs": 0,
+        "status_msg": "active"
+      },
+      "campaign_id": "phase1_g1_stress_ibm_fez_opt2",
+      "case_id": "g1",
+      "counts": {
+        "000": 425,
+        "001": 153,
+        "010": 298,
+        "011": 85,
+        "100": 96,
+        "101": 313,
+        "110": 196,
+        "111": 482
+      },
+      "expected_p_k": 0.4999999999999996,
+      "fetch_status": "DONE",
+      "fetched_utc": "2026-08-05T09:07:06.708130+00:00",
+      "initial_layout": null,
+      "job_id": "d9pfq0t7skus73cktcag",
+      "k": 1,
+      "label": "sin2_pi_x_over_2",
+      "logical_metrics": {
+        "depth": 34,
+        "multi_qubit_gate_count": 1,
+        "num_clbits": 3,
+        "num_qubits": 3,
+        "one_qubit_gate_count": 30,
+        "operation_counts": {
+          "ccx": 1,
+          "cx": 12,
+          "h": 8,
+          "measure": 3,
+          "ry": 15,
+          "x": 6,
+          "z": 1
+        },
+        "size": 46,
+        "swap_count": 0,
+        "two_qubit_gate_count": 12,
+        "width": 6
+      },
+      "m_ancilla": 1087,
+      "optimization_level": 2,
+      "p_abs_dev": 0.03076171875000039,
+      "p_hat": 0.53076171875,
+      "prepared_utc": "2026-08-05T09:06:02.098592+00:00",
+      "purpose": "Affine encoding stress test with a consistent optimization_level=2 MLAE schedule.",
+      "qasm_path": "/Users/antoniofalco/Library/CloudStorage/Dropbox/TENSORS/Quantum_TENSORS/IBM_Quantum_Proposal/grover-rudolph-qae-benchmark/results/hardware/phase1_g1_stress_ibm_fez_opt2/20260805T090601Z/circuits/g1_k1_transpiled.qasm",
+      "result_path": "/Users/antoniofalco/Library/CloudStorage/Dropbox/TENSORS/Quantum_TENSORS/IBM_Quantum_Proposal/grover-rudolph-qae-benchmark/results/hardware/phase1_g1_stress_ibm_fez_opt2/20260805T090601Z/results/result_g1_k1_d9pfq0t7skus73cktcag.json",
+      "seed": 12345,
+      "shots": 2048,
+      "structural_metrics": {
+        "canonical_length": 2.9115548574621406,
+        "maximum_degree": 1,
+        "minimum_m1_stratum": 2,
+        "multilinear_support": 3
+      },
+      "submitted": true,
+      "submitted_utc": "2026-08-05T09:06:11.858511+00:00",
+      "transpile_seconds": 0.022285790997557342,
+      "transpiled_metrics": {
+        "depth": 78,
+        "multi_qubit_gate_count": 0,
+        "num_clbits": 3,
+        "num_qubits": 156,
+        "one_qubit_gate_count": 88,
+        "operation_counts": {
+          "cz": 18,
+          "measure": 3,
+          "rz": 42,
+          "sx": 41,
+          "x": 5
+        },
+        "size": 109,
+        "swap_count": 0,
+        "two_qubit_gate_count": 18,
+        "width": 159
+      },
+      "transpiled_two_qubit_depth": 18,
+      "usage_before_submission": {
+        "estimated_remaining_seconds": 9410.0,
+        "usage_allocation_seconds": 10800,
+        "usage_consumed_seconds": 1390,
+        "usage_limit_reached": false,
+        "usage_limit_seconds": 10800,
+        "usage_period": {
+          "end_time": "2027-08-02T17:13:13.026Z",
+          "start_time": "2026-08-02T17:13:13.026Z"
+        }
+      }
+    },
+    {
+      "a_exact": 0.5,
+      "backend": "ibm_fez",
+      "backend_status": {
+        "operational": true,
+        "pending_jobs": 0,
+        "status_msg": "active"
+      },
+      "campaign_id": "phase1_g1_stress_ibm_fez_opt2",
+      "case_id": "g1",
+      "counts": {
+        "000": 439,
+        "001": 154,
+        "010": 330,
+        "011": 78,
+        "100": 102,
+        "101": 299,
+        "110": 187,
+        "111": 459
+      },
+      "expected_p_k": 0.5000000000000002,
+      "fetch_status": "DONE",
+      "fetched_utc": "2026-08-05T09:07:07.913856+00:00",
+      "initial_layout": null,
+      "job_id": "d9pfq13bvhrs73a2ilvg",
+      "k": 2,
+      "label": "sin2_pi_x_over_2",
+      "logical_metrics": {
+        "depth": 58,
+        "multi_qubit_gate_count": 2,
+        "num_clbits": 3,
+        "num_qubits": 3,
+        "one_qubit_gate_count": 53,
+        "operation_counts": {
+          "ccx": 2,
+          "cx": 20,
+          "h": 14,
+          "measure": 3,
+          "ry": 25,
+          "x": 12,
+          "z": 2
+        },
+        "size": 78,
+        "swap_count": 0,
+        "two_qubit_gate_count": 20,
+        "width": 6
+      },
+      "m_ancilla": 1047,
+      "optimization_level": 2,
+      "p_abs_dev": 0.011230468749999778,
+      "p_hat": 0.51123046875,
+      "prepared_utc": "2026-08-05T09:06:02.105648+00:00",
+      "purpose": "Affine encoding stress test with a consistent optimization_level=2 MLAE schedule.",
+      "qasm_path": "/Users/antoniofalco/Library/CloudStorage/Dropbox/TENSORS/Quantum_TENSORS/IBM_Quantum_Proposal/grover-rudolph-qae-benchmark/results/hardware/phase1_g1_stress_ibm_fez_opt2/20260805T090601Z/circuits/g1_k2_transpiled.qasm",
+      "result_path": "/Users/antoniofalco/Library/CloudStorage/Dropbox/TENSORS/Quantum_TENSORS/IBM_Quantum_Proposal/grover-rudolph-qae-benchmark/results/hardware/phase1_g1_stress_ibm_fez_opt2/20260805T090601Z/results/result_g1_k2_d9pfq13bvhrs73a2ilvg.json",
+      "seed": 12345,
+      "shots": 2048,
+      "structural_metrics": {
+        "canonical_length": 2.9115548574621406,
+        "maximum_degree": 1,
+        "minimum_m1_stratum": 2,
+        "multilinear_support": 3
+      },
+      "submitted": true,
+      "submitted_utc": "2026-08-05T09:06:12.873467+00:00",
+      "transpile_seconds": 0.005627959035336971,
+      "transpiled_metrics": {
+        "depth": 152,
+        "multi_qubit_gate_count": 0,
+        "num_clbits": 3,
+        "num_qubits": 156,
+        "one_qubit_gate_count": 162,
+        "operation_counts": {
+          "cz": 36,
+          "measure": 3,
+          "rz": 74,
+          "sx": 79,
+          "x": 9
+        },
+        "size": 201,
+        "swap_count": 0,
+        "two_qubit_gate_count": 36,
+        "width": 159
+      },
+      "transpiled_two_qubit_depth": 36,
+      "usage_before_submission": {
+        "estimated_remaining_seconds": 9410.0,
+        "usage_allocation_seconds": 10800,
+        "usage_consumed_seconds": 1390,
+        "usage_limit_reached": false,
+        "usage_limit_seconds": 10800,
+        "usage_period": {
+          "end_time": "2027-08-02T17:13:13.026Z",
+          "start_time": "2026-08-02T17:13:13.026Z"
+        }
+      }
+    }
+  ],
+  "submitted_campaign": "/Users/antoniofalco/Library/CloudStorage/Dropbox/TENSORS/Quantum_TENSORS/IBM_Quantum_Proposal/grover-rudolph-qae-benchmark/results/hardware/phase1_g1_stress_ibm_fez_opt2/20260805T090601Z/submitted_campaign.json"
+}

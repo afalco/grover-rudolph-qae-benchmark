@@ -1,0 +1,56 @@
+{
+  "campaign_id": "phase15_gaussian_sigma025_n6_distribution_ibm_kingston",
+  "description": "Phase 15 direct-distribution QPU candidate on ibm_kingston. This tests a broad centered Gaussian-like Grover-Rudolph law on 64 midpoint cells after the Phase 14 affine n=6 result.",
+  "backend": "ibm_kingston",
+  "shots": 8192,
+  "optimization_level": 2,
+  "implementation": "ucry",
+  "seed": 34567,
+  "submit_to_qpu": false,
+  "runtime_options": {
+    "dynamical_decoupling": {
+      "enable": true,
+      "sequence_type": "XY4",
+      "scheduling_method": "alap"
+    },
+    "twirling": {
+      "enable_gates": true,
+      "enable_measure": true,
+      "num_randomizations": 32,
+      "shots_per_randomization": 256,
+      "strategy": "active-accum"
+    }
+  },
+  "rationale": [
+    "The broad centered Gaussian-like n=6 profile passed the Phase 15 backend-aware screening on ibm_kingston.",
+    "The selected opt=2, seed=34567 candidate had depth 193, 66 two-qubit gates, predicted noisy TVD 0.044257, and maximum noisy quantity-of-interest error 0.012389.",
+    "This profile is smoother and less one-sided than the affine n=6 law, so it tests whether tail and moment biases can be reduced.",
+    "The campaign measures only the direct Grover-Rudolph distribution; amplified QAE remains deferred."
+  ],
+  "selected_cases": [
+    {
+      "case_id": "gr_gaussian_mid_sigma025_n6",
+      "label": "centered Gaussian-like law, sigma 0.25, 64 midpoint cells",
+      "num_qubits": 6,
+      "function": {
+        "kind": "gaussian",
+        "mean": 0.5,
+        "sigma": 0.25
+      },
+      "purpose": "Alternative smooth centered n=6 probability law to test whether direct integration improves beyond the affine n=6 result."
+    }
+  ],
+  "qoi_targets": [
+    "call_x_minus_half",
+    "mean_x",
+    "second_moment_x2",
+    "sin_pi_x",
+    "upper_half"
+  ],
+  "stopping_rules": [
+    "Submit only after confirming the dry-run depth and two-qubit count match the Phase 15 backend-aware audit.",
+    "Promote as a Phase 15 direct-distribution result only if TVD stays below 0.055 and max cell deviation stays below 0.02.",
+    "Use quantity-specific errors for all integration claims.",
+    "Do not attach Grover amplification in this campaign."
+  ]
+}

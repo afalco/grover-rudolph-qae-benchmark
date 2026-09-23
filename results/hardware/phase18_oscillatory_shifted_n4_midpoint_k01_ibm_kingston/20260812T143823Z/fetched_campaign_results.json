@@ -1,0 +1,296 @@
+{
+  "campaign_run": "/Users/antoniofalco/Library/CloudStorage/Dropbox/TENSORS/Quantum_TENSORS/IBM_Quantum_Proposal/grover-rudolph-qae-benchmark/results/hardware/phase18_oscillatory_shifted_n4_midpoint_k01_ibm_kingston/20260812T143823Z",
+  "fetched_utc": "2026-08-12T14:51:43.608909+00:00",
+  "mlae_estimates": [
+    {
+      "a_exact": 0.55,
+      "a_hat": 0.5190240697817137,
+      "abs_error": 0.030975930218286374,
+      "case_id": "oscillatory_shifted_smooth",
+      "ks": [
+        0,
+        1
+      ],
+      "neg_log_likelihood": 2824.325757442946
+    }
+  ],
+  "rows": [
+    {
+      "backend": "ibm_kingston",
+      "backend_status": {
+        "operational": true,
+        "pending_jobs": 7,
+        "status_msg": "active"
+      },
+      "campaign_id": "phase18_oscillatory_shifted_n4_midpoint_k01_ibm_kingston",
+      "campaign_type": "quadrature_qae_mlae",
+      "case_id": "oscillatory_shifted_smooth",
+      "counts": {
+        "00000": 45,
+        "00001": 54,
+        "00010": 43,
+        "00011": 101,
+        "00100": 44,
+        "00101": 89,
+        "00110": 38,
+        "00111": 63,
+        "01000": 34,
+        "01001": 91,
+        "01010": 44,
+        "01011": 83,
+        "01100": 46,
+        "01101": 94,
+        "01110": 42,
+        "01111": 63,
+        "10000": 74,
+        "10001": 68,
+        "10010": 89,
+        "10011": 27,
+        "10100": 108,
+        "10101": 50,
+        "10110": 84,
+        "10111": 66,
+        "11000": 100,
+        "11001": 49,
+        "11010": 83,
+        "11011": 36,
+        "11100": 81,
+        "11101": 23,
+        "11110": 71,
+        "11111": 65
+      },
+      "discretization_error": 2.886579864025407e-15,
+      "expected_p_k": 0.55,
+      "family": "stress",
+      "fetch_status": "DONE",
+      "fetched_utc": "2026-08-12T14:51:41.877624+00:00",
+      "function_kind": "oscillatory",
+      "grid_points": 16,
+      "group_id": "oscillatory_shifted_smooth_n4_midpoint",
+      "job_id": "d9u8apj43mgs73eskuqg",
+      "k": 0,
+      "ks": [
+        0,
+        1
+      ],
+      "logical_metrics": {
+        "depth": 3,
+        "multi_qubit_gate_count": 1,
+        "num_clbits": 5,
+        "num_qubits": 5,
+        "one_qubit_gate_count": 4,
+        "operation_counts": {
+          "h": 4,
+          "measure": 5,
+          "ucry": 1
+        },
+        "size": 10,
+        "swap_count": 0,
+        "two_qubit_gate_count": 0,
+        "width": 10
+      },
+      "m_ancilla": 1074,
+      "num_qubits": 4,
+      "optimization_level": 2,
+      "p_abs_dev": 0.025585937500000044,
+      "p_hat": 0.5244140625,
+      "prepared_utc": "2026-08-12T14:38:24.381029+00:00",
+      "purpose": "Non-degenerate degree-3 angle-structured quadrature instance with a controlled reduced MLAE schedule.",
+      "qasm_path": "/Users/antoniofalco/Library/CloudStorage/Dropbox/TENSORS/Quantum_TENSORS/IBM_Quantum_Proposal/grover-rudolph-qae-benchmark/results/hardware/phase18_oscillatory_shifted_n4_midpoint_k01_ibm_kingston/20260812T143823Z/circuits/oscillatory_shifted_smooth_n4_midpoint_k0.qasm",
+      "quadrature_value": 0.55,
+      "result_path": "/Users/antoniofalco/Library/CloudStorage/Dropbox/TENSORS/Quantum_TENSORS/IBM_Quantum_Proposal/grover-rudolph-qae-benchmark/results/hardware/phase18_oscillatory_shifted_n4_midpoint_k01_ibm_kingston/20260812T143823Z/results/result_oscillatory_shifted_smooth_k0_d9u8apj43mgs73eskuqg.json",
+      "rule": "midpoint",
+      "runtime_options": {
+        "dynamical_decoupling": {
+          "enable": true,
+          "scheduling_method": "alap",
+          "sequence_type": "XY4"
+        },
+        "twirling": {
+          "enable_gates": true,
+          "enable_measure": true,
+          "num_randomizations": 32,
+          "shots_per_randomization": 64,
+          "strategy": "active-accum"
+        }
+      },
+      "seed": 12345,
+      "shots": 2048,
+      "submitted": true,
+      "submitted_utc": "2026-08-12T14:38:30.377968+00:00",
+      "transpile_seconds": 1.1104892909061164,
+      "transpiled_metrics": {
+        "depth": 50,
+        "multi_qubit_gate_count": 0,
+        "num_clbits": 5,
+        "num_qubits": 156,
+        "one_qubit_gate_count": 70,
+        "operation_counts": {
+          "cz": 23,
+          "measure": 5,
+          "rz": 31,
+          "sx": 38,
+          "x": 1
+        },
+        "size": 98,
+        "swap_count": 0,
+        "two_qubit_gate_count": 23,
+        "width": 161
+      },
+      "transpiled_two_qubit_depth": 16,
+      "true_integral": 0.5500000000000029,
+      "usage_before_submission": {
+        "estimated_remaining_seconds": 7560.0,
+        "usage_allocation_seconds": 7560,
+        "usage_consumed_seconds": 0,
+        "usage_limit_reached": false,
+        "usage_limit_seconds": 7560,
+        "usage_period": {
+          "end_time": "2027-08-03T14:53:49.000Z",
+          "start_time": "2026-08-03T14:53:49.000Z"
+        }
+      }
+    },
+    {
+      "backend": "ibm_kingston",
+      "backend_status": {
+        "operational": true,
+        "pending_jobs": 7,
+        "status_msg": "active"
+      },
+      "campaign_id": "phase18_oscillatory_shifted_n4_midpoint_k01_ibm_kingston",
+      "campaign_type": "quadrature_qae_mlae",
+      "case_id": "oscillatory_shifted_smooth",
+      "counts": {
+        "00000": 67,
+        "00001": 78,
+        "00010": 60,
+        "00011": 101,
+        "00100": 48,
+        "00101": 95,
+        "00110": 65,
+        "00111": 71,
+        "01000": 53,
+        "01001": 68,
+        "01010": 52,
+        "01011": 87,
+        "01100": 67,
+        "01101": 100,
+        "01110": 58,
+        "01111": 67,
+        "10000": 71,
+        "10001": 58,
+        "10010": 57,
+        "10011": 39,
+        "10100": 57,
+        "10101": 63,
+        "10110": 70,
+        "10111": 52,
+        "11000": 60,
+        "11001": 49,
+        "11010": 76,
+        "11011": 37,
+        "11100": 61,
+        "11101": 48,
+        "11110": 59,
+        "11111": 54
+      },
+      "discretization_error": 2.886579864025407e-15,
+      "expected_p_k": 0.3519999999999997,
+      "family": "stress",
+      "fetch_status": "DONE",
+      "fetched_utc": "2026-08-12T14:51:43.150625+00:00",
+      "function_kind": "oscillatory",
+      "grid_points": 16,
+      "group_id": "oscillatory_shifted_smooth_n4_midpoint",
+      "job_id": "d9u8apt35hes73fjjiq0",
+      "k": 1,
+      "ks": [
+        0,
+        1
+      ],
+      "logical_metrics": {
+        "depth": 11,
+        "multi_qubit_gate_count": 4,
+        "num_clbits": 5,
+        "num_qubits": 5,
+        "one_qubit_gate_count": 25,
+        "operation_counts": {
+          "h": 14,
+          "mcx": 1,
+          "measure": 5,
+          "ucry": 2,
+          "ucry_dg": 1,
+          "x": 10,
+          "z": 1
+        },
+        "size": 34,
+        "swap_count": 0,
+        "two_qubit_gate_count": 0,
+        "width": 10
+      },
+      "m_ancilla": 911,
+      "num_qubits": 4,
+      "optimization_level": 2,
+      "p_abs_dev": 0.0928242187500003,
+      "p_hat": 0.44482421875,
+      "prepared_utc": "2026-08-12T14:38:24.397568+00:00",
+      "purpose": "Non-degenerate degree-3 angle-structured quadrature instance with a controlled reduced MLAE schedule.",
+      "qasm_path": "/Users/antoniofalco/Library/CloudStorage/Dropbox/TENSORS/Quantum_TENSORS/IBM_Quantum_Proposal/grover-rudolph-qae-benchmark/results/hardware/phase18_oscillatory_shifted_n4_midpoint_k01_ibm_kingston/20260812T143823Z/circuits/oscillatory_shifted_smooth_n4_midpoint_k1.qasm",
+      "quadrature_value": 0.55,
+      "result_path": "/Users/antoniofalco/Library/CloudStorage/Dropbox/TENSORS/Quantum_TENSORS/IBM_Quantum_Proposal/grover-rudolph-qae-benchmark/results/hardware/phase18_oscillatory_shifted_n4_midpoint_k01_ibm_kingston/20260812T143823Z/results/result_oscillatory_shifted_smooth_k1_d9u8apt35hes73fjjiq0.json",
+      "rule": "midpoint",
+      "runtime_options": {
+        "dynamical_decoupling": {
+          "enable": true,
+          "scheduling_method": "alap",
+          "sequence_type": "XY4"
+        },
+        "twirling": {
+          "enable_gates": true,
+          "enable_measure": true,
+          "num_randomizations": 32,
+          "shots_per_randomization": 64,
+          "strategy": "active-accum"
+        }
+      },
+      "seed": 12345,
+      "shots": 2048,
+      "submitted": true,
+      "submitted_utc": "2026-08-12T14:38:31.720369+00:00",
+      "transpile_seconds": 0.012552666012197733,
+      "transpiled_metrics": {
+        "depth": 334,
+        "multi_qubit_gate_count": 0,
+        "num_clbits": 5,
+        "num_qubits": 156,
+        "one_qubit_gate_count": 455,
+        "operation_counts": {
+          "cz": 139,
+          "measure": 5,
+          "rz": 191,
+          "sx": 255,
+          "x": 9
+        },
+        "size": 599,
+        "swap_count": 0,
+        "two_qubit_gate_count": 139,
+        "width": 161
+      },
+      "transpiled_two_qubit_depth": 112,
+      "true_integral": 0.5500000000000029,
+      "usage_before_submission": {
+        "estimated_remaining_seconds": 7560.0,
+        "usage_allocation_seconds": 7560,
+        "usage_consumed_seconds": 0,
+        "usage_limit_reached": false,
+        "usage_limit_seconds": 7560,
+        "usage_period": {
+          "end_time": "2027-08-03T14:53:49.000Z",
+          "start_time": "2026-08-03T14:53:49.000Z"
+        }
+      }
+    }
+  ],
+  "submitted_campaign": "/Users/antoniofalco/Library/CloudStorage/Dropbox/TENSORS/Quantum_TENSORS/IBM_Quantum_Proposal/grover-rudolph-qae-benchmark/results/hardware/phase18_oscillatory_shifted_n4_midpoint_k01_ibm_kingston/20260812T143823Z/submitted_campaign.json"
+}

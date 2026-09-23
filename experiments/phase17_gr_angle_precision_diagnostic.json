@@ -1,0 +1,47 @@
+{
+  "experiment_id": "phase17_gr_angle_precision_diagnostic",
+  "description": "Credit-free Grover-Rudolph diagnostic separating deterministic angle-quantization TVD from finite-shot TVD, following the AIMS stability analysis.",
+  "bit_depths": [8, 10, 12, 16, 32],
+  "shots": [1024, 4096, 8192],
+  "trials": 1000,
+  "confidence_delta": 0.05,
+  "seed": 20260812,
+  "out_dir": "results/phase17/gr_angle_precision_diagnostic",
+  "cases": [
+    {
+      "case_id": "gr_sin2_n3",
+      "label": "sin2 midpoint law, n=3",
+      "num_qubits": 3,
+      "function": {"kind": "sin2"},
+      "notes": "Low-degree smooth baseline already used in distribution campaigns."
+    },
+    {
+      "case_id": "gr_sin2_n4",
+      "label": "sin2 midpoint law, n=4",
+      "num_qubits": 4,
+      "function": {"kind": "sin2"},
+      "notes": "Grid-refined smooth baseline."
+    },
+    {
+      "case_id": "gr_affine_n5",
+      "label": "affine midpoint law, n=5",
+      "num_qubits": 5,
+      "function": {"kind": "affine", "offset": 0.11, "slope": 0.57},
+      "notes": "Phase 9/10 direct-integration scaling case."
+    },
+    {
+      "case_id": "gr_beta_bump_n5",
+      "label": "beta bump midpoint law, n=5",
+      "num_qubits": 5,
+      "function": {"kind": "beta_bump", "alpha": 2.0, "beta": 5.0, "scale": 1.0},
+      "notes": "Localized stress profile."
+    },
+    {
+      "case_id": "gr_gaussian_sigma025_n6",
+      "label": "centered Gaussian-like midpoint law, n=6",
+      "num_qubits": 6,
+      "function": {"kind": "gaussian", "mean": 0.5, "sigma": 0.25},
+      "notes": "Phase 15 smooth probability-law screening case."
+    }
+  ]
+}

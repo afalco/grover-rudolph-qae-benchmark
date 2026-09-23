@@ -1,0 +1,58 @@
+{
+  "campaign_id": "phase1_calibration_ibm_fez",
+  "description": "First hardware calibration campaign for the SISC continuity benchmarks.",
+  "backend": "ibm_fez",
+  "shots": 2048,
+  "optimization_level": 0,
+  "seed": 12345,
+  "submit_to_qpu": false,
+  "rationale": [
+    "ibm_fez has the lowest average two-qubit and readout errors among the initially listed Heron backends.",
+    "Phase 0 transpilation produced candidate circuits for all g0/g1/g2 schedules.",
+    "The first campaign should use a single backend to avoid mixing calibration conditions across amplification levels."
+  ],
+  "selected_jobs": [
+    {
+      "case_id": "g0",
+      "ks": [0, 2],
+      "purpose": "Amplitude calibration and degeneracy-avoiding MLAE schedule."
+    },
+    {
+      "case_id": "g1",
+      "ks": [0, 1],
+      "purpose": "Affine encoding continuity benchmark."
+    },
+    {
+      "case_id": "g2",
+      "ks": [0, 1],
+      "purpose": "Quadratic encoding continuity benchmark with moderate depth."
+    }
+  ],
+  "deferred_jobs": [
+    {
+      "case_id": "g0",
+      "ks": [1],
+      "reason": "Use only if we explicitly want to document the known k=1 degeneracy at a=1/4."
+    },
+    {
+      "case_id": "g1",
+      "ks": [2],
+      "reason": "Keep as a repetition/depth-stress option after the first hardware readout."
+    },
+    {
+      "case_id": "g2",
+      "ks": [2],
+      "reason": "Most expensive calibration circuit; defer until k=0,1 results are assessed."
+    }
+  ],
+  "phase0_evidence": {
+    "ibm_fez_table": "results/phase0/phase0_candidate_table_20260805T082839Z.json",
+    "comparison_table": "results/phase0/phase0_comparison_best.csv"
+  },
+  "stopping_rules": [
+    "Do not submit deferred jobs until the first six selected jobs have been retrieved and analyzed.",
+    "If g1/g2 k=0 already show large bias inconsistent with noisy simulation, pause before deeper circuits.",
+    "If queue or backend status changes substantially, rerun Phase 0 for the selected backend before submission."
+  ]
+}
+

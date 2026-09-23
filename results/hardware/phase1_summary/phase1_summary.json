@@ -1,0 +1,155 @@
+{
+  "accepted_runs": [
+    "/Users/antoniofalco/Library/CloudStorage/Dropbox/TENSORS/Quantum_TENSORS/IBM_Quantum_Proposal/grover-rudolph-qae-benchmark/results/hardware/phase1_g0_repeat_ibm_fez_opt2/20260805T085729Z/fetched_campaign_results.json",
+    "/Users/antoniofalco/Library/CloudStorage/Dropbox/TENSORS/Quantum_TENSORS/IBM_Quantum_Proposal/grover-rudolph-qae-benchmark/results/hardware/phase1_g1_stress_ibm_fez_opt2/20260805T090601Z/fetched_campaign_results.json",
+    "/Users/antoniofalco/Library/CloudStorage/Dropbox/TENSORS/Quantum_TENSORS/IBM_Quantum_Proposal/grover-rudolph-qae-benchmark/results/hardware/phase1_g2_stress_ibm_fez_opt2/20260805T091004Z/fetched_campaign_results.json"
+  ],
+  "circuits": [
+    {
+      "backend": "ibm_fez",
+      "campaign_id": "phase1_g0_repeat_ibm_fez_opt2",
+      "case_id": "g0",
+      "expected_p": 0.24999999999999994,
+      "job_id": "d9pfm0m28h6s739r8hk0",
+      "k": 0,
+      "optimization_level": 2,
+      "p_abs_dev": 0.0039062499999999445,
+      "p_hat": 0.24609375,
+      "shots": 2048,
+      "transpiled_depth": 5,
+      "two_qubit_depth": 0,
+      "two_qubit_gate_count": 0
+    },
+    {
+      "backend": "ibm_fez",
+      "campaign_id": "phase1_g0_repeat_ibm_fez_opt2",
+      "case_id": "g0",
+      "expected_p": 0.25000000000000033,
+      "job_id": "d9pfm13bvhrs73a2ii3g",
+      "k": 2,
+      "optimization_level": 2,
+      "p_abs_dev": 0.04736328124999967,
+      "p_hat": 0.29736328125,
+      "shots": 2048,
+      "transpiled_depth": 71,
+      "two_qubit_depth": 19,
+      "two_qubit_gate_count": 19
+    },
+    {
+      "backend": "ibm_fez",
+      "campaign_id": "phase1_g1_stress_ibm_fez_opt2",
+      "case_id": "g1",
+      "expected_p": 0.5000000000000001,
+      "job_id": "d9pfq0m28h6s739r8lk0",
+      "k": 0,
+      "optimization_level": 2,
+      "p_abs_dev": 0.004394531249999889,
+      "p_hat": 0.50439453125,
+      "shots": 2048,
+      "transpiled_depth": 18,
+      "two_qubit_depth": 4,
+      "two_qubit_gate_count": 4
+    },
+    {
+      "backend": "ibm_fez",
+      "campaign_id": "phase1_g1_stress_ibm_fez_opt2",
+      "case_id": "g1",
+      "expected_p": 0.4999999999999996,
+      "job_id": "d9pfq0t7skus73cktcag",
+      "k": 1,
+      "optimization_level": 2,
+      "p_abs_dev": 0.03076171875000039,
+      "p_hat": 0.53076171875,
+      "shots": 2048,
+      "transpiled_depth": 78,
+      "two_qubit_depth": 18,
+      "two_qubit_gate_count": 18
+    },
+    {
+      "backend": "ibm_fez",
+      "campaign_id": "phase1_g1_stress_ibm_fez_opt2",
+      "case_id": "g1",
+      "expected_p": 0.5000000000000002,
+      "job_id": "d9pfq13bvhrs73a2ilvg",
+      "k": 2,
+      "optimization_level": 2,
+      "p_abs_dev": 0.011230468749999778,
+      "p_hat": 0.51123046875,
+      "shots": 2048,
+      "transpiled_depth": 152,
+      "two_qubit_depth": 36,
+      "two_qubit_gate_count": 36
+    },
+    {
+      "backend": "ibm_fez",
+      "campaign_id": "phase1_g2_stress_ibm_fez_opt2",
+      "case_id": "g2",
+      "expected_p": 0.5000000000000001,
+      "job_id": "d9pfrsl7skus73ckte80",
+      "k": 0,
+      "optimization_level": 2,
+      "p_abs_dev": 0.006835937499999889,
+      "p_hat": 0.5068359375,
+      "shots": 2048,
+      "transpiled_depth": 43,
+      "two_qubit_depth": 9,
+      "two_qubit_gate_count": 9
+    },
+    {
+      "backend": "ibm_fez",
+      "campaign_id": "phase1_g2_stress_ibm_fez_opt2",
+      "case_id": "g2",
+      "expected_p": 0.4999999999999996,
+      "job_id": "d9pfrst7skus73ckte90",
+      "k": 1,
+      "optimization_level": 2,
+      "p_abs_dev": 0.01611328125000039,
+      "p_hat": 0.51611328125,
+      "shots": 2048,
+      "transpiled_depth": 167,
+      "two_qubit_depth": 43,
+      "two_qubit_gate_count": 43
+    },
+    {
+      "backend": "ibm_fez",
+      "campaign_id": "phase1_g2_stress_ibm_fez_opt2",
+      "case_id": "g2",
+      "expected_p": 0.5000000000000002,
+      "job_id": "d9pfrte28h6s739r8nj0",
+      "k": 2,
+      "optimization_level": 2,
+      "p_abs_dev": 0.004882812499999778,
+      "p_hat": 0.5048828125,
+      "shots": 2048,
+      "transpiled_depth": 291,
+      "two_qubit_depth": 79,
+      "two_qubit_gate_count": 79
+    }
+  ],
+  "mlae_estimates": [
+    {
+      "a_exact": 0.25,
+      "a_hat": 0.24105112690811448,
+      "abs_error": 0.008948873091885523,
+      "campaign_id": "phase1_g0_repeat_ibm_fez_opt2",
+      "case_id": "g0",
+      "ks": "0,2"
+    },
+    {
+      "a_exact": 0.5,
+      "a_hat": 0.4990932413469453,
+      "abs_error": 0.0009067586530546734,
+      "campaign_id": "phase1_g1_stress_ibm_fez_opt2",
+      "case_id": "g1",
+      "ks": "0,1,2"
+    },
+    {
+      "a_exact": 0.5,
+      "a_hat": 0.4995117257327141,
+      "abs_error": 0.0004882742672859264,
+      "campaign_id": "phase1_g2_stress_ibm_fez_opt2",
+      "case_id": "g2",
+      "ks": "0,1,2"
+    }
+  ]
+}

@@ -1,0 +1,97 @@
+{
+  "name": "phase9_integration_scaling_audit",
+  "description": "Credit-free audit for scaling algebraic integration from Grover-Rudolph finite probability laws before QPU spending.",
+  "backend": "ibm_kingston",
+  "shots": 4096,
+  "seed": 12345,
+  "optimization_level": 2,
+  "implementation": "ucry",
+  "continuous_grid_points": 200000,
+  "max_depth": 1200,
+  "max_two_qubit_gates": 350,
+  "max_noisy_tvd": 0.05,
+  "max_noisy_qoi_error": 0.02,
+  "out_dir": "results/phase9/integration_scaling_audit",
+  "quantities": [
+    "upper_half",
+    "mean_x",
+    "second_moment_x2",
+    "sin_pi_x",
+    "call_x_minus_half"
+  ],
+  "cases": [
+    {
+      "case_id": "gr_sin2_n3",
+      "label": "sin2(pi x), 8 midpoint cells",
+      "num_qubits": 3,
+      "function": {
+        "kind": "sin2"
+      },
+      "notes": "Baseline smooth symmetric law."
+    },
+    {
+      "case_id": "gr_sin2_n4",
+      "label": "sin2(pi x), 16 midpoint cells",
+      "num_qubits": 4,
+      "function": {
+        "kind": "sin2"
+      },
+      "notes": "First grid-refinement step for the smooth symmetric law."
+    },
+    {
+      "case_id": "gr_sin2_n5",
+      "label": "sin2(pi x), 32 midpoint cells",
+      "num_qubits": 5,
+      "function": {
+        "kind": "sin2"
+      },
+      "notes": "Credit-free stress point for smooth symmetric grid scaling."
+    },
+    {
+      "case_id": "gr_affine_n4",
+      "label": "affine positive law, 16 midpoint cells",
+      "num_qubits": 4,
+      "function": {
+        "kind": "affine",
+        "offset": 0.11,
+        "slope": 0.57
+      },
+      "notes": "Cross-backend anchor law from Phases 7 and 8."
+    },
+    {
+      "case_id": "gr_affine_n5",
+      "label": "affine positive law, 32 midpoint cells",
+      "num_qubits": 5,
+      "function": {
+        "kind": "affine",
+        "offset": 0.11,
+        "slope": 0.57
+      },
+      "notes": "Grid-refinement test for the current paper-quality affine law."
+    },
+    {
+      "case_id": "gr_beta_bump_n4",
+      "label": "localized beta-like law, 16 midpoint cells",
+      "num_qubits": 4,
+      "function": {
+        "kind": "beta_bump",
+        "alpha": 2.0,
+        "beta": 5.0,
+        "scale": 1.0
+      },
+      "notes": "Localized diagnostic law used in Phase 5."
+    },
+    {
+      "case_id": "gr_beta_bump_n5",
+      "label": "localized beta-like law, 32 midpoint cells",
+      "num_qubits": 5,
+      "function": {
+        "kind": "beta_bump",
+        "alpha": 2.0,
+        "beta": 5.0,
+        "scale": 1.0
+      },
+      "notes": "Grid-refinement stress point for localized laws."
+    }
+  ]
+}

@@ -1,0 +1,90 @@
+{
+  "name": "phase14_direct_scaling_audit",
+  "description": "Credit-free local audit for direct Grover-Rudolph integration scaling from n=4 to n=6 before any backend decision.",
+  "shots": 8192,
+  "seed": 20260809,
+  "optimization_levels": [1, 2, 3],
+  "seeds": [12345, 23456, 34567, 45678],
+  "implementation": "ucry",
+  "basis_gates": ["cz", "id", "rz", "sx", "x"],
+  "continuous_grid_points": 200000,
+  "mc_trials": 400,
+  "max_depth": 900,
+  "max_two_qubit_gates": 260,
+  "max_discretization_error": 0.015,
+  "max_noisy_tvd": 0.06,
+  "max_noisy_qoi_error": 0.025,
+  "out_dir": "results/phase14/direct_scaling_audit",
+  "quantities": [
+    "upper_half",
+    "mean_x",
+    "second_moment_x2",
+    "sin_pi_x",
+    "call_x_minus_half"
+  ],
+  "cases": [
+    {
+      "case_id": "gr_sin2_n4",
+      "label": "sin2(pi x), 16 midpoint cells",
+      "num_qubits": 4,
+      "function": {"kind": "sin2"},
+      "notes": "Smooth symmetric law at the n=4 anchor grid."
+    },
+    {
+      "case_id": "gr_sin2_n5",
+      "label": "sin2(pi x), 32 midpoint cells",
+      "num_qubits": 5,
+      "function": {"kind": "sin2"},
+      "notes": "Smooth symmetric law at the n=5 scaling grid."
+    },
+    {
+      "case_id": "gr_sin2_n6",
+      "label": "sin2(pi x), 64 midpoint cells",
+      "num_qubits": 6,
+      "function": {"kind": "sin2"},
+      "notes": "Smooth symmetric law n=6 candidate; local audit only."
+    },
+    {
+      "case_id": "gr_affine_n4",
+      "label": "affine positive law, 16 midpoint cells",
+      "num_qubits": 4,
+      "function": {"kind": "affine", "offset": 0.11, "slope": 0.57},
+      "notes": "Cross-backend anchor law from Phases 7 and 8."
+    },
+    {
+      "case_id": "gr_affine_n5",
+      "label": "affine positive law, 32 midpoint cells",
+      "num_qubits": 5,
+      "function": {"kind": "affine", "offset": 0.11, "slope": 0.57},
+      "notes": "Current paper-quality direct integration scaling result."
+    },
+    {
+      "case_id": "gr_affine_n6",
+      "label": "affine positive law, 64 midpoint cells",
+      "num_qubits": 6,
+      "function": {"kind": "affine", "offset": 0.11, "slope": 0.57},
+      "notes": "Affine n=6 candidate; local audit only."
+    },
+    {
+      "case_id": "gr_beta_bump_n4",
+      "label": "localized beta-like law, 16 midpoint cells",
+      "num_qubits": 4,
+      "function": {"kind": "beta_bump", "alpha": 2.0, "beta": 5.0, "scale": 1.0},
+      "notes": "Localized stress law at the n=4 anchor grid."
+    },
+    {
+      "case_id": "gr_beta_bump_n5",
+      "label": "localized beta-like law, 32 midpoint cells",
+      "num_qubits": 5,
+      "function": {"kind": "beta_bump", "alpha": 2.0, "beta": 5.0, "scale": 1.0},
+      "notes": "Localized stress law with known Phase 9 hardware bias."
+    },
+    {
+      "case_id": "gr_beta_bump_n6",
+      "label": "localized beta-like law, 64 midpoint cells",
+      "num_qubits": 6,
+      "function": {"kind": "beta_bump", "alpha": 2.0, "beta": 5.0, "scale": 1.0},
+      "notes": "Localized n=6 stress candidate; local audit only."
+    }
+  ]
+}

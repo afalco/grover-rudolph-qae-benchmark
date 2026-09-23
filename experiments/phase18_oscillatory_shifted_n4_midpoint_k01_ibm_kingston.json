@@ -1,0 +1,60 @@
+{
+  "campaign_id": "phase18_oscillatory_shifted_n4_midpoint_k01_ibm_kingston",
+  "description": "Reduced non-degenerate shifted oscillatory angle-structured quadrature-QAE microcampaign. This keeps the G_4^(3) shifted oscillatory test but uses K={0,1}, because the K={0,1,2} dry run made k=2 too deep for a controlled Kingston submission.",
+  "backend": "ibm_kingston",
+  "shots": 2048,
+  "optimization_level": 2,
+  "seed": 12345,
+  "runtime_options": {
+    "dynamical_decoupling": {
+      "enable": true,
+      "scheduling_method": "alap",
+      "sequence_type": "XY4"
+    },
+    "twirling": {
+      "enable_gates": true,
+      "enable_measure": true,
+      "num_randomizations": 32,
+      "shots_per_randomization": 64,
+      "strategy": "active-accum"
+    }
+  },
+  "selected_jobs": [
+    {
+      "case_id": "oscillatory_shifted_smooth",
+      "kind": "oscillatory",
+      "family": "stress",
+      "base": 0.55,
+      "sin_amp": 0.25,
+      "cos_amp": 0.10,
+      "num_qubits": 4,
+      "rule": "midpoint",
+      "ks": [0, 1],
+      "angle_class": "G_4^(3)",
+      "purpose": "Non-degenerate degree-3 angle-structured quadrature instance with a controlled reduced MLAE schedule."
+    }
+  ],
+  "local_reference": {
+    "quadrature_value": 0.55,
+    "true_integral": 0.55,
+    "discretization_error": 0.0,
+    "expected_probabilities": {
+      "k=0": 0.55,
+      "k=1": 0.352
+    },
+    "angle_class": "G_4^3",
+    "angle_support": 14,
+    "rejected_full_schedule": {
+      "ks": [0, 1, 2],
+      "k2_depth": 622,
+      "k2_two_qubit_gates": 255,
+      "reason": "k=2 exceeds the controlled hardware regime for this microcampaign."
+    }
+  },
+  "stopping_rules": [
+    "Run first without --submit and verify that k=1 remains close to depth 334 and 139 two-qubit gates.",
+    "Submit only the reduced K={0,1} schedule.",
+    "Use the result to test whether a non-degenerate G_4^(3) instance remains usable with one Grover iterate.",
+    "Do not infer full K={0,1,2} viability from this reduced run."
+  ]
+}

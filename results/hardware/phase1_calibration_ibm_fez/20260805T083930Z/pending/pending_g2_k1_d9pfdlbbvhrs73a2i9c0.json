@@ -1,0 +1,81 @@
+{
+  "a_exact": 0.5,
+  "backend": "ibm_fez",
+  "backend_status": {
+    "operational": true,
+    "pending_jobs": 1,
+    "status_msg": "active"
+  },
+  "campaign_id": "phase1_calibration_ibm_fez",
+  "case_id": "g2",
+  "expected_p_k": 0.4999999999999996,
+  "initial_layout": null,
+  "job_id": "d9pfdlbbvhrs73a2i9c0",
+  "k": 1,
+  "label": "sin2_pi_x",
+  "logical_metrics": {
+    "depth": 37,
+    "multi_qubit_gate_count": 4,
+    "num_clbits": 3,
+    "num_qubits": 3,
+    "one_qubit_gate_count": 30,
+    "operation_counts": {
+      "ccx": 4,
+      "cx": 12,
+      "h": 8,
+      "measure": 3,
+      "ry": 15,
+      "x": 6,
+      "z": 1
+    },
+    "size": 49,
+    "swap_count": 0,
+    "two_qubit_gate_count": 12,
+    "width": 6
+  },
+  "optimization_level": 0,
+  "prepared_utc": "2026-08-05T08:39:31.917804+00:00",
+  "purpose": "Quadratic encoding continuity benchmark with moderate depth.",
+  "qasm_path": "/Users/antoniofalco/Library/CloudStorage/Dropbox/TENSORS/Quantum_TENSORS/IBM_Quantum_Proposal/grover-rudolph-qae-benchmark/results/hardware/phase1_calibration_ibm_fez/20260805T083930Z/circuits/g2_k1_transpiled.qasm",
+  "seed": 12345,
+  "shots": 2048,
+  "structural_metrics": {
+    "canonical_length": 6.473754857208568,
+    "maximum_degree": 2,
+    "minimum_m1_stratum": 1,
+    "multilinear_support": 4
+  },
+  "submitted": true,
+  "submitted_utc": "2026-08-05T08:39:49.881376+00:00",
+  "transpile_seconds": 0.0027452498907223344,
+  "transpiled_metrics": {
+    "depth": 421,
+    "multi_qubit_gate_count": 0,
+    "num_clbits": 3,
+    "num_qubits": 156,
+    "one_qubit_gate_count": 428,
+    "operation_counts": {
+      "cz": 63,
+      "measure": 3,
+      "rz": 250,
+      "sx": 172,
+      "x": 6
+    },
+    "size": 494,
+    "swap_count": 0,
+    "two_qubit_gate_count": 63,
+    "width": 159
+  },
+  "transpiled_two_qubit_depth": 63,
+  "usage_before_submission": {
+    "estimated_remaining_seconds": 9434.0,
+    "usage_allocation_seconds": 10800,
+    "usage_consumed_seconds": 1366,
+    "usage_limit_reached": false,
+    "usage_limit_seconds": 10800,
+    "usage_period": {
+      "end_time": "2027-08-02T17:13:13.026Z",
+      "start_time": "2026-08-02T17:13:13.026Z"
+    }
+  }
+}

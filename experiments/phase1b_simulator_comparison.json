@@ -1,0 +1,20 @@
+{
+  "experiment_id": "phase1b_simulator_comparison",
+  "description": "Simulator comparison of MLAE, IQAE-style adaptive likelihood, canonical grid-QAE, Monte Carlo, and quasi-Monte Carlo for g0/g1/g2.",
+  "cases": ["g0", "g1", "g2"],
+  "seed": 12345,
+  "repetitions": 200,
+  "shots_per_circuit": 2048,
+  "mlae_schedules": [[0, 1], [0, 2], [0, 1, 2]],
+  "iqae_max_k": 4,
+  "iqae_steps": 3,
+  "mle_grid_size": 5001,
+  "posterior_grid_size": 401,
+  "canonical_qae_evaluation_qubits": [2, 3, 4],
+  "classical_sample_sizes": [64, 256, 1024, 4096],
+  "notes": [
+    "This is a statistical simulator using the ideal binomial QAE model p_k(a), not a circuit-level Aer simulation.",
+    "The IQAE entry is an adaptive likelihood proxy: at each step it chooses the k in [0,max_k] that minimizes the expected posterior interval width.",
+    "Canonical QAE is represented by the ideal phase-estimation grid estimator with M=2^m evaluation states."
+  ]
+}

@@ -1,0 +1,54 @@
+{
+  "campaign_id": "phase8_kingston_beta_bump_mitigated_distribution",
+  "description": "Phase 8 cross-backend validation on ibm_kingston for mitigated gr_beta_bump_n4 using the opt-3 seed-45678 candidate. This tests whether the localized-profile instability seen on ibm_fez is backend-specific.",
+  "backend": "ibm_kingston",
+  "shots": 8192,
+  "optimization_level": 3,
+  "implementation": "ucry",
+  "seed": 45678,
+  "submit_to_qpu": false,
+  "runtime_options": {
+    "dynamical_decoupling": {
+      "enable": true,
+      "sequence_type": "XY4",
+      "scheduling_method": "alap"
+    },
+    "twirling": {
+      "enable_gates": true,
+      "enable_measure": true,
+      "num_randomizations": 32,
+      "shots_per_randomization": 256,
+      "strategy": "active-accum"
+    }
+  },
+  "rationale": [
+    "The Phase 7 Fez repeat left gr_beta_bump_n4 as a backend diagnostic distribution, with useful but biased mean_x and call payoff functionals.",
+    "A Kingston repeat tests whether localized-profile instability is device-specific.",
+    "The campaign keeps the best audited opt-3 seed-45678 candidate and measures only direct distribution loading."
+  ],
+  "selected_cases": [
+    {
+      "case_id": "gr_beta_bump_n4",
+      "label": "beta-like localized bump, 16 midpoint cells",
+      "num_qubits": 4,
+      "function": {
+        "kind": "beta_bump",
+        "alpha": 2.0,
+        "beta": 5.0
+      },
+      "purpose": "Cross-backend validation of the localized n=4 profile."
+    }
+  ],
+  "qoi_targets": [
+    "mean_x",
+    "upper_half",
+    "call_x_minus_half",
+    "second_moment_x2",
+    "sin_pi_x"
+  ],
+  "stopping_rules": [
+    "If Kingston improves TVD below 0.04, reclassify localized-profile instability as backend-dependent.",
+    "If Kingston remains near or above Fez TVD, keep localized profiles as diagnostic on current noisy hardware.",
+    "Do not attach Grover amplification in this campaign."
+  ]
+}

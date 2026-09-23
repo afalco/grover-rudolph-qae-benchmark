@@ -1,0 +1,16 @@
+{
+  "experiment_id": "phase16_angle_quadrature_scaling_decision",
+  "description": "Backend-aware scaling decision table for angle-structured quadrature-QAE integration with mandatory MC/QMC baselines.",
+  "phase15_audit_csv": "results/phase15/quadrature_qae_audit/phase15_quadrature_qae_audit_20260809T130243Z.csv",
+  "phase15_config": "experiments/phase15_quadrature_qae_audit.json",
+  "rules": ["midpoint"],
+  "budget_labels": ["shots", "oracle_queries"],
+  "max_depth": 450,
+  "max_two_qubit_gates": 150,
+  "max_noisy_total_error": 0.01,
+  "max_qpu_over_mc_rmse": 1.0,
+  "angle_tolerance": 1e-10,
+  "qmc_trials": 1000,
+  "seed": 20260812,
+  "out_dir": "results/phase16/angle_quadrature_scaling_decision"
+}

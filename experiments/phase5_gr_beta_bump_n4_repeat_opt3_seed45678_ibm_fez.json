@@ -1,0 +1,68 @@
+{
+  "campaign_id": "phase5_gr_beta_bump_n4_repeat_opt3_seed45678_ibm_fez",
+  "description": "Focused mitigated repeat of the gr_beta_bump_n4 distribution using the best Phase 5 layout/noise audit candidate. This remains distribution measurement only, with no Grover amplification or QAE.",
+  "backend": "ibm_fez",
+  "shots": 4096,
+  "optimization_level": 3,
+  "implementation": "ucry",
+  "seed": 45678,
+  "submit_to_qpu": false,
+  "runtime_options": {
+    "dynamical_decoupling": {
+      "enable": true,
+      "sequence_type": "XY4",
+      "scheduling_method": "alap"
+    },
+    "twirling": {
+      "enable_gates": true,
+      "enable_measure": true,
+      "num_randomizations": 32,
+      "shots_per_randomization": 128,
+      "strategy": "active-accum"
+    }
+  },
+  "rationale": [
+    "The Phase 5 hardware run used optimization_level=2 and seed=12345, giving TVD 0.045590.",
+    "The exact-profile noisy audit predicted TVD 0.043878 for that executed candidate, close to the observed hardware result.",
+    "The best audited candidate, optimization_level=3 and seed=45678, keeps 16 two-qubit gates while reducing predicted TVD to 0.021744.",
+    "This focused repeat tests whether layout/seed choice can stabilize localized Grover-Rudolph distributions before any amplified QAE attempt."
+  ],
+  "selected_cases": [
+    {
+      "case_id": "gr_beta_bump_n4",
+      "label": "beta-like localized bump, 16 midpoint cells",
+      "num_qubits": 4,
+      "function": {
+        "kind": "beta_bump",
+        "alpha": 2.0,
+        "beta": 5.0
+      },
+      "purpose": "Focused repeat of the localized 16-cell distribution using the best audited opt/seed candidate."
+    }
+  ],
+  "audit_evidence": {
+    "audit_json": "results/phase5/layout_audit/gr_distribution_variant_audit_20260805T173331Z.json",
+    "audit_best_csv": "results/phase5/layout_audit/gr_distribution_variant_audit_best_20260805T173331Z.csv",
+    "executed_candidate": {
+      "optimization_level": 2,
+      "seed": 12345,
+      "depth": 68,
+      "two_qubit_gates": 16,
+      "noisy_tvd": 0.0438784045183376,
+      "hardware_tvd": 0.045590
+    },
+    "repeat_candidate": {
+      "optimization_level": 3,
+      "seed": 45678,
+      "depth": 70,
+      "two_qubit_gates": 16,
+      "noisy_tvd": 0.02174427728397039,
+      "noisy_max_abs_deviation": 0.00650530411973272
+    }
+  },
+  "stopping_rules": [
+    "Do not attach Grover amplification to gr_beta_bump_n4 until this focused repeat is retrieved.",
+    "If repeated TVD remains near 0.045, classify localized n=4 profiles as direct-distribution-only for the current backend.",
+    "If repeated TVD moves near 0.02, proceed with observable-specific direct estimators before considering amplified QAE."
+  ]
+}

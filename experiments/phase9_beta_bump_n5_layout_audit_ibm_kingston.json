@@ -1,0 +1,31 @@
+{
+  "name": "phase9_beta_bump_n5_layout_audit_ibm_kingston",
+  "description": "Credit-free layout, optimization-level, and seed audit for the Phase 9 localized beta-bump n=5 direct-distribution stress candidate on ibm_kingston.",
+  "backend": "ibm_kingston",
+  "shots": 4096,
+  "implementation": "ucry",
+  "optimization_levels": [1, 2, 3],
+  "seeds": [12345, 23456, 34567, 45678, 56789, 67890],
+  "observables": [
+    "call_x_minus_half",
+    "mean_x",
+    "second_moment_x2",
+    "sin_pi_x",
+    "upper_half"
+  ],
+  "max_depth": 1200,
+  "max_two_qubit_gates": 350,
+  "out_dir": "results/phase9/layout_audit",
+  "case": {
+    "case_id": "gr_beta_bump_n5",
+    "label": "localized beta-like law, 32 midpoint cells",
+    "num_qubits": 5,
+    "function": {
+      "kind": "beta_bump",
+      "alpha": 2.0,
+      "beta": 5.0,
+      "scale": 1.0
+    },
+    "notes": "Phase 9 localized n=5 stress candidate after the affine n=5 scaling result."
+  }
+}

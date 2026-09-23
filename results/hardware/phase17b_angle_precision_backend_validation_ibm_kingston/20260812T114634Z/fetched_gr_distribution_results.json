@@ -1,0 +1,160 @@
+{
+  "campaign_run": "/Users/antoniofalco/Library/CloudStorage/Dropbox/TENSORS/Quantum_TENSORS/IBM_Quantum_Proposal/grover-rudolph-qae-benchmark/results/hardware/phase17b_angle_precision_backend_validation_ibm_kingston/20260812T114634Z",
+  "fetched_utc": "2026-08-12T11:52:03.556780+00:00",
+  "max_tvd": 0.03889806259067216,
+  "mean_tvd": 0.03889806259067216,
+  "rows": [
+    {
+      "backend": "ibm_kingston",
+      "backend_status": {
+        "operational": true,
+        "pending_jobs": 136,
+        "status_msg": "active"
+      },
+      "campaign_id": "phase17b_angle_precision_backend_validation_ibm_kingston",
+      "campaign_type": "gr_distribution_measurement",
+      "case_id": "gr_sin2_n4",
+      "chi2": 349.6786075382488,
+      "chi2_dof": 15,
+      "conditional_rotation_count": 15,
+      "counts": {
+        "0000": 44,
+        "0001": 975,
+        "0010": 624,
+        "0011": 468,
+        "0100": 262,
+        "0101": 769,
+        "0110": 850,
+        "0111": 133,
+        "1000": 144,
+        "1001": 871,
+        "1010": 779,
+        "1011": 270,
+        "1100": 405,
+        "1101": 607,
+        "1110": 946,
+        "1111": 45
+      },
+      "fetch_status": "DONE",
+      "fetched_utc": "2026-08-12T11:52:03.110631+00:00",
+      "grid_points": 16,
+      "implementation": "ucry",
+      "initial_layout": null,
+      "job_id": "d9u5q8r43mgs73eshr9g",
+      "l1_distance": 0.07779612518134432,
+      "label": "sin2 midpoint law, n=4",
+      "logical_metrics": {
+        "depth": 5,
+        "multi_qubit_gate_count": 2,
+        "num_clbits": 4,
+        "num_qubits": 4,
+        "one_qubit_gate_count": 1,
+        "operation_counts": {
+          "measure": 4,
+          "ry": 1,
+          "ucry": 3
+        },
+        "size": 8,
+        "swap_count": 0,
+        "two_qubit_gate_count": 1,
+        "width": 8
+      },
+      "max_abs_deviation": 0.010707085143909043,
+      "nonzero_conditional_rotation_count": 15,
+      "num_qubits": 4,
+      "observed_distribution": [
+        0.00537109375,
+        0.017578125,
+        0.031982421875,
+        0.0494384765625,
+        0.076171875,
+        0.0950927734375,
+        0.103759765625,
+        0.115478515625,
+        0.1190185546875,
+        0.1063232421875,
+        0.0938720703125,
+        0.0740966796875,
+        0.05712890625,
+        0.032958984375,
+        0.0162353515625,
+        0.0054931640625
+      ],
+      "optimization_level": 2,
+      "prepared_utc": "2026-08-12T11:46:35.503635+00:00",
+      "purpose": "Grid-refined smooth validation case for the Phase 17 angle-precision versus shot-noise prediction.",
+      "qasm_path": "/Users/antoniofalco/Library/CloudStorage/Dropbox/TENSORS/Quantum_TENSORS/IBM_Quantum_Proposal/grover-rudolph-qae-benchmark/results/hardware/phase17b_angle_precision_backend_validation_ibm_kingston/20260812T114634Z/circuits/gr_sin2_n4_transpiled.qasm",
+      "result_path": "/Users/antoniofalco/Library/CloudStorage/Dropbox/TENSORS/Quantum_TENSORS/IBM_Quantum_Proposal/grover-rudolph-qae-benchmark/results/hardware/phase17b_angle_precision_backend_validation_ibm_kingston/20260812T114634Z/results/result_gr_sin2_n4_d9u5q8r43mgs73eshr9g.json",
+      "runtime_options": {
+        "dynamical_decoupling": {
+          "enable": true,
+          "scheduling_method": "alap",
+          "sequence_type": "XY4"
+        },
+        "twirling": {
+          "enable_gates": true,
+          "enable_measure": true,
+          "num_randomizations": 32,
+          "shots_per_randomization": 256,
+          "strategy": "active-accum"
+        }
+      },
+      "seed": 45678,
+      "shots": 8192,
+      "source": "function:sin2",
+      "submitted": true,
+      "submitted_utc": "2026-08-12T11:46:44.038717+00:00",
+      "target_probabilities": [
+        0.0012009199747980968,
+        0.010533149231090918,
+        0.027776860436274853,
+        0.05030685487399197,
+        0.07469314512600801,
+        0.0972231395637251,
+        0.11446685076890904,
+        0.12379908002520186,
+        0.12379908002520189,
+        0.11446685076890907,
+        0.09722313956372512,
+        0.07469314512600803,
+        0.05030685487399197,
+        0.027776860436274878,
+        0.010533149231090923,
+        0.0012009199747981022
+      ],
+      "transpile_seconds": 1.0221909577958286,
+      "transpiled_metrics": {
+        "depth": 62,
+        "multi_qubit_gate_count": 0,
+        "num_clbits": 4,
+        "num_qubits": 156,
+        "one_qubit_gate_count": 63,
+        "operation_counts": {
+          "cz": 16,
+          "measure": 4,
+          "rz": 31,
+          "sx": 31,
+          "x": 1
+        },
+        "size": 83,
+        "swap_count": 0,
+        "two_qubit_gate_count": 16,
+        "width": 160
+      },
+      "transpiled_two_qubit_depth": 16,
+      "tvd": 0.03889806259067216,
+      "usage_before_submission": {
+        "estimated_remaining_seconds": 9280.0,
+        "usage_allocation_seconds": 10800,
+        "usage_consumed_seconds": 1520,
+        "usage_limit_reached": false,
+        "usage_limit_seconds": 10800,
+        "usage_period": {
+          "end_time": "2027-08-02T17:13:13.026Z",
+          "start_time": "2026-08-02T17:13:13.026Z"
+        }
+      }
+    }
+  ],
+  "submitted_campaign": "/Users/antoniofalco/Library/CloudStorage/Dropbox/TENSORS/Quantum_TENSORS/IBM_Quantum_Proposal/grover-rudolph-qae-benchmark/results/hardware/phase17b_angle_precision_backend_validation_ibm_kingston/20260812T114634Z/submitted_campaign.json"
+}

@@ -1,0 +1,256 @@
+{
+  "a_exact": 0.25,
+  "backend": "ibm_fez",
+  "campaign_run": "/Users/antoniofalco/Library/CloudStorage/Dropbox/TENSORS/Quantum_TENSORS/IBM_Quantum_Proposal/grover-rudolph-qae-benchmark/results/hardware/phase1_calibration_ibm_fez/20260805T083930Z",
+  "case_id": "g0",
+  "created_utc": "2026-08-05T08:53:51.860663+00:00",
+  "expected_p": 0.25000000000000033,
+  "k": 2,
+  "rows": [
+    {
+      "depth": 18,
+      "exact_abs_dev": 6.106226635438361e-16,
+      "exact_p": 0.24999999999999972,
+      "expected_p": 0.25000000000000033,
+      "ideal_counts": {
+        "000": 399,
+        "001": 366,
+        "010": 419,
+        "011": 379,
+        "100": 115,
+        "101": 127,
+        "110": 113,
+        "111": 130
+      },
+      "ideal_shot_abs_dev": 0.013183593750000333,
+      "ideal_shot_p": 0.23681640625,
+      "label": "g0_k2_logical",
+      "num_qubits": 3,
+      "operation_counts": {
+        "ccx": 2,
+        "h": 14,
+        "measure": 3,
+        "ry": 5,
+        "x": 12,
+        "z": 2
+      },
+      "two_qubit_depth": 0,
+      "two_qubit_gate_count": 0
+    },
+    {
+      "depth": 180,
+      "exact_abs_dev": 1.970645868709653e-15,
+      "exact_p": 0.24999999999999836,
+      "expected_p": 0.25000000000000033,
+      "ideal_counts": {
+        "000": 399,
+        "001": 366,
+        "010": 419,
+        "011": 379,
+        "100": 115,
+        "101": 127,
+        "110": 113,
+        "111": 130
+      },
+      "ideal_shot_abs_dev": 0.013183593750000333,
+      "ideal_shot_p": 0.23681640625,
+      "label": "g0_k2_saved_qasm",
+      "noisy_counts": {
+        "000": 368,
+        "001": 352,
+        "010": 384,
+        "011": 362,
+        "100": 150,
+        "101": 139,
+        "110": 138,
+        "111": 155
+      },
+      "noisy_shot_abs_dev": 0.03417968749999967,
+      "noisy_shot_p": 0.2841796875,
+      "num_qubits": 3,
+      "operation_counts": {
+        "cz": 24,
+        "measure": 3,
+        "rz": 115,
+        "sx": 76,
+        "x": 12
+      },
+      "two_qubit_depth": 24,
+      "two_qubit_gate_count": 24
+    },
+    {
+      "backend": "ibm_fez",
+      "depth": 180,
+      "exact_abs_dev": 7.216449660063518e-16,
+      "exact_p": 0.2499999999999996,
+      "expected_p": 0.25000000000000033,
+      "ideal_counts": {
+        "000": 399,
+        "001": 366,
+        "010": 419,
+        "011": 379,
+        "100": 115,
+        "101": 127,
+        "110": 113,
+        "111": 130
+      },
+      "ideal_shot_abs_dev": 0.013183593750000333,
+      "ideal_shot_p": 0.23681640625,
+      "label": "g0_k2_opt0",
+      "noisy_counts": {
+        "000": 368,
+        "001": 352,
+        "010": 384,
+        "011": 362,
+        "100": 150,
+        "101": 139,
+        "110": 138,
+        "111": 155
+      },
+      "noisy_shot_abs_dev": 0.03417968749999967,
+      "noisy_shot_p": 0.2841796875,
+      "num_qubits": 3,
+      "operation_counts": {
+        "cz": 24,
+        "measure": 3,
+        "rz": 115,
+        "sx": 76,
+        "x": 12
+      },
+      "transpile_seconds": 0.01489899994339794,
+      "two_qubit_depth": 24,
+      "two_qubit_gate_count": 24
+    },
+    {
+      "backend": "ibm_fez",
+      "depth": 85,
+      "exact_abs_dev": 0.24999999999999933,
+      "exact_p": 0.49999999999999967,
+      "expected_p": 0.25000000000000033,
+      "ideal_counts": {
+        "000": 399,
+        "001": 381,
+        "010": 388,
+        "011": 355,
+        "100": 121,
+        "101": 132,
+        "110": 142,
+        "111": 130
+      },
+      "ideal_shot_abs_dev": 0.006347656249999667,
+      "ideal_shot_p": 0.25634765625,
+      "label": "g0_k2_opt1",
+      "noisy_counts": {
+        "000": 366,
+        "001": 346,
+        "010": 358,
+        "011": 336,
+        "100": 154,
+        "101": 164,
+        "110": 171,
+        "111": 153
+      },
+      "noisy_shot_abs_dev": 0.06347656249999967,
+      "noisy_shot_p": 0.3134765625,
+      "num_qubits": 3,
+      "operation_counts": {
+        "cz": 21,
+        "measure": 3,
+        "rz": 42,
+        "sx": 41,
+        "x": 2
+      },
+      "transpile_seconds": 0.00726070802193135,
+      "two_qubit_depth": 21,
+      "two_qubit_gate_count": 21
+    },
+    {
+      "backend": "ibm_fez",
+      "depth": 71,
+      "exact_abs_dev": 5.551115123125783e-16,
+      "exact_p": 0.2500000000000009,
+      "expected_p": 0.25000000000000033,
+      "ideal_counts": {
+        "000": 399,
+        "001": 366,
+        "010": 419,
+        "011": 379,
+        "100": 115,
+        "101": 127,
+        "110": 113,
+        "111": 130
+      },
+      "ideal_shot_abs_dev": 0.013183593750000333,
+      "ideal_shot_p": 0.23681640625,
+      "label": "g0_k2_opt2",
+      "noisy_counts": {
+        "000": 378,
+        "001": 353,
+        "010": 390,
+        "011": 366,
+        "100": 137,
+        "101": 135,
+        "110": 140,
+        "111": 149
+      },
+      "noisy_shot_abs_dev": 0.023925781249999667,
+      "noisy_shot_p": 0.27392578125,
+      "num_qubits": 3,
+      "operation_counts": {
+        "cz": 19,
+        "measure": 3,
+        "rz": 30,
+        "sx": 38,
+        "x": 2
+      },
+      "transpile_seconds": 0.00800645793788135,
+      "two_qubit_depth": 19,
+      "two_qubit_gate_count": 19
+    },
+    {
+      "backend": "ibm_fez",
+      "depth": 71,
+      "exact_abs_dev": 0.25,
+      "exact_p": 0.5000000000000003,
+      "expected_p": 0.25000000000000033,
+      "ideal_counts": {
+        "000": 399,
+        "001": 366,
+        "010": 381,
+        "011": 374,
+        "100": 143,
+        "101": 142,
+        "110": 113,
+        "111": 130
+      },
+      "ideal_shot_abs_dev": 0.007812499999999667,
+      "ideal_shot_p": 0.2578125,
+      "label": "g0_k2_opt3",
+      "noisy_counts": {
+        "000": 390,
+        "001": 355,
+        "010": 361,
+        "011": 360,
+        "100": 146,
+        "101": 159,
+        "110": 133,
+        "111": 144
+      },
+      "noisy_shot_abs_dev": 0.03417968749999967,
+      "noisy_shot_p": 0.2841796875,
+      "num_qubits": 3,
+      "operation_counts": {
+        "cz": 19,
+        "measure": 3,
+        "rz": 30,
+        "sx": 38,
+        "x": 2
+      },
+      "transpile_seconds": 0.007352957967668772,
+      "two_qubit_depth": 19,
+      "two_qubit_gate_count": 19
+    }
+  ],
+  "seed": 12345,
+  "shots": 2048
+}

@@ -1,0 +1,55 @@
+{
+  "name": "phase0_gr_larger_grids_ibm_fez",
+  "description": "Credit-free Phase 0 audit of larger Grover-Rudolph state-preparation circuits following the dyadic probability-tree construction of Falco, Falco-Pomares, and Matthies.",
+  "backend": "ibm_fez",
+  "shots": 2048,
+  "seed": 12345,
+  "optimization_level": 2,
+  "implementation": "ucry",
+  "max_depth": 1200,
+  "max_two_qubit_gates": 350,
+  "out_dir": "results/phase0_gr",
+  "cases": [
+    {
+      "case_id": "gr_sin2_half_n3",
+      "label": "sin2(pi x / 2), 8 midpoint cells",
+      "num_qubits": 3,
+      "function": {
+        "kind": "sin2_half"
+      },
+      "notes": "Smooth monotone density normalized on the dyadic midpoint grid."
+    },
+    {
+      "case_id": "gr_sin2_n3",
+      "label": "sin2(pi x), 8 midpoint cells",
+      "num_qubits": 3,
+      "function": {
+        "kind": "sin2"
+      },
+      "notes": "Smooth symmetric density normalized on the dyadic midpoint grid."
+    },
+    {
+      "case_id": "gr_affine_n4",
+      "label": "affine positive density, 16 midpoint cells",
+      "num_qubits": 4,
+      "function": {
+        "kind": "affine",
+        "offset": 0.11,
+        "slope": 0.57
+      },
+      "notes": "Non-symmetric positive density used to avoid special amplitude-grid degeneracies."
+    },
+    {
+      "case_id": "gr_beta_bump_n4",
+      "label": "beta-like bump density, 16 midpoint cells",
+      "num_qubits": 4,
+      "function": {
+        "kind": "beta_bump",
+        "alpha": 2.3,
+        "beta": 4.7,
+        "scale": 6.0
+      },
+      "notes": "Localized smooth density for stressing non-uniform conditional rotations."
+    }
+  ]
+}

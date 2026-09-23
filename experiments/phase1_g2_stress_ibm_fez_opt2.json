@@ -1,0 +1,40 @@
+{
+  "campaign_id": "phase1_g2_stress_ibm_fez_opt2",
+  "description": "Optimization-level-2 g2 stress campaign including the deferred k=2 amplification level.",
+  "backend": "ibm_fez",
+  "shots": 2048,
+  "optimization_level": 2,
+  "seed": 12345,
+  "submit_to_qpu": false,
+  "rationale": [
+    "The g0 opt2 repeat resolved the original compilation-sensitive anomaly to a manageable residual bias.",
+    "The g1 opt2 stress campaign passed for k=0,1,2 and produced an MLAE absolute error of 0.000907.",
+    "g2 is the quadratic benchmark with larger canonical length and higher structural degree, so it is the next stress target.",
+    "Running g2 k=0,1,2 under the same optimization setting avoids mixing compilation regimes in the MLAE estimate."
+  ],
+  "selected_jobs": [
+    {
+      "case_id": "g2",
+      "ks": [0, 1, 2],
+      "purpose": "Quadratic encoding stress test with a consistent optimization_level=2 MLAE schedule."
+    }
+  ],
+  "deferred_jobs": [
+    {
+      "case_id": "g0",
+      "ks": [1],
+      "reason": "Known degeneracy at a=1/4; use only as an explicit failure-mode demonstration."
+    }
+  ],
+  "phase1_evidence": {
+    "first_campaign_readout": "docs/phase1_first_campaign_readout.md",
+    "g0_opt2_repeat_results": "results/hardware/phase1_g0_repeat_ibm_fez_opt2/20260805T085729Z/fetched_campaign_results.json",
+    "g1_opt2_stress_results": "results/hardware/phase1_g1_stress_ibm_fez_opt2/20260805T090601Z/fetched_campaign_results.json"
+  },
+  "stopping_rules": [
+    "Prepare this campaign without --submit and inspect g2 k=2 depth and two-qubit count.",
+    "Submit only if g2 k=2 remains within the Phase 0 risk envelope and current Runtime remaining is healthy.",
+    "If the prepared g2 k=2 circuit is substantially deeper than the original opt0 circuit or queue/backend status deteriorates, pause before submission.",
+    "If g2 k=2 returns a large deviation, move next to layout selection and mitigation rather than increasing shots or amplification depth."
+  ]
+}

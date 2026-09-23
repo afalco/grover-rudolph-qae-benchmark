@@ -1,0 +1,52 @@
+{
+  "campaign_id": "phase18_oscillatory_smooth_n4_midpoint_k012_ibm_kingston",
+  "description": "Angle-structured quadrature-QAE stress microcampaign for oscillatory_smooth in class G_4^(3), using the informative MLAE schedule K={0,1,2}. This campaign is scientifically preferred over K={0,1} for the degree-3 angle class, but must pass a dry-run depth check because the Phase 16 audit placed it close to the conservative depth threshold.",
+  "backend": "ibm_kingston",
+  "shots": 2048,
+  "optimization_level": 2,
+  "seed": 12345,
+  "runtime_options": {
+    "dynamical_decoupling": {
+      "enable": true,
+      "scheduling_method": "alap",
+      "sequence_type": "XY4"
+    },
+    "twirling": {
+      "enable_gates": true,
+      "enable_measure": true,
+      "num_randomizations": 32,
+      "shots_per_randomization": 64,
+      "strategy": "active-accum"
+    }
+  },
+  "selected_jobs": [
+    {
+      "case_id": "oscillatory_smooth",
+      "kind": "oscillatory",
+      "family": "stress",
+      "base": 0.5,
+      "sin_amp": 0.25,
+      "cos_amp": 0.10,
+      "num_qubits": 4,
+      "rule": "midpoint",
+      "ks": [0, 1, 2],
+      "angle_class": "G_4^(3)",
+      "purpose": "Test whether a degree-3 angle-structured quadrature instance benefits from the full K={0,1,2} MLAE schedule on hardware."
+    }
+  ],
+  "phase16_reference": {
+    "angle_class": "G_4^3",
+    "depth": 460,
+    "two_qubit_gates": 136,
+    "predicted_qpu_total_error": 0.0004743300831769881,
+    "mc_rmse": 0.0024290049617418027,
+    "qpu_over_mc_rmse": 0.195277527484692,
+    "decision": "reject_depth under the conservative Phase 16 max_depth=450 rule"
+  },
+  "stopping_rules": [
+    "Run first without --submit and inspect the actual depth and two-qubit count on the selected backend and instance.",
+    "Submit only if the transpiled depth remains close to or below the Phase 16 value and the two-qubit count remains below 150.",
+    "If depth remains above the threshold, either perform a seed/layout audit or document the case as mathematically preferred but hardware-borderline.",
+    "Do not replace the K={0,1} result: this campaign tests whether the higher-degree angle class justifies the additional Grover iterate."
+  ]
+}

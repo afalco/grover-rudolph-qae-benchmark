@@ -1,0 +1,107 @@
+[
+  {
+    "backend": "ibm_fez",
+    "backend_status": {
+      "operational": true,
+      "pending_jobs": 0,
+      "status_msg": "active"
+    },
+    "campaign_id": "phase7_qoi_validation_affine_mitigated_ibm_fez",
+    "campaign_type": "gr_distribution_measurement",
+    "case_id": "gr_affine_n4",
+    "conditional_rotation_count": 15,
+    "grid_points": 16,
+    "implementation": "ucry",
+    "initial_layout": null,
+    "label": "affine probability law, 16 midpoint cells",
+    "logical_metrics": {
+      "depth": 5,
+      "multi_qubit_gate_count": 2,
+      "num_clbits": 4,
+      "num_qubits": 4,
+      "one_qubit_gate_count": 1,
+      "operation_counts": {
+        "measure": 4,
+        "ry": 1,
+        "ucry": 3
+      },
+      "size": 8,
+      "swap_count": 0,
+      "two_qubit_gate_count": 1,
+      "width": 8
+    },
+    "nonzero_conditional_rotation_count": 15,
+    "num_qubits": 4,
+    "optimization_level": 2,
+    "prepared_utc": "2026-08-08T16:57:09.283540+00:00",
+    "purpose": "Higher-shot validation of mitigated direct functionals I_p(f), especially upper_half and sin_pi_x.",
+    "qasm_path": "/Users/antoniofalco/Library/CloudStorage/Dropbox/TENSORS/Quantum_TENSORS/IBM_Quantum_Proposal/grover-rudolph-qae-benchmark/results/hardware/phase7_qoi_validation_affine_mitigated_ibm_fez/20260808T165708Z/circuits/gr_affine_n4_transpiled.qasm",
+    "runtime_options": {
+      "dynamical_decoupling": {
+        "enable": true,
+        "scheduling_method": "alap",
+        "sequence_type": "XY4"
+      },
+      "twirling": {
+        "enable_gates": true,
+        "enable_measure": true,
+        "num_randomizations": 32,
+        "shots_per_randomization": 256,
+        "strategy": "active-accum"
+      }
+    },
+    "seed": 12345,
+    "shots": 8192,
+    "source": "function:affine",
+    "submitted": false,
+    "target_probabilities": [
+      0.02022349683544304,
+      0.025860363924050642,
+      0.03149723101265823,
+      0.03713409810126583,
+      0.04277096518987343,
+      0.04840783227848102,
+      0.05404469936708862,
+      0.05968156645569621,
+      0.0653184335443038,
+      0.0709553006329114,
+      0.076592167721519,
+      0.0822290348101266,
+      0.0878659018987342,
+      0.09350276898734179,
+      0.09913963607594937,
+      0.10477650316455697
+    ],
+    "transpile_seconds": 0.8682524999603629,
+    "transpiled_metrics": {
+      "depth": 74,
+      "multi_qubit_gate_count": 0,
+      "num_clbits": 4,
+      "num_qubits": 156,
+      "one_qubit_gate_count": 78,
+      "operation_counts": {
+        "cz": 16,
+        "measure": 4,
+        "rz": 37,
+        "sx": 40,
+        "x": 1
+      },
+      "size": 98,
+      "swap_count": 0,
+      "two_qubit_gate_count": 16,
+      "width": 160
+    },
+    "transpiled_two_qubit_depth": 16,
+    "usage_before_submission": {
+      "estimated_remaining_seconds": 9335.0,
+      "usage_allocation_seconds": 10800,
+      "usage_consumed_seconds": 1465,
+      "usage_limit_reached": false,
+      "usage_limit_seconds": 10800,
+      "usage_period": {
+        "end_time": "2027-08-02T17:13:13.026Z",
+        "start_time": "2026-08-02T17:13:13.026Z"
+      }
+    }
+  }
+]

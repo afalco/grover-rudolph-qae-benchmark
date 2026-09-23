@@ -1,0 +1,32 @@
+{
+  "audit_id": "phase2_layout_audit_ibm_fez",
+  "description": "Credit-free Phase 2 audit of transpiler seeds and optimization levels for accepted Phase 1 schedules.",
+  "backend": "ibm_fez",
+  "shots": 4096,
+  "simulation_seed": 12345,
+  "optimization_levels": [1, 2, 3],
+  "transpiler_seeds": [12345, 23456, 34567, 45678, 56789, 67890, 78901],
+  "cases": [
+    {
+      "case_id": "g0",
+      "ks": [0, 2]
+    },
+    {
+      "case_id": "g1",
+      "ks": [0, 1, 2]
+    },
+    {
+      "case_id": "g2",
+      "ks": [0, 1, 2]
+    }
+  ],
+  "ranking": {
+    "primary": "noisy_abs_dev",
+    "secondary": ["two_qubit_gate_count", "transpiled_depth"]
+  },
+  "stopping_rules": [
+    "Do not submit QPU jobs from this audit.",
+    "Use this audit to identify whether layout/transpiler randomness can further reduce the residual g0 k=2 bias.",
+    "Only design a Phase 2 hardware campaign after comparing the best audit candidates with the accepted Phase 1 circuits."
+  ]
+}

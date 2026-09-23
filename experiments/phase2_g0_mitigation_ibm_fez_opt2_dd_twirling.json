@@ -1,0 +1,47 @@
+{
+  "campaign_id": "phase2_g0_mitigation_ibm_fez_opt2_dd_twirling",
+  "description": "Phase 2 g0 mitigation microcampaign using dynamical decoupling and Pauli/measurement twirling.",
+  "backend": "ibm_fez",
+  "shots": 2048,
+  "optimization_level": 2,
+  "seed": 12345,
+  "submit_to_qpu": false,
+  "runtime_options": {
+    "dynamical_decoupling": {
+      "enable": true,
+      "sequence_type": "XY4",
+      "scheduling_method": "alap"
+    },
+    "twirling": {
+      "enable_gates": true,
+      "enable_measure": true,
+      "num_randomizations": 32,
+      "shots_per_randomization": 64,
+      "strategy": "active-accum"
+    }
+  },
+  "rationale": [
+    "The Phase 2 layout seed search did not improve g0 k=2 on hardware.",
+    "IBM Runtime Sampler supports dynamical decoupling and twirling options for noise management.",
+    "This microcampaign repeats only g0 k=0 and g0 k=2, the sensitive calibration pair.",
+    "The compilation seed is reset to the accepted Phase 1 g0 repeat seed 12345, so the experimental variable is mitigation rather than layout randomization."
+  ],
+  "selected_jobs": [
+    {
+      "case_id": "g0",
+      "ks": [0, 2],
+      "purpose": "Test whether Runtime-level DD and twirling reduce the residual g0 k=2 bias."
+    }
+  ],
+  "phase2_evidence": {
+    "phase1_g0_repeat": "results/hardware/phase1_g0_repeat_ibm_fez_opt2/20260805T085729Z/fetched_campaign_results.json",
+    "phase2_layout_microcampaign": "results/hardware/phase2_g0_layout_repeat_ibm_fez_opt2_seed67890/20260805T093851Z/fetched_campaign_results.json",
+    "phase2_layout_summary": "results/phase2/summary/phase2_g0_layout_summary.csv",
+    "ibm_sampler_options": "https://quantum.cloud.ibm.com/docs/en/guides/sampler-options"
+  },
+  "stopping_rules": [
+    "Prepare without --submit and confirm the base circuit matches the accepted Phase 1 opt2 depth profile.",
+    "Submit only these two circuits.",
+    "If mitigation does not improve g0 k=2, stop QPU spending on g0 and document it as a noise-sensitive calibration case."
+  ]
+}

@@ -1,0 +1,34 @@
+{
+  "audit_id": "phase4_gr_affine_n4_k1_diagnosis_ibm_fez",
+  "description": "Credit-free diagnosis of the first amplified 16-point Grover-Rudolph circuit after hardware k=1 deviated strongly from the ideal model.",
+  "backend": "ibm_fez",
+  "shots": 4096,
+  "simulation_seed": 12345,
+  "implementation": "ucry",
+  "reflection_method": "mcx",
+  "event": "upper_half",
+  "case": {
+    "case_id": "gr_affine_n4",
+    "label": "affine positive density, 16 midpoint cells",
+    "num_qubits": 4,
+    "function": {
+      "kind": "affine",
+      "offset": 0.11,
+      "slope": 0.57
+    },
+    "k": 1
+  },
+  "optimization_levels": [0, 1, 2, 3],
+  "transpiler_seeds": [12345, 23456, 34567, 45678, 56789, 67890],
+  "baseline_hardware": {
+    "run": "results/hardware/phase4_gr_affine_n4_mlae_k01_ibm_fez/20260805T151942Z/fetched_gr_mlae_results.json",
+    "observed_p": 0.173828,
+    "expected_p": 0.052765,
+    "abs_dev": 0.121064
+  },
+  "stopping_rules": [
+    "Do not repeat k=1 unless the audit identifies a candidate with lower depth/two-qubit count and acceptable noisy deviation.",
+    "Do not submit k=2 until k=1 is stabilized.",
+    "If all noisy predictions remain far below the hardware error, treat the issue as an amplified hardware sensitivity not captured by the backend noise model."
+  ]
+}

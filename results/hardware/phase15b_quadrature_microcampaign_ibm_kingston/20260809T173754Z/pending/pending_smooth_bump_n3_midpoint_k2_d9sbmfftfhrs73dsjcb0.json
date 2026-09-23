@@ -1,0 +1,101 @@
+{
+  "backend": "ibm_kingston",
+  "backend_status": {
+    "operational": true,
+    "pending_jobs": 313,
+    "status_msg": "active"
+  },
+  "campaign_id": "phase15b_quadrature_microcampaign_ibm_kingston",
+  "campaign_type": "quadrature_qae_mlae",
+  "case_id": "smooth_bump",
+  "discretization_error": 0.0006403605143229935,
+  "expected_p_k": 0.639618137635471,
+  "family": "stress",
+  "function_kind": "beta_bump",
+  "grid_points": 8,
+  "group_id": "smooth_bump_n3_midpoint",
+  "job_id": "d9sbmfftfhrs73dsjcb0",
+  "k": 2,
+  "ks": [
+    0,
+    1,
+    2
+  ],
+  "logical_metrics": {
+    "depth": 19,
+    "multi_qubit_gate_count": 7,
+    "num_clbits": 4,
+    "num_qubits": 4,
+    "one_qubit_gate_count": 37,
+    "operation_counts": {
+      "h": 19,
+      "mcx": 2,
+      "measure": 4,
+      "ucry": 3,
+      "ucry_dg": 2,
+      "x": 16,
+      "z": 2
+    },
+    "size": 48,
+    "swap_count": 0,
+    "two_qubit_gate_count": 0,
+    "width": 8
+  },
+  "num_qubits": 3,
+  "optimization_level": 2,
+  "prepared_utc": "2026-08-09T17:37:56.121848+00:00",
+  "purpose": "smooth low-amplitude quadrature stress case",
+  "qasm_path": "/Users/antoniofalco/Library/CloudStorage/Dropbox/TENSORS/Quantum_TENSORS/IBM_Quantum_Proposal/grover-rudolph-qae-benchmark/results/hardware/phase15b_quadrature_microcampaign_ibm_kingston/20260809T173754Z/circuits/smooth_bump_n3_midpoint_k2.qasm",
+  "quadrature_value": 0.03397369384765625,
+  "rule": "midpoint",
+  "runtime_options": {
+    "dynamical_decoupling": {
+      "enable": true,
+      "scheduling_method": "alap",
+      "sequence_type": "XY4"
+    },
+    "twirling": {
+      "enable_gates": true,
+      "enable_measure": true,
+      "num_randomizations": 32,
+      "shots_per_randomization": 64,
+      "strategy": "active-accum"
+    }
+  },
+  "seed": 12345,
+  "shots": 2048,
+  "submitted": true,
+  "submitted_utc": "2026-08-09T17:39:09.608575+00:00",
+  "transpile_seconds": 0.00857787486165762,
+  "transpiled_metrics": {
+    "depth": 304,
+    "multi_qubit_gate_count": 0,
+    "num_clbits": 4,
+    "num_qubits": 156,
+    "one_qubit_gate_count": 303,
+    "operation_counts": {
+      "cz": 76,
+      "measure": 4,
+      "rz": 124,
+      "sx": 176,
+      "x": 3
+    },
+    "size": 383,
+    "swap_count": 0,
+    "two_qubit_gate_count": 76,
+    "width": 160
+  },
+  "transpiled_two_qubit_depth": 76,
+  "true_integral": 0.03333333333333326,
+  "usage_before_submission": {
+    "estimated_remaining_seconds": 9310.0,
+    "usage_allocation_seconds": 10800,
+    "usage_consumed_seconds": 1490,
+    "usage_limit_reached": false,
+    "usage_limit_seconds": 10800,
+    "usage_period": {
+      "end_time": "2027-08-02T17:13:13.026Z",
+      "start_time": "2026-08-02T17:13:13.026Z"
+    }
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "campaign_id": "phase16_g2_n5_midpoint_k01_ibm_kingston",
+  "description": "Minimal scaling microcampaign for angle-structured quadrature-QAE integration: g2, n=5, midpoint rule, K={0,1}. Selected by Phase 16 because the audited depth and two-qubit count remain controlled and the noisy prediction beats the matched MC baseline.",
+  "backend": "ibm_kingston",
+  "shots": 2048,
+  "optimization_level": 2,
+  "seed": 12345,
+  "runtime_options": {
+    "dynamical_decoupling": {
+      "enable": true,
+      "scheduling_method": "alap",
+      "sequence_type": "XY4"
+    },
+    "twirling": {
+      "enable_gates": true,
+      "enable_measure": true,
+      "num_randomizations": 32,
+      "shots_per_randomization": 64,
+      "strategy": "active-accum"
+    }
+  },
+  "selected_jobs": [
+    {
+      "case_id": "g2",
+      "kind": "sin2",
+      "family": "calibration_scaling",
+      "num_qubits": 5,
+      "rule": "midpoint",
+      "ks": [0, 1],
+      "purpose": "first n=5 angle-structured quadrature-QAE scaling test selected by Phase 16"
+    }
+  ]
+}

@@ -1,0 +1,170 @@
+[
+  {
+    "backend": "ibm_kingston",
+    "backend_status": {
+      "operational": true,
+      "pending_jobs": 2,
+      "status_msg": "active"
+    },
+    "campaign_id": "phase8_kingston_n3_raw_distribution",
+    "campaign_type": "gr_distribution_measurement",
+    "case_id": "gr_sin2_half_n3",
+    "conditional_rotation_count": 7,
+    "grid_points": 8,
+    "implementation": "ucry",
+    "initial_layout": null,
+    "label": "sin2(pi x / 2), 8 midpoint cells",
+    "logical_metrics": {
+      "depth": 4,
+      "multi_qubit_gate_count": 1,
+      "num_clbits": 3,
+      "num_qubits": 3,
+      "one_qubit_gate_count": 1,
+      "operation_counts": {
+        "measure": 3,
+        "ry": 1,
+        "ucry": 2
+      },
+      "size": 6,
+      "swap_count": 0,
+      "two_qubit_gate_count": 1,
+      "width": 6
+    },
+    "nonzero_conditional_rotation_count": 7,
+    "num_qubits": 3,
+    "optimization_level": 2,
+    "prepared_utc": "2026-08-08T17:26:27.975936+00:00",
+    "purpose": "Cross-backend raw validation of the monotone n=3 profile.",
+    "qasm_path": "/Users/antoniofalco/Library/CloudStorage/Dropbox/TENSORS/Quantum_TENSORS/IBM_Quantum_Proposal/grover-rudolph-qae-benchmark/results/hardware/phase8_kingston_n3_raw_distribution/20260808T172626Z/circuits/gr_sin2_half_n3_transpiled.qasm",
+    "runtime_options": {},
+    "seed": 12345,
+    "shots": 8192,
+    "source": "function:sin2_half",
+    "submitted": false,
+    "target_probabilities": [
+      0.0024018399495961944,
+      0.021066298462181842,
+      0.05555372087254973,
+      0.10061370974798398,
+      0.14938629025201608,
+      0.19444627912745027,
+      0.22893370153781817,
+      0.2475981600504038
+    ],
+    "transpile_seconds": 0.9757887918967754,
+    "transpiled_metrics": {
+      "depth": 30,
+      "multi_qubit_gate_count": 0,
+      "num_clbits": 3,
+      "num_qubits": 156,
+      "one_qubit_gate_count": 35,
+      "operation_counts": {
+        "cz": 7,
+        "measure": 3,
+        "rz": 17,
+        "sx": 17,
+        "x": 1
+      },
+      "size": 45,
+      "swap_count": 0,
+      "two_qubit_gate_count": 7,
+      "width": 159
+    },
+    "transpiled_two_qubit_depth": 7,
+    "usage_before_submission": {
+      "estimated_remaining_seconds": 9331.0,
+      "usage_allocation_seconds": 10800,
+      "usage_consumed_seconds": 1469,
+      "usage_limit_reached": false,
+      "usage_limit_seconds": 10800,
+      "usage_period": {
+        "end_time": "2027-08-02T17:13:13.026Z",
+        "start_time": "2026-08-02T17:13:13.026Z"
+      }
+    }
+  },
+  {
+    "backend": "ibm_kingston",
+    "backend_status": {
+      "operational": true,
+      "pending_jobs": 2,
+      "status_msg": "active"
+    },
+    "campaign_id": "phase8_kingston_n3_raw_distribution",
+    "campaign_type": "gr_distribution_measurement",
+    "case_id": "gr_sin2_n3",
+    "conditional_rotation_count": 7,
+    "grid_points": 8,
+    "implementation": "ucry",
+    "initial_layout": null,
+    "label": "sin2(pi x), 8 midpoint cells",
+    "logical_metrics": {
+      "depth": 4,
+      "multi_qubit_gate_count": 1,
+      "num_clbits": 3,
+      "num_qubits": 3,
+      "one_qubit_gate_count": 1,
+      "operation_counts": {
+        "measure": 3,
+        "ry": 1,
+        "ucry": 2
+      },
+      "size": 6,
+      "swap_count": 0,
+      "two_qubit_gate_count": 1,
+      "width": 6
+    },
+    "nonzero_conditional_rotation_count": 7,
+    "num_qubits": 3,
+    "optimization_level": 2,
+    "prepared_utc": "2026-08-08T17:26:27.982644+00:00",
+    "purpose": "Cross-backend raw validation of the symmetric n=3 profile.",
+    "qasm_path": "/Users/antoniofalco/Library/CloudStorage/Dropbox/TENSORS/Quantum_TENSORS/IBM_Quantum_Proposal/grover-rudolph-qae-benchmark/results/hardware/phase8_kingston_n3_raw_distribution/20260808T172626Z/circuits/gr_sin2_n3_transpiled.qasm",
+    "runtime_options": {},
+    "seed": 12345,
+    "shots": 8192,
+    "source": "function:sin2",
+    "submitted": false,
+    "target_probabilities": [
+      0.009515058436089152,
+      0.07716457095436376,
+      0.1728354290456362,
+      0.2404849415639108,
+      0.2404849415639108,
+      0.17283542904563623,
+      0.07716457095436376,
+      0.009515058436089187
+    ],
+    "transpile_seconds": 0.005890792002901435,
+    "transpiled_metrics": {
+      "depth": 31,
+      "multi_qubit_gate_count": 0,
+      "num_clbits": 3,
+      "num_qubits": 156,
+      "one_qubit_gate_count": 35,
+      "operation_counts": {
+        "cz": 7,
+        "measure": 3,
+        "rz": 17,
+        "sx": 17,
+        "x": 1
+      },
+      "size": 45,
+      "swap_count": 0,
+      "two_qubit_gate_count": 7,
+      "width": 159
+    },
+    "transpiled_two_qubit_depth": 7,
+    "usage_before_submission": {
+      "estimated_remaining_seconds": 9331.0,
+      "usage_allocation_seconds": 10800,
+      "usage_consumed_seconds": 1469,
+      "usage_limit_reached": false,
+      "usage_limit_seconds": 10800,
+      "usage_period": {
+        "end_time": "2027-08-02T17:13:13.026Z",
+        "start_time": "2026-08-02T17:13:13.026Z"
+      }
+    }
+  }
+]

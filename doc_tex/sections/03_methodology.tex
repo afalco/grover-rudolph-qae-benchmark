@@ -1,0 +1,279 @@
+\section{Methodology}
+\label{sec:methodology}
+
+The experimental programme is organized around three complementary workflows.
+The chronological phase numbering is retained for reproducibility, but the
+scientific interpretation of the experiments is workflow-based:
+\begin{description}[leftmargin=!,labelwidth=4.8cm]
+  \item[Workflow A.]
+        \textbf{Angle-structured QAE integration.}
+        A function \(g:[0,1]\to[0,1]\) is encoded as an amplitude under a
+        uniform quadrature rule. The target is the numerical integral
+        \(I[g]\), approximated by left, midpoint, right, or Simpson quadrature
+        rules and then estimated through QAE-type circuits.
+  \item[Workflow B.]
+        \textbf{Grover--Rudolph probability-law preparation.}
+        A positive profile \(F\) defines a finite probability law
+        \(p_i=F(x_i)/\sum_jF(x_j)\) on a dyadic grid. The hardware prepares
+        \(\sum_i\sqrt{p_i}\ket{i}\), measures the resulting law, and computes
+        finite-law quantities of interest
+        \(I_p(f)=\sum_i f(x_i)p_i\).
+  \item[Workflow C.]
+        \textbf{Backend-aware candidate selection.}
+        Circuits from Workflows A and B are admitted to QPU execution only
+        after local construction, transpilation audit, ideal simulation,
+        backend-noise simulation, layout inspection, mitigation selection, and
+        explicit rejection tests.
+\end{description}
+
+This separation is essential. Workflow A is the direct continuation of the
+angle-structured numerical-integration model of
+\cite{chinesta2026encoding}. Workflow B is a different experimental object:
+it validates Grover--Rudolph preparation of a finite probability law and then
+uses that law for direct algebraic integration. Workflow C is not a separate
+mathematical estimator; it is the control layer that decides which circuits are
+credible enough to spend IBM Quantum credits.
+
+\subsection{Workflow A: angle-structured QAE integration}
+\label{subsec:workflow-a}
+
+For Workflow A, the selected quadrature rule \(r\in\{\mathrm{L},\mathrm{M},\mathrm{R}\}\)
+fixes the grid points \(x_i^{r}\) introduced in
+Section~\ref{subsec:dyadic-grid-notation}. The amplitude circuit \(A_g^{r}\)
+prepares
+\[
+  A_g^{r}\ket{0}^{\otimes n}\ket{0}
+  =
+  \frac{1}{\sqrt{N}}\sum_{i=0}^{N-1}
+  \ket{i}
+  \left(
+    \sqrt{1-g(x_i^{r})}\ket{0}
+    +
+    \sqrt{g(x_i^{r})}\ket{1}
+  \right),
+  \qquad N=2^n.
+\]
+Measuring the final qubit gives
+\[
+  P(1;A_g^{r})
+  =
+  Q_n^{r}[g]
+  =
+  \frac{1}{N}\sum_{i=0}^{N-1} g(x_i^{r}),
+\]
+which is a quadrature estimate of the integral of \(g\). Simpson quadrature is
+treated as the classical weighted combination of the corresponding left,
+midpoint, and right estimates, not as a separate support set \(D_n\). The
+current calibration family \(g_0,g_1,g_2\) belongs to the first
+angle-structure classes studied in \cite{chinesta2026encoding}. The planned
+quadrature extension will separate the discretization error of the rule from
+the statistical and hardware error of the QAE estimator.
+
+\subsection{Workflow B: Grover--Rudolph finite-law integration}
+\label{subsec:workflow-b}
+
+For Workflow B, the function used to build the quantum state is not directly
+the test function to be integrated. A positive profile \(F\) defines the finite
+law
+\[
+  p^{(n)}_j
+  =
+  \frac{F(x_j)}{\sum_{\ell=0}^{2^n-1}F(x_\ell)},
+  \qquad
+  x_j=\frac{j+1/2}{2^n},
+\]
+and the Grover--Rudolph circuit prepares
+\[
+  \ket{\psi_p}=\sum_{j=0}^{2^n-1}\sqrt{p^{(n)}_j}\ket{j}.
+\]
+Once the law has been measured, any classical test function \(f\) on the same
+grid defines the finite algebraic quantity
+\[
+  I_{p^{(n)}}(f)=\sum_{j=0}^{2^n-1}f(x_j)p^{(n)}_j.
+\]
+This is the interpretation used in the distribution, finite-law integration,
+MC/QMC baseline, scaling, and Gaussian-profile experiments.
+
+\subsection{Workflow C: backend-aware admission rules}
+\label{subsec:workflow-c}
+
+Workflow C controls when hardware execution is allowed. It records logical and
+transpiled circuits, backend identity, physical layout, depth, two-qubit-gate
+count, two-qubit depth, shots, seeds, expected ideal quantities, ideal
+simulation, and backend-noise simulation. A candidate is rejected before QPU
+execution when its depth, two-qubit count, noisy total-variation distance, or
+largest predicted quantity-of-interest error exceeds the current phase
+thresholds. The same workflow also records mitigation choices such as
+dynamical decoupling and randomized compiling/twirling.
+
+\subsection{Phase 0: Reproducible audit before spending credits}
+
+Phase 0 generates the calibration circuits parametrically from a single Qiskit
+implementation. The circuit generator follows the dyadic-controlled-rotation
+logic of Grover--Rudolph state preparation \cite{falco2026grproof}, specialized
+here to the small angle-polynomial test family motivated by
+\cite{chinesta2026encoding}. For each case \(g_i\) and amplification level \(k\),
+the audit stores:
+\begin{itemize}[leftmargin=*]
+  \item the logical circuit and, when a backend is selected, the transpiled
+        circuit;
+  \item backend name and status;
+  \item logical depth, transpiled depth, two-qubit gate count, two-qubit depth,
+        and operation counts;
+  \item structural metrics of the encoding;
+  \item shot count, seed, and expected ideal probability \(p_k(a)\);
+  \item ideal simulation and backend-noise simulation when the corresponding
+        simulator is available.
+\end{itemize}
+
+The audit rejects candidates whose transpiled depth or two-qubit-gate count
+exceeds predefined thresholds. In this first campaign all \(g_0,g_1,g_2\) cases
+with \(k=0,1,2\) were below the risk thresholds on \texttt{ibm\_fez}.
+
+\subsection{Larger Grover--Rudolph state preparation}
+
+The next audit extends the workflow from the three-qubit calibration circuits
+to genuine Grover--Rudolph loading circuits on larger dyadic grids. Following
+the finite probability model in
+Section~\ref{subsec:algebraic-probability-model}, each benchmark starts from a
+profile \(F(x_i)\) on the midpoint grid \(D_n\), normalizes it to a probability
+vector \(p_i\), and encodes it as
+\[
+  \sum_{j=0}^{2^n-1}\sqrt{p_j}\ket{j}.
+\]
+Following the probability-tree construction of \cite{falco2026grproof}, for
+each binary prefix \(b\) the generator computes the two child masses \(P(b0)\)
+and \(P(b1)\), then applies a conditional rotation satisfying
+\[
+  \sin^2(\theta_b/2)=\frac{P(b1)}{P(b0)+P(b1)}.
+\]
+The implementation groups all rotations at a fixed tree level into one
+uniformly controlled \(R_y\) stage. In Qiskit this is represented with
+\texttt{UCRYGate}, matching the ancilla-free Gray-code/Walsh--Hadamard ladder
+viewpoint of \cite{falco2026grproof}. This is materially different from
+compiling every prefix as an independent multi-controlled rotation: on the
+first \(n=4\) audit it reduced the transpiled two-qubit count from hundreds of
+gates to 16.
+
+\subsection{Integration scaling from finite probability laws}
+
+After the direct-distribution and cross-backend validation steps, the next
+methodological question is not whether a deeper Grover iterate can be run, but
+whether algebraic integration remains stable as the dyadic grid is refined. For
+a positive profile \(F\) on \([0,1]\), Phase 9 defines the midpoint grid
+\[
+  x_j=\frac{j+1/2}{2^n},\qquad j=0,\ldots,2^n-1,
+\]
+and the normalized finite probability law
+\[
+  p^{(n)}_j
+  =
+  \frac{F(x_j)}{\sum_{\ell=0}^{2^n-1}F(x_\ell)}.
+\]
+For each classical test function \(f\), the finite algebraic integral is
+\[
+  I_{p^{(n)}}(f)
+  =
+  \sum_{j=0}^{2^n-1} f(x_j)p^{(n)}_j.
+\]
+This is compared with the continuous reference
+\[
+  I_F(f)
+  =
+  \frac{\int_0^1 f(x)F(x)\,dx}{\int_0^1 F(x)\,dx}.
+\]
+The audit therefore separates three effects:
+\begin{align*}
+  \epsilon_{\mathrm{disc}}(f)
+  &=
+  \left|I_{p^{(n)}}(f)-I_F(f)\right|,\\
+  \epsilon_{\mathrm{load}}(f)
+  &=
+  \left|I_{\tilde p_{\mathrm{exact}}}(f)-I_{p^{(n)}}(f)\right|,\\
+  \epsilon_{\mathrm{noise}}(f)
+  &=
+  \left|I_{\tilde p_{\mathrm{noise}}}(f)-I_{p^{(n)}}(f)\right|.
+\end{align*}
+Here \(\tilde p_{\mathrm{exact}}\) is the probability law extracted from the
+exact logical statevector, and \(\tilde p_{\mathrm{noise}}\) is the
+backend-noise simulation after transpilation. A hardware campaign is considered
+only when the circuit-depth, two-qubit-gate, noisy-TVD, and maximum
+quantity-of-interest error thresholds are all satisfied.
+
+\subsection{Sampling baselines under the same finite law}
+
+Phase 10 compares the hardware sampling workflow with classical MC and QMC
+sampling after the finite law \(p^{(n)}\) has been fixed. This is a deliberately
+controlled comparison: all estimators use the same dyadic law, the same grid,
+and the same sample budget \(M\). The QPU estimator is
+\[
+  I_{\hat p_{\mathrm{QPU}}}(f)
+  =
+  \sum_{j=0}^{2^n-1}f(x_j)\hat p_{\mathrm{QPU},j},
+\]
+where \(\hat p_{\mathrm{QPU}}\) is the measured hardware frequency law. The MC
+baseline draws \(M\) independent samples \(J_1,\ldots,J_M\sim p^{(n)}\) and
+uses
+\[
+  \hat I_{\mathrm{MC}}(f)
+  =
+  \frac{1}{M}\sum_{m=1}^M f(x_{J_m}).
+\]
+The QMC baseline uses randomized shifted van-der-Corput points
+\[
+  u_m=(v_m+\Delta)\bmod 1,\qquad \Delta\sim U(0,1),
+\]
+and maps them through the inverse CDF of \(p^{(n)}\):
+\[
+  J_m=\min\left\{j:\sum_{\ell=0}^j p^{(n)}_\ell\ge u_m\right\},
+  \qquad
+  \hat I_{\mathrm{QMC}}(f)
+  =
+  \frac{1}{M}\sum_{m=1}^M f(x_{J_m}).
+\]
+This QMC baseline is intentionally strong because it assumes the exact finite
+CDF is classically available. It should therefore be read as a reference for
+sampling quality once the law is known, not as a complete cost model for
+constructing that law. The comparison reports distribution-level errors
+(TVD, Hellinger distance, classical fidelity, \(L^2\) distance, and maximum cell
+deviation) and quantity-level MC/QMC RMSE against the absolute QPU error.
+
+\subsection{Backend selection}
+
+The visible Heron backends were listed before hardware submission. Among the
+initial candidates, \texttt{ibm\_fez} had the lowest average two-qubit and
+readout errors while maintaining zero or low queue depth at the time of the
+campaign. The first hardware phase was therefore run on one backend only, to
+avoid confounding amplification-level comparisons with backend calibration
+differences.
+
+\subsection{Compilation as an experimental variable}
+
+The \(g_0,k=2\) anomaly observed in Phase 1 shows that compilation cannot be
+treated as a passive preprocessing step. The logical circuit and the saved QASM
+were both ideal-correct, but the hardware result changed substantially when the
+optimization level was changed. This is consistent with the gate-synthesis
+viewpoint of \cite{falco2026liegates}: elementary operations, their embeddings,
+and their discretized native-basis realizations are part of the experimental
+object being benchmarked. For this reason the accepted Phase 1 evidence reports
+optimization level, depth, two-qubit-gate count, and QASM paths as first-class
+metadata.
+
+\subsection{Hardware execution and stopping rules}
+
+Hardware execution is intentionally staged. The first submission used only six
+circuits: \(g_0\) with \(K=\{0,2\}\), \(g_1\) with \(K=\{0,1\}\), and \(g_2\)
+with \(K=\{0,1\}\). Deferred circuits were submitted only after the previous
+results had been fetched and analyzed.
+
+Each hardware run stores a \texttt{submitted\_campaign.json} file with job
+identifiers, compilation metrics, expected probabilities, and QASM paths. Result
+fetching stores raw counts and computes the ancilla success probability
+\(\hat{p}_k\). A compact analysis table then reports the absolute deviation from
+the ideal probability and a binomial \(z\)-score. The classification used in
+this report is \texttt{pass} for \(|z|<4\), \texttt{watch} for
+\(4\le |z|<8\) or moderate absolute bias, and \texttt{fail} for \(|z|\ge 8\)
+or large absolute bias.
+
+MLAE estimates are computed by maximizing the likelihood of the observed
+binomial counts across the selected schedule \(K\).

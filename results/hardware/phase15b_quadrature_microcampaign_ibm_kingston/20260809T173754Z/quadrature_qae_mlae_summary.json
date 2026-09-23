@@ -1,0 +1,80 @@
+[
+  {
+    "case_id": "affine_shifted",
+    "discretization_error": 0.0,
+    "family": "stress",
+    "group_id": "affine_shifted_n2_midpoint",
+    "ks": [
+      0,
+      1
+    ],
+    "mlae_a_hat": 0.4056398437364982,
+    "mlae_estimation_error": 0.010639843736498178,
+    "num_qubits": 2,
+    "oracle_queries": 8192,
+    "quadrature_value": 0.395,
+    "rule": "midpoint",
+    "total_error": 0.010639843736498178,
+    "total_shots": 4096,
+    "true_integral": 0.395
+  },
+  {
+    "case_id": "g1",
+    "discretization_error": 1.3322676295501878e-15,
+    "family": "calibration",
+    "group_id": "g1_n2_midpoint",
+    "ks": [
+      0,
+      1
+    ],
+    "mlae_a_hat": 0.49882809085655666,
+    "mlae_estimation_error": 0.0011719091434433393,
+    "num_qubits": 2,
+    "oracle_queries": 8192,
+    "quadrature_value": 0.5,
+    "rule": "midpoint",
+    "total_error": 0.0011719091434446716,
+    "total_shots": 4096,
+    "true_integral": 0.5000000000000013
+  },
+  {
+    "case_id": "g2",
+    "discretization_error": 0.0,
+    "family": "calibration",
+    "group_id": "g2_n2_midpoint",
+    "ks": [
+      0,
+      1,
+      2
+    ],
+    "mlae_a_hat": 0.5001395113662286,
+    "mlae_estimation_error": 0.00013951136622858407,
+    "num_qubits": 2,
+    "oracle_queries": 18432,
+    "quadrature_value": 0.5,
+    "rule": "midpoint",
+    "total_error": 0.00013951136622858407,
+    "total_shots": 6144,
+    "true_integral": 0.5
+  },
+  {
+    "case_id": "smooth_bump",
+    "discretization_error": 0.0006403605143229935,
+    "family": "stress",
+    "group_id": "smooth_bump_n3_midpoint",
+    "ks": [
+      0,
+      1,
+      2
+    ],
+    "mlae_a_hat": 0.034901825598314215,
+    "mlae_estimation_error": 0.000928131750657965,
+    "num_qubits": 3,
+    "oracle_queries": 18432,
+    "quadrature_value": 0.03397369384765625,
+    "rule": "midpoint",
+    "total_error": 0.0015684922649809585,
+    "total_shots": 6144,
+    "true_integral": 0.03333333333333326
+  }
+]

@@ -1,0 +1,112 @@
+{
+  "backend": "ibm_fez",
+  "backend_status": {
+    "operational": true,
+    "pending_jobs": 17,
+    "status_msg": "active"
+  },
+  "campaign_id": "phase3_gr_distribution_ibm_fez",
+  "campaign_type": "gr_distribution_measurement",
+  "case_id": "gr_sin2_n3",
+  "chi2": 31.330084322035425,
+  "chi2_dof": 7,
+  "conditional_rotation_count": 7,
+  "counts": {
+    "000": 33,
+    "001": 480,
+    "010": 332,
+    "011": 131,
+    "100": 185,
+    "101": 363,
+    "110": 490,
+    "111": 34
+  },
+  "fetch_status": "DONE",
+  "fetched_utc": "2026-08-05T11:04:57.837669+00:00",
+  "grid_points": 8,
+  "implementation": "ucry",
+  "initial_layout": null,
+  "job_id": "d9ph40rbvhrs73a2ke90",
+  "l1_distance": 0.0625257037556432,
+  "label": "sin2(pi x), 8 midpoint cells",
+  "logical_metrics": {
+    "depth": 4,
+    "multi_qubit_gate_count": 1,
+    "num_clbits": 3,
+    "num_qubits": 3,
+    "one_qubit_gate_count": 1,
+    "operation_counts": {
+      "measure": 3,
+      "ry": 1,
+      "ucry": 2
+    },
+    "size": 6,
+    "swap_count": 0,
+    "two_qubit_gate_count": 1,
+    "width": 6
+  },
+  "max_abs_deviation": 0.013199727204363756,
+  "nonzero_conditional_rotation_count": 7,
+  "num_qubits": 3,
+  "observed_distribution": [
+    0.01611328125,
+    0.09033203125,
+    0.162109375,
+    0.2392578125,
+    0.234375,
+    0.17724609375,
+    0.06396484375,
+    0.0166015625
+  ],
+  "optimization_level": 2,
+  "prepared_utc": "2026-08-05T10:35:39.998744+00:00",
+  "purpose": "Lowest-cost n=3 Grover-Rudolph distribution candidate from Phase 0-GR.",
+  "qasm_path": "/Users/antoniofalco/Library/CloudStorage/Dropbox/TENSORS/Quantum_TENSORS/IBM_Quantum_Proposal/grover-rudolph-qae-benchmark/results/hardware/phase3_gr_distribution_ibm_fez/20260805T103539Z/circuits/gr_sin2_n3_transpiled.qasm",
+  "seed": 12345,
+  "shots": 2048,
+  "source": "function:sin2",
+  "submitted": true,
+  "submitted_utc": "2026-08-05T10:35:47.543725+00:00",
+  "target_probabilities": [
+    0.009515058436089152,
+    0.07716457095436376,
+    0.1728354290456362,
+    0.2404849415639108,
+    0.2404849415639108,
+    0.17283542904563623,
+    0.07716457095436376,
+    0.009515058436089187
+  ],
+  "transpile_seconds": 0.7131172920344397,
+  "transpiled_metrics": {
+    "depth": 31,
+    "multi_qubit_gate_count": 0,
+    "num_clbits": 3,
+    "num_qubits": 156,
+    "one_qubit_gate_count": 33,
+    "operation_counts": {
+      "cz": 7,
+      "measure": 3,
+      "rz": 17,
+      "sx": 14,
+      "x": 2
+    },
+    "size": 43,
+    "swap_count": 0,
+    "two_qubit_gate_count": 7,
+    "width": 159
+  },
+  "transpiled_two_qubit_depth": 7,
+  "tvd": 0.0312628518778216,
+  "usage_before_submission": {
+    "estimated_remaining_seconds": 9380.0,
+    "usage_allocation_seconds": 10800,
+    "usage_consumed_seconds": 1420,
+    "usage_limit_reached": false,
+    "usage_limit_seconds": 10800,
+    "usage_period": {
+      "end_time": "2027-08-02T17:13:13.026Z",
+      "start_time": "2026-08-02T17:13:13.026Z"
+    }
+  }
+}

@@ -1,0 +1,37 @@
+\section{Introduction}
+\label{sec:introduction}
+
+This report consolidates the first experimental phase of the IBM Quantum
+Credits project devoted to benchmarking Grover--Rudolph state preparation for
+amplitude-estimation-based numerical integration on IBM quantum hardware.
+
+The practical question addressed in this phase is not whether asymptotic
+quadratic speedups are visible on present-day devices. Rather, the objective is
+to establish a reproducible methodology for deciding which amplitude-estimation
+circuits are credible candidates for hardware execution, how compilation choices
+affect their observed accuracy, and how small structured benchmarks can be used
+to expose failure modes before larger Grover--Rudolph instances are attempted.
+
+The campaign follows the feedback received with the IBM Quantum Credits award.
+In particular, it combines a QAE-oriented benchmark perspective
+\cite{maronese2024qae} with Benchpress-style attention to circuit construction,
+transpilation, depth, and two-qubit-gate metrics \cite{nation2025benchpress}.
+It also builds on the project's own theoretical foundation: a rigorous
+Grover--Rudolph state-preparation analysis \cite{falco2026grproof}, an
+angle-structure characterization of quantum numerical integration
+\cite{chinesta2026encoding}, an intrinsic gate/compilation viewpoint based on
+Lie group embeddings \cite{falco2026liegates}, and the broader algebraic
+probability framework in which quantum computation is naturally formulated
+\cite{falco2026algebraicprobability}.
+The initial hardware target is IBM's Heron backend \texttt{ibm\_fez}. The first
+accepted result set demonstrates a complete evidence chain:
+\[
+  g_0\ \text{calibration}
+  \quad\longrightarrow\quad
+  g_1\ \text{affine stress test}
+  \quad\longrightarrow\quad
+  g_2\ \text{quadratic stress test}.
+\]
+All accepted hardware estimates are produced with a reproducible audit trail,
+including logical circuits, transpiled QASM, backend metadata, job identifiers,
+counts, and post-processing tables.

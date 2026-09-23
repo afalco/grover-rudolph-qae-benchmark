@@ -1,0 +1,279 @@
+\section{Background}
+\label{sec:background}
+
+Let \(A\) be a state-preparation circuit such that
+\[
+  A\ket{0}
+  =
+  \sqrt{1-a}\ket{\psi_0}\ket{0}
+  +
+  \sqrt{a}\ket{\psi_1}\ket{1},
+\]
+where the last qubit marks the event of interest and \(a\in[0,1]\) is the
+amplitude to be estimated. For the amplification level \(k\), the ideal
+Grover-amplified success probability is
+\[
+  p_k(a)
+  =
+  \sin^2\!\left((2k+1)\arcsin\sqrt{a}\right).
+\]
+Maximum-likelihood amplitude estimation (MLAE) estimates \(a\) by fitting the
+observed counts across a schedule of amplification levels \(K\), avoiding the
+full quantum phase estimation register used in canonical QAE.
+
+Grover--Rudolph state preparation \cite{grover2002creating} is relevant for
+numerical integration because efficiently integrable probability densities can
+be encoded into quantum amplitudes through controlled rotations. The rigorous
+version used as a reference point in this project formalizes the dyadic
+probability tree, proves exact preparation of the target measurement law, and
+gives perturbation and sampling design rules for finite-precision rotations
+\cite{falco2026grproof}. In this project, the first hardware campaign uses the
+small SISC calibration family \(g_0,g_1,g_2\), which is rich enough to test
+constant, affine, and quadratic angle encodings while still allowing exhaustive
+local auditing before hardware submission.
+
+\subsection{Dyadic grid notation}
+\label{subsec:dyadic-grid-notation}
+
+For \(n\) grid qubits, set
+\[
+  B_n=\{0,1\}^n,\qquad N=2^n.
+\]
+The bit string \(b=(b_0,\ldots,b_{n-1})\in B_n\) labels the integer
+\[
+  i(b)=\sum_{j=0}^{n-1} b_j\,2^{n-1-j}\in\{0,\ldots,N-1\}.
+\]
+The midpoint dyadic grid is
+\[
+  D_n^{\mathrm{M}}
+  =
+  \left\{
+    x_i^{\mathrm{M}}=\frac{i+1/2}{2^n}: i=0,\ldots,2^n-1
+  \right\}.
+\]
+Unless a quadrature rule is explicitly stated, the shorter notation \(D_n\)
+means \(D_n^{\mathrm{M}}\) throughout the Grover--Rudolph probability-law
+experiments. For quadrature-rule QAE experiments we keep the rule visible and
+write, for example,
+\[
+  x_i^{\mathrm{L}}=\frac{i}{2^n},\qquad
+  x_i^{\mathrm{M}}=\frac{i+1/2}{2^n},\qquad
+  x_i^{\mathrm{R}}=\frac{i+1}{2^n}.
+\]
+The Simpson value is not a new grid \(D_n\); in this report it denotes the
+standard weighted combination of left, midpoint, and right evaluations used in
+the corresponding quadrature script. This convention prevents a collision
+between the support of a finite probability law and the quadrature rule used
+to approximate a continuum integral.
+
+\subsection{Angle-structure hierarchy for encoded functions}
+\label{subsec:angle-structure-hierarchy}
+
+The encoding-complexity paper \cite{chinesta2026encoding} introduces a hierarchy
+of classes that is directly relevant to the present experiments. For an
+\(n\)-qubit grid function \(g_n:B_n\to[0,1]\), usually obtained by sampling a
+continuum function \(g\) as \(g_n(b)=g(x_{i(b)}^{\mathrm{M}})\), define the
+angle map
+\[
+  \Theta_{g,n}(b)
+  =
+  2\arcsin\sqrt{g_n(b)}
+  =
+  2\arcsin\sqrt{g(x_{i(b)}^{\mathrm{M}})},
+  \qquad b\in B_n .
+\]
+The sampled function belongs to \(\mathcal{G}^{(d)}_n\) when
+\(\Theta_{g,n}\) has a
+multilinear expansion in the bits \(b_0,\ldots,b_{n-1}\) of degree at most
+\(d\):
+\[
+  \Theta_{g,n}(b)
+  =
+  \sum_{S\subseteq\{0,\ldots,n-1\}} \widehat{\Theta}_S
+  \prod_{j\in S} b_j,
+  \qquad
+  \widehat{\Theta}_S=0\quad\text{for } |S|>d .
+\]
+This degree is not the ordinary polynomial degree of \(g(x)\). It is the degree
+of the rotation-angle structure seen by the amplitude oracle. Consequently,
+smoothness or a low-degree formula in \(x\) does not by itself imply a
+low-complexity encoding. The calibration functions used at the start of this
+project are the first three nontrivial levels of this hierarchy on the
+two-grid-qubit midpoint grid:
+\[
+  g_0\in\mathcal{G}^{(0)}_2,\qquad
+  g_1\in\mathcal{G}^{(1)}_2,\qquad
+  g_2\in\mathcal{G}^{(2)}_2.
+\]
+In the software this classification is checked by applying the finite
+difference/Walsh--Hadamard transform to the sampled angle map. The same
+diagnostic is used below to label later test functions whenever they are
+interpreted as amplitude-oracle functions.
+
+\subsection{Angle structure and quantum integrability}
+\label{subsec:angle-structure-integrability}
+
+The angle hierarchy is not only a naming convention for benchmark functions; it
+is a natural candidate for discussing when a finite integration problem is
+pertinent for a quantum implementation. In an amplitude-estimation workflow, a
+test function \(g_n:B_n\to[0,1]\) is not encoded through its values directly,
+but through the rotation-angle map
+\[
+  \Theta_{g,n}(b)=2\arcsin\sqrt{g_n(b)}.
+\]
+If \(\Theta_{g,n}\in\mathcal{G}^{(d)}_n\) with small \(d\), then the angle
+oracle has low multilinear interaction order in the grid bits. This does not
+by itself prove a hardware advantage, but it is strong structural evidence
+that the amplitude-encoding layer is compatible with short controlled-rotation
+decompositions. Conversely, a function that is elementary as a formula in
+\(x\) can still induce a full-degree angle map after the nonlinear
+\(2\arcsin\sqrt{\cdot}\) transformation and restriction to \(D_n\), making it
+much less suitable for amplified QAE on current hardware.
+
+This report therefore separates two related notions of ``efficiently
+integrable'':
+\begin{itemize}[leftmargin=*]
+  \item \emph{QAE-efficient integration}, where the quantity to be integrated
+        is itself loaded as an amplitude function. Here the class
+        \(\mathcal{G}^{(d)}_n\) is directly relevant because it controls the
+        structure of the angle oracle.
+  \item \emph{Grover--Rudolph distribution integration}, where a probability
+        law \(p\) is first prepared and classical test functions \(f\) are
+        integrated by postprocessing measured frequencies,
+        \(I_p(f)=\sum_i p_i f(x_i)\). Here the relevant quantum cost is the
+        probability-tree preparation of \(p\), while the angle class of \(f\)
+        remains useful as a diagnostic for deciding whether the same quantity
+        should later be attempted through amplified QAE.
+\end{itemize}
+
+The working hypothesis suggested by the present experiments is that low
+angle-degree functions are the appropriate first candidates for amplified QAE,
+whereas high angle-degree or localized quantities should first be studied
+through direct Grover--Rudolph distribution sampling. The hypothesis is
+deliberately conditional: actual efficiency also depends on the dyadic
+probability law, grid size, compilation, two-qubit depth, mitigation strategy,
+and the classical MC/QMC baselines used for comparison.
+
+\subsection{Finite algebraic probability model}
+\label{subsec:algebraic-probability-model}
+
+All Grover--Rudolph cases in this report are finite probability models on a
+dyadic grid. For \(n\) grid qubits we use the midpoint grid defined in
+Section~\ref{subsec:dyadic-grid-notation},
+\[
+  D_n=D_n^{\mathrm{M}}
+  =
+  \left\{x_i=\frac{i+1/2}{2^n}: i=0,\ldots,2^n-1\right\}.
+\]
+Following the algebraic-probability viewpoint of
+\cite{falco2026algebraicprobability}, the finite classical model is the
+commutative algebra of grid functions
+\(\mathcal{A}_n\simeq\mathbb{C}^N\). Its primitive events are the idempotents
+\(e_i\), where \(e_i(x_j)=\delta_{ij}\). A probability vector
+\(p=(p_0,\ldots,p_{N-1})\), with \(p_i\ge 0\) and \(\sum_i p_i=1\), defines the
+state
+\[
+  \varphi_p(f)=\sum_{i=0}^{N-1}p_i f(x_i),
+  \qquad f\in\mathcal{A}_n.
+\]
+Thus a numerical integral, payoff, event probability, or moment is treated as a
+quantity-of-interest functional
+\[
+  I_p(f):=\varphi_p(f),
+\]
+where \(f\) is a test function in the finite algebra \(\mathcal{A}_n\). This is
+the terminology used throughout the rest of the report: we estimate
+functionals of a finite probability state, not Born-rule expectation values of
+self-adjoint quantum operators.
+
+The associated quantum system has Hilbert space
+\(\mathcal{H}_n=(\mathbb{C}^2)^{\otimes n}\) and matrix algebra
+\(\mathcal{B}(\mathcal{H}_n)\). A Grover--Rudolph state-preparation circuit
+\(A_p\) implements the pure state
+\[
+  A_p\ket{0^n}
+  =
+  \sum_{i=0}^{N-1}\sqrt{p_i}\ket{i}.
+\]
+If \(\Pi_i=\ket{i}\!\bra{i}\) is the computational-basis projection, the quantum
+state \(\omega_p(X)=\bra{0^n}A_p^\dagger X A_p\ket{0^n}\) satisfies
+\[
+  \omega_p(\Pi_i)=p_i.
+\]
+This identity is the bridge between the classical probability law on
+\(\mathcal{A}_n\) and the noncommutative quantum experiment on
+\(\mathcal{B}(\mathcal{H}_n)\). Direct distribution experiments estimate the
+whole vector \(p\). Quantity-of-interest experiments estimate
+\[
+  I_p(h)=\sum_{i=0}^{N-1}p_i h(x_i)
+\]
+from measured frequencies \(\hat{p}_i\). Event-amplitude experiments choose an
+event \(E\subset D_n\), for example the upper-half event
+\[
+  E_{\mathrm{upper}}=\{x_i\in D_n: x_i\ge 1/2\},
+  \qquad
+  a=p(E_{\mathrm{upper}})=\sum_{x_i\in E_{\mathrm{upper}}}p_i,
+\]
+and then use QAE or MLAE to estimate the scalar amplitude \(a\). For a Grover
+amplification level \(k\), the ideal marked probability is
+\[
+  p_k(a)=
+  \sin^2\!\left((2k+1)\arcsin\sqrt{a}\right).
+\]
+
+\subsection{Grover--Rudolph case names}
+\label{subsec:gr-case-names}
+
+The name \(\texttt{gr\_<profile>\_n<n>}\) has a precise meaning throughout the
+software and this report. It denotes a Grover--Rudolph probability law on the
+midpoint grid \(D_n\). A nonnegative profile \(F:D_n\to\mathbb{R}_{\ge 0}\) is
+sampled on the grid, and the probability vector is
+\[
+  p_i=\frac{F(x_i)}{\sum_{j=0}^{2^n-1}F(x_j)},
+  \qquad i=0,\ldots,2^n-1.
+\]
+The circuit then prepares \(\sum_i\sqrt{p_i}\ket{i}\). For example,
+\(\texttt{gr\_sin2\_n3}\) means \(n=3\), \(N=8\), and
+\(F(x)=\sin^2(\pi x)\). Similarly, \(\texttt{gr\_affine\_n4}\) means \(n=4\),
+\(N=16\), and
+\[
+  F(x)=0.11+0.57x,
+  \qquad
+  p_i=
+  \frac{0.11+0.57x_i}{\sum_{j=0}^{15}(0.11+0.57x_j)}.
+\]
+For this affine case, the upper-half event used in the first amplified
+Grover--Rudolph test has
+\[
+  a
+  =
+  \sum_{i=8}^{15}p_i
+  =
+  0.6803797468\ldots.
+\]
+
+The structural complexity of the angle encoding is tracked through:
+\begin{itemize}[leftmargin=*]
+  \item multilinear support, the number of nonzero angle coefficients;
+  \item maximum degree, the largest interaction order in the multilinear angle
+        expansion;
+  \item the minimum \(m_1\) stratum, which records how localized the smallest
+        support term is on the grid;
+  \item the weighted canonical length \(L_{\mathrm{can}}\), used as a compact
+        proxy for angle-encoding complexity.
+\end{itemize}
+
+These structural metrics follow the angle-structure viewpoint developed for
+quantum numerical integration \cite{chinesta2026encoding}. They complement
+backend-dependent compilation metrics such as depth, two-qubit depth, and
+two-qubit gate count. The Phase 1 results show that compilation choices can
+dominate the hardware behavior even when the logical circuit and the saved
+transpiled QASM are both ideal-correct.
+
+Finally, the experiment is also informed by two broader theoretical references.
+The intrinsic gate-embedding perspective of \cite{falco2026liegates} motivates
+tracking compilation as a mathematical object rather than a purely software
+detail. The algebraic probability viewpoint of
+\cite{falco2026algebraicprobability} gives the finite-dimensional language in
+which classical measurement laws, quantum states, and noncommutative operations
+can be discussed within one probabilistic framework.

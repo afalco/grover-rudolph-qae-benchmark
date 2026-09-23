@@ -1,0 +1,109 @@
+[
+  {
+    "backend": "ibm_kingston",
+    "backend_status": {
+      "operational": true,
+      "pending_jobs": 136,
+      "status_msg": "active"
+    },
+    "campaign_id": "phase17b_angle_precision_backend_validation_ibm_kingston",
+    "campaign_type": "gr_distribution_measurement",
+    "case_id": "gr_sin2_n4",
+    "conditional_rotation_count": 15,
+    "grid_points": 16,
+    "implementation": "ucry",
+    "initial_layout": null,
+    "job_id": "d9u5q8r43mgs73eshr9g",
+    "label": "sin2 midpoint law, n=4",
+    "logical_metrics": {
+      "depth": 5,
+      "multi_qubit_gate_count": 2,
+      "num_clbits": 4,
+      "num_qubits": 4,
+      "one_qubit_gate_count": 1,
+      "operation_counts": {
+        "measure": 4,
+        "ry": 1,
+        "ucry": 3
+      },
+      "size": 8,
+      "swap_count": 0,
+      "two_qubit_gate_count": 1,
+      "width": 8
+    },
+    "nonzero_conditional_rotation_count": 15,
+    "num_qubits": 4,
+    "optimization_level": 2,
+    "prepared_utc": "2026-08-12T11:46:35.503635+00:00",
+    "purpose": "Grid-refined smooth validation case for the Phase 17 angle-precision versus shot-noise prediction.",
+    "qasm_path": "/Users/antoniofalco/Library/CloudStorage/Dropbox/TENSORS/Quantum_TENSORS/IBM_Quantum_Proposal/grover-rudolph-qae-benchmark/results/hardware/phase17b_angle_precision_backend_validation_ibm_kingston/20260812T114634Z/circuits/gr_sin2_n4_transpiled.qasm",
+    "runtime_options": {
+      "dynamical_decoupling": {
+        "enable": true,
+        "scheduling_method": "alap",
+        "sequence_type": "XY4"
+      },
+      "twirling": {
+        "enable_gates": true,
+        "enable_measure": true,
+        "num_randomizations": 32,
+        "shots_per_randomization": 256,
+        "strategy": "active-accum"
+      }
+    },
+    "seed": 45678,
+    "shots": 8192,
+    "source": "function:sin2",
+    "submitted": true,
+    "submitted_utc": "2026-08-12T11:46:44.038717+00:00",
+    "target_probabilities": [
+      0.0012009199747980968,
+      0.010533149231090918,
+      0.027776860436274853,
+      0.05030685487399197,
+      0.07469314512600801,
+      0.0972231395637251,
+      0.11446685076890904,
+      0.12379908002520186,
+      0.12379908002520189,
+      0.11446685076890907,
+      0.09722313956372512,
+      0.07469314512600803,
+      0.05030685487399197,
+      0.027776860436274878,
+      0.010533149231090923,
+      0.0012009199747981022
+    ],
+    "transpile_seconds": 1.0221909577958286,
+    "transpiled_metrics": {
+      "depth": 62,
+      "multi_qubit_gate_count": 0,
+      "num_clbits": 4,
+      "num_qubits": 156,
+      "one_qubit_gate_count": 63,
+      "operation_counts": {
+        "cz": 16,
+        "measure": 4,
+        "rz": 31,
+        "sx": 31,
+        "x": 1
+      },
+      "size": 83,
+      "swap_count": 0,
+      "two_qubit_gate_count": 16,
+      "width": 160
+    },
+    "transpiled_two_qubit_depth": 16,
+    "usage_before_submission": {
+      "estimated_remaining_seconds": 9280.0,
+      "usage_allocation_seconds": 10800,
+      "usage_consumed_seconds": 1520,
+      "usage_limit_reached": false,
+      "usage_limit_seconds": 10800,
+      "usage_period": {
+        "end_time": "2027-08-02T17:13:13.026Z",
+        "start_time": "2026-08-02T17:13:13.026Z"
+      }
+    }
+  }
+]

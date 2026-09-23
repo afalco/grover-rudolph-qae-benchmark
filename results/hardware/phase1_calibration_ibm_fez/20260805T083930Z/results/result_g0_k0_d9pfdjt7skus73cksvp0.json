@@ -1,0 +1,90 @@
+{
+  "a_exact": 0.25,
+  "backend": "ibm_fez",
+  "backend_status": {
+    "operational": true,
+    "pending_jobs": 1,
+    "status_msg": "active"
+  },
+  "campaign_id": "phase1_calibration_ibm_fez",
+  "case_id": "g0",
+  "counts": {
+    "000": 370,
+    "001": 364,
+    "010": 395,
+    "011": 393,
+    "100": 128,
+    "101": 129,
+    "110": 116,
+    "111": 153
+  },
+  "expected_p_k": 0.24999999999999994,
+  "fetch_status": "DONE",
+  "fetched_utc": "2026-08-05T08:46:01.502379+00:00",
+  "initial_layout": null,
+  "job_id": "d9pfdjt7skus73cksvp0",
+  "k": 0,
+  "label": "g0_constant_quarter",
+  "logical_metrics": {
+    "depth": 2,
+    "multi_qubit_gate_count": 0,
+    "num_clbits": 3,
+    "num_qubits": 3,
+    "one_qubit_gate_count": 3,
+    "operation_counts": {
+      "h": 2,
+      "measure": 3,
+      "ry": 1
+    },
+    "size": 6,
+    "swap_count": 0,
+    "two_qubit_gate_count": 0,
+    "width": 6
+  },
+  "m_ancilla": 526,
+  "optimization_level": 0,
+  "p_abs_dev": 0.0068359375000000555,
+  "p_hat": 0.2568359375,
+  "prepared_utc": "2026-08-05T08:39:31.876928+00:00",
+  "purpose": "Amplitude calibration and degeneracy-avoiding MLAE schedule.",
+  "qasm_path": "/Users/antoniofalco/Library/CloudStorage/Dropbox/TENSORS/Quantum_TENSORS/IBM_Quantum_Proposal/grover-rudolph-qae-benchmark/results/hardware/phase1_calibration_ibm_fez/20260805T083930Z/circuits/g0_k0_transpiled.qasm",
+  "seed": 12345,
+  "shots": 2048,
+  "structural_metrics": {
+    "canonical_length": 1.480960979386122,
+    "maximum_degree": 0,
+    "minimum_m1_stratum": 4,
+    "multilinear_support": 1
+  },
+  "submitted": true,
+  "submitted_utc": "2026-08-05T08:39:44.077733+00:00",
+  "transpile_seconds": 1.020826124935411,
+  "transpiled_metrics": {
+    "depth": 6,
+    "multi_qubit_gate_count": 0,
+    "num_clbits": 3,
+    "num_qubits": 156,
+    "one_qubit_gate_count": 11,
+    "operation_counts": {
+      "measure": 3,
+      "rz": 7,
+      "sx": 4
+    },
+    "size": 14,
+    "swap_count": 0,
+    "two_qubit_gate_count": 0,
+    "width": 159
+  },
+  "transpiled_two_qubit_depth": 0,
+  "usage_before_submission": {
+    "estimated_remaining_seconds": 9434.0,
+    "usage_allocation_seconds": 10800,
+    "usage_consumed_seconds": 1366,
+    "usage_limit_reached": false,
+    "usage_limit_seconds": 10800,
+    "usage_period": {
+      "end_time": "2027-08-02T17:13:13.026Z",
+      "start_time": "2026-08-02T17:13:13.026Z"
+    }
+  }
+}

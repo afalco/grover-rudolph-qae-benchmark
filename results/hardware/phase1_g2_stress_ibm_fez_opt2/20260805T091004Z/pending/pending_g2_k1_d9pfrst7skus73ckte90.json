@@ -1,0 +1,81 @@
+{
+  "a_exact": 0.5,
+  "backend": "ibm_fez",
+  "backend_status": {
+    "operational": true,
+    "pending_jobs": 0,
+    "status_msg": "active"
+  },
+  "campaign_id": "phase1_g2_stress_ibm_fez_opt2",
+  "case_id": "g2",
+  "expected_p_k": 0.4999999999999996,
+  "initial_layout": null,
+  "job_id": "d9pfrst7skus73ckte90",
+  "k": 1,
+  "label": "sin2_pi_x",
+  "logical_metrics": {
+    "depth": 37,
+    "multi_qubit_gate_count": 4,
+    "num_clbits": 3,
+    "num_qubits": 3,
+    "one_qubit_gate_count": 30,
+    "operation_counts": {
+      "ccx": 4,
+      "cx": 12,
+      "h": 8,
+      "measure": 3,
+      "ry": 15,
+      "x": 6,
+      "z": 1
+    },
+    "size": 49,
+    "swap_count": 0,
+    "two_qubit_gate_count": 12,
+    "width": 6
+  },
+  "optimization_level": 2,
+  "prepared_utc": "2026-08-05T09:10:05.318725+00:00",
+  "purpose": "Quadratic encoding stress test with a consistent optimization_level=2 MLAE schedule.",
+  "qasm_path": "/Users/antoniofalco/Library/CloudStorage/Dropbox/TENSORS/Quantum_TENSORS/IBM_Quantum_Proposal/grover-rudolph-qae-benchmark/results/hardware/phase1_g2_stress_ibm_fez_opt2/20260805T091004Z/circuits/g2_k1_transpiled.qasm",
+  "seed": 12345,
+  "shots": 2048,
+  "structural_metrics": {
+    "canonical_length": 6.473754857208568,
+    "maximum_degree": 2,
+    "minimum_m1_stratum": 1,
+    "multilinear_support": 4
+  },
+  "submitted": true,
+  "submitted_utc": "2026-08-05T09:10:12.025200+00:00",
+  "transpile_seconds": 0.025969540933147073,
+  "transpiled_metrics": {
+    "depth": 167,
+    "multi_qubit_gate_count": 0,
+    "num_clbits": 3,
+    "num_qubits": 156,
+    "one_qubit_gate_count": 189,
+    "operation_counts": {
+      "cz": 43,
+      "measure": 3,
+      "rz": 86,
+      "sx": 97,
+      "x": 6
+    },
+    "size": 235,
+    "swap_count": 0,
+    "two_qubit_gate_count": 43,
+    "width": 159
+  },
+  "transpiled_two_qubit_depth": 43,
+  "usage_before_submission": {
+    "estimated_remaining_seconds": 9401.0,
+    "usage_allocation_seconds": 10800,
+    "usage_consumed_seconds": 1399,
+    "usage_limit_reached": false,
+    "usage_limit_seconds": 10800,
+    "usage_period": {
+      "end_time": "2027-08-02T17:13:13.026Z",
+      "start_time": "2026-08-02T17:13:13.026Z"
+    }
+  }
+}

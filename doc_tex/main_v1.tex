@@ -1,0 +1,62 @@
+\documentclass[11pt,a4paper]{article}
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{bm}
+\usepackage[margin=2.6cm]{geometry}
+\usepackage{xcolor}
+\usepackage{hyperref}
+\usepackage{booktabs}
+\usepackage{graphicx}
+\usepackage{enumitem}
+\usepackage[expansion=false,protrusion=true]{microtype}
+
+\hypersetup{
+  colorlinks=true,
+  linkcolor=blue!50!black,
+  citecolor=green!40!black,
+  urlcolor=blue!50!black
+}
+
+\graphicspath{{figures/}}
+
+\newcommand{\QAE}{\mathrm{QAE}}
+\newcommand{\MLAE}{\mathrm{MLAE}}
+\newcommand{\IQAE}{\mathrm{IQAE}}
+\newcommand{\GR}{\mathrm{GR}}
+\newcommand{\U}{\mathrm{U}}
+\newcommand{\SU}{\mathrm{SU}}
+\newcommand{\ket}[1]{\lvert #1\rangle}
+\newcommand{\bra}[1]{\langle #1\rvert}
+
+\title{\bf Benchmarking Grover--Rudolph State Preparation\\
+for Utility-Scale Quantum Numerical Integration}
+\author{}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+This report documents the methodology, implementation, and experimental results
+of the IBM Quantum Credits project on benchmarking Grover--Rudolph quantum state
+preparation for amplitude-estimation-based numerical integration on IBM quantum
+hardware.
+\end{abstract}
+
+\tableofcontents
+
+\input{sections/01_introduction}
+\input{sections/02_background}
+\input{sections/03_methodology}
+\input{sections/04_experiments}
+\input{sections/05_results}
+\input{sections/06_conclusions}
+
+\bibliographystyle{plain}
+\bibliography{references}
+
+\end{document}
+

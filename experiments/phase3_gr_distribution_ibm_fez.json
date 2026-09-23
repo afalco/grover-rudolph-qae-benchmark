@@ -1,0 +1,61 @@
+{
+  "campaign_id": "phase3_gr_distribution_ibm_fez",
+  "description": "First hardware measurement campaign for larger Grover-Rudolph state-preparation distributions. This campaign measures the prepared distribution only; it does not run QAE amplification.",
+  "backend": "ibm_fez",
+  "shots": 2048,
+  "optimization_level": 2,
+  "implementation": "ucry",
+  "seed": 12345,
+  "submit_to_qpu": false,
+  "rationale": [
+    "Phase 0-GR exact statevector checks gave total variation distance at numerical roundoff.",
+    "The ibm_fez transpilation audit kept all selected circuits below depth and two-qubit-gate thresholds.",
+    "Distribution measurement should precede QAE amplification for larger Grover-Rudolph loaders."
+  ],
+  "selected_cases": [
+    {
+      "case_id": "gr_sin2_n3",
+      "label": "sin2(pi x), 8 midpoint cells",
+      "num_qubits": 3,
+      "function": {
+        "kind": "sin2"
+      },
+      "purpose": "Lowest-cost n=3 Grover-Rudolph distribution candidate from Phase 0-GR."
+    },
+    {
+      "case_id": "gr_sin2_half_n3",
+      "label": "sin2(pi x / 2), 8 midpoint cells",
+      "num_qubits": 3,
+      "function": {
+        "kind": "sin2_half"
+      },
+      "purpose": "Smooth monotone n=3 distribution candidate."
+    },
+    {
+      "case_id": "gr_affine_n4",
+      "label": "affine positive density, 16 midpoint cells",
+      "num_qubits": 4,
+      "function": {
+        "kind": "affine",
+        "offset": 0.11,
+        "slope": 0.57
+      },
+      "purpose": "First nontrivial 16-point Grover-Rudolph grid candidate."
+    }
+  ],
+  "deferred_cases": [
+    {
+      "case_id": "gr_beta_bump_n4",
+      "reason": "Viable by depth and two-qubit count, but slightly more sensitive in the noisy TVD audit."
+    }
+  ],
+  "phase0_gr_evidence": {
+    "audit_json": "results/phase0_gr/phase0_gr_audit_20260805T102916Z.json",
+    "audit_csv": "results/phase0_gr/phase0_gr_audit_20260805T102916Z.csv"
+  },
+  "stopping_rules": [
+    "Do not add QAE amplification until measured distribution TVD has been reviewed.",
+    "Pause if the n=3 circuits show TVD substantially above the noisy simulation readout.",
+    "Rerun Phase 0-GR if backend calibration or queue status changes substantially before submission."
+  ]
+}

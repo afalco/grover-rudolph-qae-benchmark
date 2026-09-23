@@ -1,0 +1,422 @@
+\section{Experiments}
+\label{sec:experiments}
+
+The experiments are reported in chronological phases for reproducibility, but
+they should be read through the three-workflow structure introduced in
+Section~\ref{sec:methodology}. Table~\ref{tab:workflow-phase-map} gives the
+map used throughout the remainder of the report.
+
+\begin{table}[h]
+\centering
+\begin{tabular}{p{0.16\textwidth}p{0.48\textwidth}p{0.26\textwidth}}
+\toprule
+Workflow & Experimental role & Main phases \\
+\midrule
+A & Angle-structured QAE integration of \(g\)
+  & Phases 1, 1b, 12--13, planned Phase 16 \\
+B & Grover--Rudolph finite-law preparation and direct \(I_p(f)\)
+  & Phases 3--7, 9--11, 14--15 \\
+C & Backend-aware selection, mitigation, and rejection
+  & Phases 0, 2, 6, 8, 11, 13--15 \\
+\bottomrule
+\end{tabular}
+\caption{Conceptual organization of the experimental phases. The phase numbers
+remain chronological execution labels; the workflows define the scientific
+interpretation of each experiment.}
+\label{tab:workflow-phase-map}
+\end{table}
+
+\subsection{Calibration functions}
+
+The first hardware campaign belongs to Workflow A. It uses three
+two-grid-qubit calibration instances. The ancilla qubit encodes the integrand
+value \(g(x_i)\) through a controlled rotation state preparation, so the
+measured success probability is a uniform-grid quadrature estimate of \(g\).
+
+\begin{table}[h]
+\centering
+\begin{tabular}{llrrrr}
+\toprule
+Case & Description & \(a\) & Degree & Support & \(L_{\mathrm{can}}\) \\
+\midrule
+\texttt{g0} & constant quarter & 0.25 & 0 & 1 & 1.481 \\
+\texttt{g1} & affine \(\sin^2(\pi x/2)\) & 0.50 & 1 & 3 & 2.912 \\
+\texttt{g2} & quadratic \(\sin^2(\pi x)\) & 0.50 & 2 & 4 & 6.474 \\
+\bottomrule
+\end{tabular}
+\caption{Calibration functions and structural encoding metrics.}
+\label{tab:calibration-functions}
+\end{table}
+
+\subsection{Phase 1 campaign sequence}
+
+All accepted hardware results used \texttt{ibm\_fez}, 2048 shots per circuit,
+and seed 12345. The campaign sequence was:
+\begin{enumerate}[leftmargin=*]
+  \item an initial six-circuit calibration campaign at optimization level 0;
+  \item a controlled \(g_0\) repeat at optimization level 2 after detecting a
+        hardware anomaly in \(g_0,k=2\);
+  \item a full \(g_1\) stress campaign with \(K=\{0,1,2\}\) at optimization
+        level 2;
+  \item a full \(g_2\) stress campaign with \(K=\{0,1,2\}\) at optimization
+        level 2.
+\end{enumerate}
+
+\begin{table}[h]
+\centering
+\begin{tabular}{llrrr}
+\toprule
+Campaign & Schedule & Opt. level & Max depth & Max 2q gates \\
+\midrule
+\texttt{g0} repeat & \(K=\{0,2\}\) & 2 & 71 & 19 \\
+\texttt{g1} stress & \(K=\{0,1,2\}\) & 2 & 152 & 36 \\
+\texttt{g2} stress & \(K=\{0,1,2\}\) & 2 & 291 & 79 \\
+\bottomrule
+\end{tabular}
+\caption{Accepted Phase 1 hardware campaigns after compilation tuning.}
+\label{tab:accepted-campaigns}
+\end{table}
+
+\subsection{Grover--Rudolph distribution campaign}
+
+After the Phase 1b simulator comparison, the project moves from Workflow A to
+Workflow B: direct validation of larger Grover--Rudolph state-preparation
+circuits. This campaign deliberately measures only the prepared distribution:
+no Grover amplification and no QAE estimator is applied yet. The purpose is to
+test whether the hardware reproduces the dyadic probability law before using
+that law to compute finite-grid quantities \(I_p(f)\), or before spending
+credits on amplified circuits.
+
+The case names use the convention defined in
+Section~\ref{subsec:gr-case-names}: \(\texttt{gr\_<profile>\_n<n>}\) denotes a
+probability law on \(2^n\) midpoint cells, with probabilities obtained by
+normalizing a positive profile \(F\) on the grid. The exact probability of a
+cell is therefore not the raw value \(F(x_i)\), but
+\[
+  p_i=\frac{F(x_i)}{\sum_j F(x_j)}.
+\]
+The concrete profiles used in the larger-grid audit are listed in
+Table~\ref{tab:gr-case-definitions}. This table is part of the mathematical
+definition of the experiments.
+
+\begin{table}[h]
+\centering
+\begin{tabular}{lllll}
+\toprule
+Case & \(n\) & Grid size & Profile \(F(x_i)\) & Angle class \\
+\midrule
+\texttt{gr\_sin2\_half\_n3} & 3 & 8
+  & \(\sin^2(\pi x_i/2)\) & \(\mathcal{G}^{(1)}_3\) \\
+\texttt{gr\_sin2\_n3} & 3 & 8
+  & \(\sin^2(\pi x_i)\) & \(\mathcal{G}^{(2)}_3\) \\
+\texttt{gr\_affine\_n4} & 4 & 16
+  & \(0.11+0.57x_i\) & \(\mathcal{G}^{(4)}_4\) \\
+\texttt{gr\_beta\_bump\_n4} & 4 & 16
+  & \(x_i(1-x_i)^4\) & \(\mathcal{G}^{(4)}_4\) \\
+\bottomrule
+\end{tabular}
+\caption{Self-contained mathematical definition of the Grover--Rudolph
+larger-grid cases. The grid points are \(x_i=(i+1/2)/2^n\), and every row uses
+\(p_i=F(x_i)/\sum_j F(x_j)\). The last column reports the angle-structure class
+obtained when the same sampled profile is interpreted as a QAE amplitude
+function \(g\), not as a normalized probability law.}
+\label{tab:gr-case-definitions}
+\end{table}
+
+This last column is important. The profile \(F(x)=0.11+0.57x\) is affine as a
+classical function of \(x\), but the associated QAE angle map
+\(2\arcsin\sqrt{F(x_i)}\) has full multilinear degree on the \(n=4\) grid. Thus
+``affine profile'' and ``affine angle encoding'' are different statements. The
+hardware interpretation of the larger Grover--Rudolph experiments is therefore
+not that all later cases lie in the first classes of
+\cite{chinesta2026encoding}; rather, the experiments deliberately compare the
+low-degree calibration hierarchy \(g_0,g_1,g_2\) with richer finite probability
+laws whose direct state-preparation circuits are still short because of the
+Grover--Rudolph probability-tree structure.
+
+The prepared campaign uses \texttt{ibm\_fez}, 2048 shots per circuit,
+optimization level 2, seed 12345, and the \texttt{UCRY} implementation of the
+Grover--Rudolph stages. The three selected circuits are listed in
+Table~\ref{tab:gr-distribution-campaign}.
+
+\begin{table}[h]
+\centering
+\begin{tabular}{llrrrr}
+\toprule
+Case & Profile & Qubits & Grid & Depth & 2q gates \\
+\midrule
+\texttt{gr\_sin2\_n3} & \(\sin^2(\pi x)\) & 3 & 8 & 31 & 7 \\
+\texttt{gr\_sin2\_half\_n3} & \(\sin^2(\pi x/2)\) & 3 & 8 & 36 & 7 \\
+\texttt{gr\_affine\_n4} & \(0.11+0.57x\) & 4 & 16 & 76 & 16 \\
+\bottomrule
+\end{tabular}
+\caption{Prepared Grover--Rudolph distribution-measurement campaign on
+\texttt{ibm\_fez}. The campaign measures the output distribution only.}
+\label{tab:gr-distribution-campaign}
+\end{table}
+
+The deferred case is \texttt{gr\_beta\_bump\_n4}. It is viable by depth and
+two-qubit count, but its localized probability profile made it slightly more
+sensitive in the noisy Phase 0-GR audit.
+
+\subsection{Minimal amplified Grover--Rudolph test}
+
+After the mitigated distribution repeat, the first amplified test is defined as
+a minimal MLAE campaign on \texttt{gr\_affine\_n4}. The marked event is the
+upper half of the dyadic grid,
+\[
+  E_{\mathrm{upper}}
+  =
+  \{x_i=(i+1/2)/16: i=8,\ldots,15\}.
+\]
+For the affine probability law
+\[
+  p_i=
+  \frac{0.11+0.57x_i}{\sum_{j=0}^{15}(0.11+0.57x_j)},
+\]
+this event has exact probability
+\[
+  a
+  =
+  \sum_{i=8}^{15}p_i
+  =
+  0.6803797468\ldots.
+\]
+The first schedule is \(K=\{0,1\}\); \(k=2\) remains deferred until these two
+circuits are retrieved.
+
+\begin{table}[h]
+\centering
+\begin{tabular}{lrrrrr}
+\toprule
+Case & \(k\) & Expected \(p_k\) & Depth & 2q gates & 2q depth \\
+\midrule
+\texttt{gr\_affine\_n4} & 0 & 0.680380 & 74 & 16 & 16 \\
+\texttt{gr\_affine\_n4} & 1 & 0.052765 & 225 & 51 & 51 \\
+\bottomrule
+\end{tabular}
+\caption{Prepared minimal amplified Grover--Rudolph MLAE campaign on
+\texttt{ibm\_fez}. Runtime options match the mitigated distribution repeat.}
+\label{tab:phase4-gr-mlae-prepared}
+\end{table}
+
+\subsection{Phase 9 integration-scaling audit}
+
+The Phase 9 audit is credit-free. It studies whether direct
+Grover--Rudolph probability loading can support algebraic integration as the
+grid is refined from \(2^3\) to \(2^5\) cells. The initial cases are listed in
+Table~\ref{tab:phase9-scaling-cases}. The affine \(n=4\) law is included as the
+cross-backend anchor from Phases 7 and 8; the \(n=5\) laws are not submitted to
+hardware unless the backend-aware audit predicts acceptable cost and
+quantity-of-interest error.
+
+\begin{table}[h]
+\centering
+\begin{tabular}{llllc}
+\toprule
+Case & Profile \(F(x)\) & Grid & Angle class & Role \\
+\midrule
+\texttt{gr\_sin2\_n3} & \(\sin^2(\pi x)\) & 8 & \(\mathcal{G}^{(2)}_3\) & baseline \\
+\texttt{gr\_sin2\_n4} & \(\sin^2(\pi x)\) & 16 & \(\mathcal{G}^{(2)}_4\) & refinement \\
+\texttt{gr\_sin2\_n5} & \(\sin^2(\pi x)\) & 32 & \(\mathcal{G}^{(2)}_5\) & stress \\
+\texttt{gr\_affine\_n4} & \(0.11+0.57x\) & 16 & \(\mathcal{G}^{(4)}_4\) & cross-backend anchor \\
+\texttt{gr\_affine\_n5} & \(0.11+0.57x\) & 32 & \(\mathcal{G}^{(5)}_5\) & refinement \\
+\texttt{gr\_beta\_bump\_n4} & \(x(1-x)^4\) & 16 & \(\mathcal{G}^{(4)}_4\) & localized diagnostic \\
+\texttt{gr\_beta\_bump\_n5} & \(x(1-x)^4\) & 32 & \(\mathcal{G}^{(5)}_5\) & localized stress \\
+\bottomrule
+\end{tabular}
+\caption{Initial Phase 9 grid-scaling cases for direct algebraic integration.
+Each profile is normalized on the dyadic midpoint grid before state
+preparation. The angle class again refers to the raw sampled profile interpreted
+as a QAE amplitude function.}
+\label{tab:phase9-scaling-cases}
+\end{table}
+
+The tested quantities of interest are the upper-half mass, \(I_p(x)\),
+\(I_p(x^2)\), \(I_p(\sin(\pi x))\), and the call payoff
+\(I_p((x-1/2)_+)\). The audit writes both a case-level candidate table and a
+quantity-level error table. A row is promoted to a hardware candidate only when
+it satisfies all structural and noise-model thresholds; amplified QAE remains
+outside this phase.
+
+\subsection{Phase 10 sampling-baseline comparison}
+
+Phase 10 uses no additional QPU credits. It reuses the fetched Phase 9 counts
+for the 32-cell affine law and the 32-cell beta-like stress law on
+\texttt{ibm\_kingston}. For each case, the hardware sample size is \(M=8192\).
+The comparison then generates 1000 independent MC trials and 1000 randomized
+QMC trials with the same \(M\), always sampling from the exact finite law
+\(p^{(n)}\). The tested quantities are again the upper-half mass, \(I_p(x)\),
+\(I_p(x^2)\), \(I_p(\sin(\pi x))\), and \(I_p((x-1/2)_+)\).
+
+The purpose is not to claim a quantum advantage. The purpose is to locate the
+hardware estimates relative to the ordinary finite-law sampling scale. The MC
+baseline represents direct random sampling from \(p^{(n)}\). The QMC baseline
+uses the inverse CDF of \(p^{(n)}\), and is therefore a strong reference once
+the finite law is known. A QPU estimate is considered competitive with MC for a
+given test function only when its absolute error is comparable with the MC
+RMSE at the same sample count.
+
+\subsection{Phase 11 dual angle-structure strategy}
+
+Phase 11 is again credit-free. It converts the discussion of
+Section~\ref{subsec:angle-structure-integrability} into a decision table for
+pairs \((F,f)\), where \(F\) defines the Grover--Rudolph probability law and
+\(f\) is the test function in \(I_p(f)\). For each pair the script records:
+\begin{itemize}[leftmargin=*]
+  \item the angle class of the sampled profile \(F\), interpreted as a QAE
+        amplitude function;
+  \item the angle class of the test function \(f\), also interpreted as a QAE
+        amplitude function;
+  \item the Phase 9 direct-sampling audit status, when available;
+  \item the Phase 10 MC/QMC comparison status, when available;
+  \item a conservative recommendation: direct sampling, simulator-only QAE,
+        amplified-QAE candidate, diagnostic, or deferred QPU repeat.
+\end{itemize}
+The rule is intentionally asymmetric. Low angle degree can promote a pair to a
+simulator QAE candidate, but poor Phase 10 evidence can still veto additional
+QPU spending. Conversely, high angle degree does not prevent direct
+Grover--Rudolph integration, because direct sampling estimates \(I_p(f)\) from
+the measured finite law rather than loading \(f\) as an amplitude oracle.
+
+\subsection{Phase 12 local QAE-amplitude audit}
+
+Phase 12 checks the Phase 11 amplified-QAE candidates by constructing the
+actual amplitude circuit before any backend audit. Given a finite law \(p\) and
+a test function \(f\in[0,1]\), the preparation block maps
+\[
+  \ket{0}
+  \longmapsto
+  \sum_i \sqrt{p_i}\ket{i}
+  \left(\sqrt{1-f(x_i)}\ket{0}+\sqrt{f(x_i)}\ket{1}\right).
+\]
+The objective-qubit probability is therefore \(I_p(f)\). For each selected
+pair the audit builds \(Q^kA\ket{0}\), \(k=0,1,2\), verifies the exact
+statevector probability against
+\[
+  p_k(a)=\sin^2((2k+1)\arcsin\sqrt{a}),
+  \qquad a=I_p(f),
+\]
+and transpiles locally to the \texttt{cz}, \texttt{rz}, \texttt{sx}, and
+\texttt{x} basis. The audit also flags degenerate schedules where \(p_k(a)\) is
+constant over the selected \(k\) values, as happens for \(a=1/2\).
+
+\subsection{Phase 13 backend-aware amplified-QAE veto}
+
+Phase 13 keeps the same no-credit policy but adds backend-derived noisy
+simulation for the only non-degenerate Phase 12 amplified-QAE candidate:
+\(\texttt{gr\_sin2\_n3}\) with \(f(x)=\sin(\pi x)\). The script constructs the
+augmented finite-law amplitude circuit, transpiles it against the selected IBM
+backend, simulates with the corresponding noise model, and accepts a schedule
+only if all required \(k\)-levels pass the depth, two-qubit-gate, and noisy
+probability thresholds. No QPU jobs are submitted in this phase.
+
+\subsection{Phase 14 direct-sampling scaling audit}
+
+Phase 14 returns to direct Grover--Rudolph integration, because this was the
+hardware-facing workflow retained after Phases 10--13. The audit is again
+credit-free and compares \(n=4\), \(n=5\), and \(n=6\) midpoint grids for three
+probability-profile families: the smooth symmetric profile
+\(\sin^2(\pi x)\), the positive affine profile
+\[
+  F_{\rm aff}(x)=0.11+0.57x,
+\]
+and the localized beta-like stress profile
+\[
+  F_{\rm beta}(x)=x(1-x)^4.
+\]
+For each profile the script builds the Grover--Rudolph state-preparation
+circuit, transpiles locally to the \texttt{cz}, \texttt{id}, \texttt{rz},
+\texttt{sx}, and \texttt{x} basis over several optimization levels and seeds,
+and records the best two-qubit-gate/depth candidate. It also computes
+finite-law values \(I_p(f)\), continuous midpoint-reference errors, MC and
+randomized-QMC sampling baselines at the same shot count, and the angle class
+of the profile and each tested quantity of interest. A row promoted by this
+phase is only a candidate for a later backend-aware audit, not for immediate
+QPU submission.
+
+\subsection{Phase 15 alternative smooth probability-law screening}
+
+Phase 15 closes the direct finite-law integration block by asking whether the
+observed affine \(n=6\) bias is specific to the one-sided affine probability
+law or persists for smoother centered laws. The tested reference candidate is a
+Gaussian-like profile on the 64-point midpoint grid,
+\[
+  F_{\rm gauss}(x)=
+  \exp\!\left(-\frac{1}{2}\left(\frac{x-1/2}{0.25}\right)^2\right),
+  \qquad
+  p_i=\frac{F_{\rm gauss}(x_i)}{\sum_j F_{\rm gauss}(x_j)} .
+\]
+As in Phase 14, the audit first performs local and backend-aware transpilation
+and noisy simulation. A QPU campaign is submitted only after the candidate
+passes the backend-aware screening. The measured distribution is then evaluated
+through the same five quantities of interest:
+\[
+  1_{x\ge 1/2},\qquad x,\qquad x^2,\qquad \sin(\pi x),\qquad (x-1/2)_+ .
+\]
+
+\subsection{Transition to quadrature-rule QAE integration}
+
+Phases 3--15 study direct Grover--Rudolph finite-law integration:
+\[
+  I_p(f)=\sum_i p_i f(x_i),
+\]
+where \(p\) is a measured probability law. This is a useful hardware workflow,
+but it is distinct from the numerical-integration protocol analysed in the
+angle-structure paper. In that protocol the integrand \(g\) itself is encoded
+as an amplitude and the quadrature rule is explicit: left Riemann, midpoint,
+right Riemann, or Simpson. The next experimental block therefore returns to
+\[
+  I[g]=\int_0^1 g(x)\,dx,\qquad Q_n^{(p)}[g],
+\]
+and separates four terms: quadrature rule, discretization error, QAE/MLAE
+estimation error, and encoding-circuit cost.
+
+\subsection{Phase 15b quadrature-rule QAE microcampaign}
+\label{subsec:phase15b-quadrature-microcampaign}
+
+The first hardware test of this returned Workflow-A formulation used midpoint
+quadrature only. The goal was not yet to compare all quadrature rules on
+hardware, but to verify that the new scripts correctly separate
+\[
+  Q_n[g],\qquad I[g],\qquad
+  \widehat Q_n[g]-Q_n[g],\qquad
+  \widehat Q_n[g]-I[g].
+\]
+The selected cases are listed in Table~\ref{tab:phase15b-campaign}. They were
+chosen to include the two non-degenerate calibration functions \(g_1,g_2\), one
+non-special affine amplitude, and one smooth low-amplitude stress function.
+
+\begin{table}[h]
+\centering
+\begin{tabular}{llrrrr}
+\toprule
+Case & Rule & \(n\) & Schedule \(K\) & Max depth & Max 2q gates \\
+\midrule
+\texttt{g1} & midpoint & 2 & \(\{0,1\}\) & 72 & 19 \\
+\texttt{g2} & midpoint & 2 & \(\{0,1,2\}\) & 99 & 32 \\
+\texttt{affine\_shifted} & midpoint & 2 & \(\{0,1\}\) & 83 & 20 \\
+\texttt{smooth\_bump} & midpoint & 3 & \(\{0,1,2\}\) & 304 & 76 \\
+\bottomrule
+\end{tabular}
+\caption{Phase 15b quadrature-rule QAE microcampaign on
+\texttt{ibm\_kingston}. The circuits used 2048 shots per amplification level,
+optimization level 2, dynamical decoupling, and randomized compiling/twirling.}
+\label{tab:phase15b-campaign}
+\end{table}
+
+The campaign is defined by
+\[
+  \texttt{experiments/phase15b\_quadrature\_microcampaign\_ibm\_kingston.json}
+\]
+and executed through
+\[
+  \texttt{scripts/submit\_quadrature\_qae\_campaign.py}.
+\]
+The result fetcher
+\[
+  \texttt{scripts/fetch\_quadrature\_qae\_results.py}
+\]
+groups the hardware probabilities by case and amplification schedule, performs
+the MLAE likelihood inversion, and stores both circuit-level probabilities and
+case-level quadrature estimates.

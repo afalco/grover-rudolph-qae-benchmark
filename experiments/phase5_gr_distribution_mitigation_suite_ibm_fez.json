@@ -1,0 +1,74 @@
+{
+  "campaign_id": "phase5_gr_distribution_mitigation_suite_ibm_fez",
+  "description": "Mitigated direct-distribution microcampaign for the remaining Grover-Rudolph larger-grid profiles. This campaign measures prepared distributions only; it does not run Grover amplification or QAE.",
+  "backend": "ibm_fez",
+  "shots": 4096,
+  "optimization_level": 2,
+  "implementation": "ucry",
+  "seed": 12345,
+  "submit_to_qpu": false,
+  "runtime_options": {
+    "dynamical_decoupling": {
+      "enable": true,
+      "sequence_type": "XY4",
+      "scheduling_method": "alap"
+    },
+    "twirling": {
+      "enable_gates": true,
+      "enable_measure": true,
+      "num_randomizations": 32,
+      "shots_per_randomization": 128,
+      "strategy": "active-accum"
+    }
+  },
+  "rationale": [
+    "The amplified gr_affine_n4 k=1 circuit is not yet stable enough for deeper QAE schedules.",
+    "The mitigated direct-distribution estimator gave the best current gr_affine_n4 upper_half estimate.",
+    "The next hardware question is whether direct mitigated distribution measurement generalizes to the remaining Grover-Rudolph profiles.",
+    "The gr_beta_bump_n4 case was deferred in the first distribution campaign and is the most important stress test because of its localized probability mass."
+  ],
+  "selected_cases": [
+    {
+      "case_id": "gr_sin2_n3",
+      "label": "sin2(pi x), 8 midpoint cells",
+      "num_qubits": 3,
+      "function": {
+        "kind": "sin2"
+      },
+      "purpose": "Mitigated repeat of the symmetric n=3 profile to quantify whether Runtime mitigation improves or perturbs an already stable distribution."
+    },
+    {
+      "case_id": "gr_sin2_half_n3",
+      "label": "sin2(pi x / 2), 8 midpoint cells",
+      "num_qubits": 3,
+      "function": {
+        "kind": "sin2_half"
+      },
+      "purpose": "Mitigated repeat of the monotone n=3 profile to compare against the first raw distribution run."
+    },
+    {
+      "case_id": "gr_beta_bump_n4",
+      "label": "beta-like localized bump, 16 midpoint cells",
+      "num_qubits": 4,
+      "function": {
+        "kind": "beta_bump",
+        "alpha": 2.0,
+        "beta": 5.0
+      },
+      "purpose": "First hardware run for the deferred localized n=4 Grover-Rudolph distribution."
+    }
+  ],
+  "reference_evidence": {
+    "phase0_gr_audit": "results/phase0_gr/phase0_gr_audit_20260805T102916Z.json",
+    "first_distribution_run": "results/hardware/phase3_gr_distribution_ibm_fez/20260805T103539Z/fetched_gr_distribution_results.json",
+    "mitigated_affine_reference": "results/hardware/phase3_gr_affine_n4_mitigation_ibm_fez/20260805T112409Z/fetched_gr_distribution_results.json",
+    "affine_mitigated_tvd": 0.034112,
+    "affine_mitigated_max_dev": 0.008585
+  },
+  "stopping_rules": [
+    "Do not submit any additional amplified Grover-Rudolph circuits until this suite is retrieved and compared to the raw distribution campaign.",
+    "If gr_beta_bump_n4 TVD is substantially above 0.05, perform a layout/seed audit before any QAE attempt on localized profiles.",
+    "If n=3 mitigation worsens TVD relative to the raw runs, avoid applying DD/twirling automatically to all short circuits.",
+    "If all three cases show TVD below or near their Phase 0 noisy estimates, proceed to a direct-observable estimator campaign rather than a deeper MLAE schedule."
+  ]
+}

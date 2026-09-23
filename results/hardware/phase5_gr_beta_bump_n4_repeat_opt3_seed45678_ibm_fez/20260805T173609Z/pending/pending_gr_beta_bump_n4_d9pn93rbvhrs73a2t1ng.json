@@ -1,0 +1,107 @@
+{
+  "backend": "ibm_fez",
+  "backend_status": {
+    "operational": true,
+    "pending_jobs": 2,
+    "status_msg": "active"
+  },
+  "campaign_id": "phase5_gr_beta_bump_n4_repeat_opt3_seed45678_ibm_fez",
+  "campaign_type": "gr_distribution_measurement",
+  "case_id": "gr_beta_bump_n4",
+  "conditional_rotation_count": 15,
+  "grid_points": 16,
+  "implementation": "ucry",
+  "initial_layout": null,
+  "job_id": "d9pn93rbvhrs73a2t1ng",
+  "label": "beta-like localized bump, 16 midpoint cells",
+  "logical_metrics": {
+    "depth": 5,
+    "multi_qubit_gate_count": 2,
+    "num_clbits": 4,
+    "num_qubits": 4,
+    "one_qubit_gate_count": 1,
+    "operation_counts": {
+      "measure": 4,
+      "ry": 1,
+      "ucry": 3
+    },
+    "size": 8,
+    "swap_count": 0,
+    "two_qubit_gate_count": 1,
+    "width": 8
+  },
+  "nonzero_conditional_rotation_count": 15,
+  "num_qubits": 4,
+  "optimization_level": 3,
+  "prepared_utc": "2026-08-05T17:36:10.144428+00:00",
+  "purpose": "Focused repeat of the localized 16-cell distribution using the best audited opt/seed candidate.",
+  "qasm_path": "/Users/antoniofalco/Library/CloudStorage/Dropbox/TENSORS/Quantum_TENSORS/IBM_Quantum_Proposal/grover-rudolph-qae-benchmark/results/hardware/phase5_gr_beta_bump_n4_repeat_opt3_seed45678_ibm_fez/20260805T173609Z/circuits/gr_beta_bump_n4_transpiled.qasm",
+  "runtime_options": {
+    "dynamical_decoupling": {
+      "enable": true,
+      "scheduling_method": "alap",
+      "sequence_type": "XY4"
+    },
+    "twirling": {
+      "enable_gates": true,
+      "enable_measure": true,
+      "num_randomizations": 32,
+      "shots_per_randomization": 128,
+      "strategy": "active-accum"
+    }
+  },
+  "seed": 45678,
+  "shots": 4096,
+  "source": "function:beta_bump",
+  "submitted": true,
+  "submitted_utc": "2026-08-05T17:36:15.782440+00:00",
+  "target_probabilities": [
+    0.05135602400526728,
+    0.11799344036942132,
+    0.14776435377962843,
+    0.1520556956900847,
+    0.14005495275464447,
+    0.11896370515695068,
+    0.09421116494056517,
+    0.06966771433909887,
+    0.04785844410634209,
+    0.030176691846394762,
+    0.01709758034379671,
+    0.008391555893657912,
+    0.0033379266317887396,
+    0.000938400864830237,
+    0.000130625400384369,
+    1.7238771442807317e-06
+  ],
+  "transpile_seconds": 1.0126282919663936,
+  "transpiled_metrics": {
+    "depth": 70,
+    "multi_qubit_gate_count": 0,
+    "num_clbits": 4,
+    "num_qubits": 156,
+    "one_qubit_gate_count": 72,
+    "operation_counts": {
+      "cz": 16,
+      "measure": 4,
+      "rz": 33,
+      "sx": 37,
+      "x": 2
+    },
+    "size": 92,
+    "swap_count": 0,
+    "two_qubit_gate_count": 16,
+    "width": 160
+  },
+  "transpiled_two_qubit_depth": 16,
+  "usage_before_submission": {
+    "estimated_remaining_seconds": 9350.0,
+    "usage_allocation_seconds": 10800,
+    "usage_consumed_seconds": 1450,
+    "usage_limit_reached": false,
+    "usage_limit_seconds": 10800,
+    "usage_period": {
+      "end_time": "2027-08-02T17:13:13.026Z",
+      "start_time": "2026-08-02T17:13:13.026Z"
+    }
+  }
+}

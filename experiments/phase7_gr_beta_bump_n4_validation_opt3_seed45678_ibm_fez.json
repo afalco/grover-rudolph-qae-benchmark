@@ -1,0 +1,65 @@
+{
+  "campaign_id": "phase7_gr_beta_bump_n4_validation_opt3_seed45678_ibm_fez",
+  "description": "Phase 7 higher-shot validation of gr_beta_bump_n4 using the best audited opt-3 seed-45678 candidate. This is a direct-distribution quantity-of-interest validation campaign, not an amplified-QAE campaign.",
+  "backend": "ibm_fez",
+  "shots": 8192,
+  "optimization_level": 3,
+  "implementation": "ucry",
+  "seed": 45678,
+  "submit_to_qpu": false,
+  "runtime_options": {
+    "dynamical_decoupling": {
+      "enable": true,
+      "sequence_type": "XY4",
+      "scheduling_method": "alap"
+    },
+    "twirling": {
+      "enable_gates": true,
+      "enable_measure": true,
+      "num_randomizations": 32,
+      "shots_per_randomization": 256,
+      "strategy": "active-accum"
+    }
+  },
+  "rationale": [
+    "The Phase 3/6/7 paper-quality summary leaves gr_beta_bump_n4 mean_x and upper_half as pending replication.",
+    "The Phase 5 opt-3 seed-45678 repeat did not improve global TVD, but it preserved useful quantity-of-interest evidence for mean_x and upper_half.",
+    "A higher-shot repeat tests whether those two functionals remain stable enough to move from pending_replication to paper-quality or bias-caveated evidence.",
+    "The campaign measures the Grover-Rudolph distribution only. It does not run Grover amplification or QAE."
+  ],
+  "selected_cases": [
+    {
+      "case_id": "gr_beta_bump_n4",
+      "label": "beta-like localized bump, 16 midpoint cells",
+      "num_qubits": 4,
+      "function": {
+        "kind": "beta_bump",
+        "alpha": 2.0,
+        "beta": 5.0
+      },
+      "purpose": "Higher-shot Phase 7 replication of the localized n=4 profile for mean_x and upper_half functionals."
+    }
+  ],
+  "qoi_targets": [
+    "mean_x",
+    "upper_half",
+    "call_x_minus_half",
+    "second_moment_x2",
+    "sin_pi_x"
+  ],
+  "reference_evidence": {
+    "phase6_qoi_decision_table": "results/phase6/qoi_decision_table/phase6_qoi_decision_table.csv",
+    "phase7_paper_quality_summary": "results/phase7/paper_quality_summary/phase7_qoi_paper_quality_summary.csv",
+    "phase5_repeat_run": "results/hardware/phase5_gr_beta_bump_n4_repeat_opt3_seed45678_ibm_fez/20260805T173609Z/fetched_gr_distribution_results.json",
+    "pending_replication_quantities": [
+      "mean_x",
+      "upper_half"
+    ]
+  },
+  "stopping_rules": [
+    "Do not attach Grover amplification to gr_beta_bump_n4 in this campaign.",
+    "If mean_x or upper_half remains below 0.01 absolute error with interval coverage, promote it to paper-quality evidence.",
+    "If either remains below 0.01 without interval coverage, keep it as paper-quality with explicit bias caveat.",
+    "If global TVD remains above 0.04, do not claim a global distribution-preparation success for this localized profile."
+  ]
+}

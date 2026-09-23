@@ -1,0 +1,56 @@
+{
+  "audit_id": "phase12_qae_amplitude_audit",
+  "description": "Credit-free audit of amplified QAE candidates selected by the Phase 11 dual angle-structure strategy.",
+  "source_config": "experiments/phase9_integration_scaling_audit.json",
+  "implementation": "ucry",
+  "reflection_method": "mcx",
+  "basis_gates": [
+    "cz",
+    "id",
+    "rz",
+    "sx",
+    "x"
+  ],
+  "optimization_levels": [
+    0,
+    1,
+    2,
+    3
+  ],
+  "transpiler_seeds": [
+    12345,
+    23456,
+    34567,
+    45678
+  ],
+  "ks": [
+    0,
+    1,
+    2
+  ],
+  "max_depth": 600,
+  "max_two_qubit_gates": 120,
+  "out_dir": "results/phase12/qae_amplitude_audit",
+  "selected_pairs": [
+    {
+      "case_id": "gr_sin2_n3",
+      "quantity": "upper_half",
+      "purpose": "Low profile angle degree and low quantity angle degree; first amplified-QAE simulator candidate."
+    },
+    {
+      "case_id": "gr_sin2_n3",
+      "quantity": "sin_pi_x",
+      "purpose": "Low profile angle degree and low quantity angle degree on the 8-cell grid."
+    },
+    {
+      "case_id": "gr_sin2_n4",
+      "quantity": "upper_half",
+      "purpose": "Low-angle 16-cell event candidate; compare growth from n=3 to n=4."
+    },
+    {
+      "case_id": "gr_affine_n5",
+      "quantity": "upper_half",
+      "purpose": "Low quantity angle degree but high profile angle degree; simulator-only control before any QPU decision."
+    }
+  ]
+}

@@ -1,0 +1,55 @@
+{
+  "campaign_id": "phase7_qoi_validation_affine_mitigated_ibm_fez",
+  "description": "Phase 7 higher-shot mitigated direct-distribution validation for gr_affine_n4. This is a quantity-of-interest validation campaign, not an amplified-QAE campaign.",
+  "backend": "ibm_fez",
+  "shots": 8192,
+  "optimization_level": 2,
+  "implementation": "ucry",
+  "seed": 12345,
+  "submit_to_qpu": false,
+  "runtime_options": {
+    "dynamical_decoupling": {
+      "enable": true,
+      "sequence_type": "XY4",
+      "scheduling_method": "alap"
+    },
+    "twirling": {
+      "enable_gates": true,
+      "enable_measure": true,
+      "num_randomizations": 32,
+      "shots_per_randomization": 256,
+      "strategy": "active-accum"
+    }
+  },
+  "rationale": [
+    "Phase 3 showed that mitigation improved gr_affine_n4 distribution TVD, Hellinger distance, L2 distance, and max cell deviation.",
+    "Phase 4 showed that the first Grover iterate remains biased, so amplified QAE is not the right next hardware target.",
+    "Phase 6 identified selected affine functionals as usable with confidence intervals or usable with explicit bias reporting.",
+    "The purpose is to reduce statistical uncertainty and test whether the mitigated direct-distribution functional estimates are reproducible."
+  ],
+  "selected_cases": [
+    {
+      "case_id": "gr_affine_n4",
+      "label": "affine probability law, 16 midpoint cells",
+      "num_qubits": 4,
+      "function": {
+        "kind": "affine",
+        "offset": 0.11,
+        "slope": 0.57
+      },
+      "purpose": "Higher-shot validation of mitigated direct functionals I_p(f), especially upper_half and sin_pi_x."
+    }
+  ],
+  "qoi_targets": [
+    "call_x_minus_half",
+    "mean_x",
+    "second_moment_x2",
+    "sin_pi_x",
+    "upper_half"
+  ],
+  "stopping_rules": [
+    "Do not submit amplified gr_affine_n4 k=1 or k=2 circuits as part of this campaign.",
+    "If upper_half remains inside the bootstrap or Wilson interval and error stays below 0.01, keep the direct estimator as the hardware workflow.",
+    "If mean_x or second_moment_x2 remain biased outside intervals, report them as functionals requiring bias-aware postprocessing."
+  ]
+}

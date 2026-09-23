@@ -1,0 +1,104 @@
+{
+  "a_exact": 0.25,
+  "backend": "ibm_fez",
+  "backend_status": {
+    "operational": true,
+    "pending_jobs": 4,
+    "status_msg": "active"
+  },
+  "campaign_id": "phase2_g0_mitigation_ibm_fez_opt2_dd_twirling",
+  "case_id": "g0",
+  "counts": {
+    "000": 377,
+    "001": 390,
+    "010": 393,
+    "011": 386,
+    "100": 146,
+    "101": 111,
+    "110": 130,
+    "111": 115
+  },
+  "expected_p_k": 0.24999999999999994,
+  "fetch_status": "DONE",
+  "fetched_utc": "2026-08-05T09:49:50.226103+00:00",
+  "initial_layout": null,
+  "job_id": "d9pgca57skus73cku01g",
+  "k": 0,
+  "label": "g0_constant_quarter",
+  "logical_metrics": {
+    "depth": 2,
+    "multi_qubit_gate_count": 0,
+    "num_clbits": 3,
+    "num_qubits": 3,
+    "one_qubit_gate_count": 3,
+    "operation_counts": {
+      "h": 2,
+      "measure": 3,
+      "ry": 1
+    },
+    "size": 6,
+    "swap_count": 0,
+    "two_qubit_gate_count": 0,
+    "width": 6
+  },
+  "m_ancilla": 502,
+  "optimization_level": 2,
+  "p_abs_dev": 0.0048828124999999445,
+  "p_hat": 0.2451171875,
+  "prepared_utc": "2026-08-05T09:45:06.262310+00:00",
+  "purpose": "Test whether Runtime-level DD and twirling reduce the residual g0 k=2 bias.",
+  "qasm_path": "/Users/antoniofalco/Library/CloudStorage/Dropbox/TENSORS/Quantum_TENSORS/IBM_Quantum_Proposal/grover-rudolph-qae-benchmark/results/hardware/phase2_g0_mitigation_ibm_fez_opt2_dd_twirling/20260805T094505Z/circuits/g0_k0_transpiled.qasm",
+  "runtime_options": {
+    "dynamical_decoupling": {
+      "enable": true,
+      "scheduling_method": "alap",
+      "sequence_type": "XY4"
+    },
+    "twirling": {
+      "enable_gates": true,
+      "enable_measure": true,
+      "num_randomizations": 32,
+      "shots_per_randomization": 64,
+      "strategy": "active-accum"
+    }
+  },
+  "seed": 12345,
+  "shots": 2048,
+  "structural_metrics": {
+    "canonical_length": 1.480960979386122,
+    "maximum_degree": 0,
+    "minimum_m1_stratum": 4,
+    "multilinear_support": 1
+  },
+  "submitted": true,
+  "submitted_utc": "2026-08-05T09:45:12.181172+00:00",
+  "transpile_seconds": 0.843421540921554,
+  "transpiled_metrics": {
+    "depth": 5,
+    "multi_qubit_gate_count": 0,
+    "num_clbits": 3,
+    "num_qubits": 156,
+    "one_qubit_gate_count": 10,
+    "operation_counts": {
+      "measure": 3,
+      "rz": 6,
+      "sx": 4
+    },
+    "size": 13,
+    "swap_count": 0,
+    "two_qubit_gate_count": 0,
+    "width": 159
+  },
+  "transpiled_two_qubit_depth": 0,
+  "usage_before_submission": {
+    "estimated_remaining_seconds": 9386.0,
+    "usage_allocation_seconds": 10800,
+    "usage_consumed_seconds": 1414,
+    "usage_limit_reached": false,
+    "usage_limit_seconds": 10800,
+    "usage_period": {
+      "end_time": "2027-08-02T17:13:13.026Z",
+      "start_time": "2026-08-02T17:13:13.026Z"
+    }
+  }
+}

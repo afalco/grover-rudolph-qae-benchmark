@@ -1,0 +1,421 @@
+\section{Conclusions and Next Steps}
+\label{sec:conclusions}
+
+The main structural conclusion of the project is that the experiments should no
+longer be presented as a single linear sequence of QAE trials. They form three
+interlocking workflows.
+
+\begin{itemize}[leftmargin=*]
+  \item \textbf{Workflow A} studies angle-structured QAE integration of a
+        function \(g\) under uniform quadrature. This is where the original
+        \(g_0,g_1,g_2\) hierarchy, MLAE/IQAE/canonical-QAE comparisons, and the
+        forthcoming quadrature-rule experiments belong.
+  \item \textbf{Workflow B} studies Grover--Rudolph preparation of a finite
+        probability law \(p\) and direct computation of finite-law quantities
+        \(I_p(f)\). This includes the distribution-validation campaigns,
+        affine and beta-bump scaling, MC/QMC baselines, the \(n=6\) affine
+        result, and the centered Gaussian test.
+  \item \textbf{Workflow C} is the backend-aware control layer. It explains the
+        role of local audits, compilation choices, noise-model simulations,
+        mitigation, layout selection, repetition rules, and rejection of
+        amplified circuits whose predicted or measured behaviour is not stable.
+\end{itemize}
+
+This organization also resolves a conceptual ambiguity in the earlier draft.
+The calibration functions \(g_0,g_1,g_2\) are used as integrands in Workflow A.
+The later Grover--Rudolph profiles such as \texttt{gr\_affine\_n4},
+\texttt{gr\_affine\_n6}, and
+\texttt{gr\_gaussian\_mid\_sigma025\_n6} are used to define probability laws in
+Workflow B; the quantities of interest are then classical test functions
+integrated against those laws.
+
+Phase 1 establishes a complete and reproducible first benchmark cycle on IBM
+hardware. The main conclusions are:
+\begin{itemize}[leftmargin=*]
+  \item local audit before QPU execution is essential; it prevented blind
+        escalation to deeper circuits and made the \(g_0,k=2\) anomaly
+        interpretable;
+  \item compilation settings materially affect hardware accuracy, even when the
+        logical and saved transpiled circuits are ideal-correct;
+  \item optimization level 2 provided the accepted evidence chain on
+        \texttt{ibm\_fez};
+  \item after compilation tuning, the affine and quadratic benchmarks both pass
+        through \(k=2\) and produce accurate MLAE estimates.
+\end{itemize}
+
+The accepted Phase 1 result set should be treated as the baseline for the next
+stage. Further QPU spending should pause until Phase 2 is designed explicitly.
+The most natural Phase 2 directions are:
+\begin{enumerate}[leftmargin=*]
+  \item compare layout-selection strategies for the same \(g_0,g_1,g_2\)
+        schedules;
+  \item add readout mitigation and zero-noise extrapolation to quantify whether
+        the residual \(g_0,k=2\) bias can be reduced;
+  \item extend the benchmark from the SISC calibration functions to larger
+        structured Grover--Rudolph instances;
+  \item convert the current report into an article-ready methodology paper,
+        emphasizing anomaly detection, compilation-sensitive correction, and
+        reproducible hardware evidence.
+\end{enumerate}
+
+The immediate Phase 2 action is therefore a credit-free layout and compilation
+audit over optimization levels and transpiler seeds on \texttt{ibm\_fez}. The
+audit ranks candidates by backend-noise deviation, two-qubit-gate count, and
+depth before any additional QPU jobs are considered.
+
+The first Phase 2 audit identified an actionable \(g_0,k=2\) candidate with
+optimization level 2 and transpiler seed 67890. The candidate has 19 two-qubit
+gates, depth 76, and backend-noise predicted deviation 0.008545, compared with
+the accepted Phase 1 hardware deviation 0.047363. This motivates a two-circuit
+microcampaign repeating only \(g_0,k=0\) and \(g_0,k=2\). The strong \(g_1\) and
+\(g_2\) Phase 1 results should not be repeated unless mitigation or larger
+instances are introduced.
+
+The Phase 2 microcampaign did not confirm the audit prediction. The measured
+\(g_0,k=2\) probability was 0.306641, with absolute deviation 0.056641, compared
+with the audit prediction 0.258545 and deviation 0.008545. The corresponding
+MLAE estimate was \(\hat{a}=0.239373\), with absolute error 0.010627. This is
+slightly worse than the accepted Phase 1 \(g_0\) repeat. The conclusion is that
+the backend noise model used in the audit is not sufficiently predictive for
+this sensitive circuit. Further QPU spending on random seed or layout searches
+is therefore not justified; the next Phase 2 step should be explicit mitigation.
+The next prepared microcampaign uses Qiskit Runtime dynamical decoupling and
+Pauli/measurement twirling on only the \(g_0\) calibration pair, keeping the
+accepted Phase 1 compilation seed fixed so that mitigation is the experimental
+variable.
+
+The mitigation microcampaign improved the \(g_0\) calibration result. With
+dynamical decoupling and gate/measurement twirling, \(g_0,k=2\) gave
+\(\hat{p}=0.291016\), absolute deviation 0.041016, and MLAE estimate
+\(\hat{a}=0.242160\) with absolute error 0.007840. This is the best \(g_0\)
+result obtained so far, improving on the accepted Phase 1 repeat
+\(0.008949\) and the Phase 2 layout-seed repeat \(0.010627\). The circuit
+nevertheless remains in the watch region, so the project should treat \(g_0\) as
+a sensitive calibration case and use the robust \(g_1/g_2\) results as the main
+positive hardware evidence.
+
+Phase 1b simulator experiments support MLAE as the main hardware workflow. The
+IQAE-style adaptive proxy reduces ideal statistical error, but at a substantially
+larger oracle-query budget. Canonical QAE and MC/QMC are degenerate on the
+current four-point calibration family, so the next fair comparison should use
+non-special amplitudes or larger structured Grover--Rudolph instances.
+
+The non-degenerate simulator extensions support the same decision. Across
+synthetic amplitudes and larger midpoint-grid functions, the IQAE proxy improves
+ideal MAE by roughly a factor of two, but typically requires about twice the
+oracle-query budget of MLAE \(K=\{0,1,2\}\) and introduces adaptive execution
+overhead. MLAE therefore remains the preferred near-term hardware method.
+
+The project has now reached the next methodological checkpoint: larger
+Grover--Rudolph state preparation has been validated directly before QAE is
+attached to it. The Phase 0-GR audit shows that the paper-aligned
+uniformly-controlled-\(R_y\) construction is viable on \texttt{ibm\_fez} for
+eight- and sixteen-point dyadic grids. The first hardware distribution campaign
+then measured \texttt{gr\_sin2\_n3}, \texttt{gr\_sin2\_half\_n3}, and
+\texttt{gr\_affine\_n4}. The two eight-point circuits achieved TVD 0.0313 and
+0.0216, while the sixteen-point affine circuit achieved TVD 0.0479. These data
+support the state-preparation workflow, but also show that the first
+sixteen-point case is the right object for a focused repeat. That repeat,
+performed with 4096 shots, dynamical decoupling, and twirling, reduced TVD to
+0.0341 and the maximum per-cell deviation to 0.0086. This is sufficient evidence
+to prepare the first amplified test, but it should remain minimal:
+\texttt{gr\_affine\_n4}, marked event \(x\ge 1/2\), and MLAE schedule
+\(K=\{0,1\}\). The first amplified readout confirms that this caution was
+necessary: \(k=0\) remains compatible with the distribution-measurement scale,
+but \(k=1\) gives \(\hat p_1=0.173828\) instead of the expected 0.052765. The
+resulting MLAE error is 0.059854. The \(k=2\) amplified circuit should therefore
+remain deferred. The next action is a credit-free diagnosis of
+\texttt{gr\_affine\_n4}, \(k=1\), searching for a compilation/layout candidate
+whose ideal and noisy predictions are consistent before any repeat is submitted.
+That diagnosis identified an opt-3, seed-12345 candidate with depth 152 and 35
+two-qubit gates, compared with depth 225 and 51 two-qubit gates in the executed
+opt-2 circuit. A single-circuit repeat of \(k=1\) with this candidate is
+justified; \(k=2\) remains deferred. The repeat improved the hardware probability
+from 0.173828 to 0.124023, but the remaining deviation, 0.071259, is still too
+large. The next step should use the existing counts to test readout
+postprocessing and event-level bias before any further QPU submission. That
+test has now been performed with the real transpiled event-qubit layouts. The
+event bit is measured on \(q[137]\) in the opt-2 circuit and on \(q[134]\) in
+the opt-3 repeat. Current backend assignment probabilities are below the level
+needed to explain the observed lower-to-upper leakage; readout correction leaves
+the opt-3 marked probability essentially unchanged, 0.124023 to 0.124199.
+Therefore the next investigation should target circuit-level leakage,
+amplification sensitivity, and mitigation beyond final readout assignment,
+while \(k=2\) remains deferred. A subsequent block-level noisy simulation
+confirms this direction: the Grover--Rudolph loading block \(A\) remains stable,
+but the full \(AS_0A^\dagger OA\) iterate moves the event mass from the ideal
+0.052765 to 0.112793 under the backend-noise model. The practical next step is
+therefore to study lower-depth or partially mitigated amplification blocks
+before any additional hardware campaign. The first variant audit has already
+ruled out simple replacements of the zero reflection: \texttt{mcp}, diagonal,
+and direct-tree variants are all worse than the current \texttt{ucry}+\texttt{mcx}
+opt-3 candidate. Consequently, further progress likely requires a different
+amplification strategy or a smaller event/circuit family, not just a different
+decomposition of the same \(k=1\) Grover iterate.
+
+The constructive alternative is to use the measured Grover--Rudolph
+distribution directly. For the same \texttt{gr\_affine\_n4} upper-half event,
+the mitigated distribution estimate gives 0.671387 against the exact value
+0.680380, with absolute error 0.008993 and a Wilson interval containing the
+truth. This is substantially better than the available amplified MLAE estimate.
+The immediate project decision is therefore to treat direct mitigated
+Grover--Rudolph distribution estimation as the near-term hardware workflow for
+sixteen-point grids, while amplified MLAE remains a diagnostic target requiring
+additional circuit-level stabilization. The functional-level analysis refines
+this decision: event probabilities and smooth test-function expectations are already useful,
+whereas right-tail-sensitive moments and payoff-like functions still reveal
+residual distribution bias. Future hardware campaigns should therefore report
+quantity-specific error, not only global TVD or QAE amplitude error.
+Classical postprocessing can quantify this bias, but the first leave-one-out
+test shows that a single affine correction across test functions is not robust.
+The next calibration layer should therefore be functional-aware or
+distribution-structure-aware, rather than a global scalar correction.
+
+The Phase 5 mitigated distribution suite strengthens this decision while adding
+one caution. The deferred localized profile \texttt{gr\_beta\_bump\_n4} is
+hardware-viable as a direct distribution experiment, with TVD 0.0456 and maximum
+cell deviation 0.0241, but it is not yet clean enough to attach amplified QAE.
+The two eight-point repeats show that Runtime mitigation is not uniformly
+beneficial: it is neutral for \texttt{gr\_sin2\_half\_n3} and slightly worsens
+\texttt{gr\_sin2\_n3}. A follow-up audit and focused repeat of the exact
+\texttt{gr\_beta\_bump\_n4} law, \(F(x)=x(1-x)^4\), further supports caution.
+Although the audit identified an opt-3, seed-45678 candidate with predicted TVD
+0.0217, the hardware repeat gave TVD 0.0502. The maximum cell deviation improved
+from 0.0241 to 0.0170, but errors for quantities of interest were mixed and most did not
+improve. The next experimental step should therefore not be a deeper Grover
+schedule. Amplified QAE remains deferred for localized profiles; the productive
+path is direct distribution diagnostics, quantity-specific error reporting,
+and model-aware postprocessing.
+
+Phase 6 begins that postprocessing program. The first extended distribution
+analysis adds classical fidelity, Hellinger distance, Euclidean distance, and
+bootstrap intervals to TVD. These metrics reinforce the current decision:
+\texttt{gr\_affine\_n4} benefits from mitigation, \texttt{gr\_sin2\_n3} does
+not, and the \texttt{gr\_beta\_bump\_n4} repeat is not a robust improvement even
+though its largest cell error is smaller. The simulator-only purification
+diagnostic inspired by mixed-state preparation confirms that the
+Grover--Rudolph loader can be viewed as an eigenvalue-encoding layer with an
+optional entropy-injection register. This is a useful conceptual extension, but
+not yet a reason to spend QPU credits. The Phase 6 decision table therefore
+promotes only direct distribution and selected quantity-of-interest estimates:
+\texttt{gr\_sin2\_half\_n3} is a direct distribution result,
+\texttt{gr\_sin2\_n3} is a direct result with caveats, and mitigated
+\texttt{gr\_affine\_n4} supports selected functionals. Localized
+\texttt{gr\_beta\_bump\_n4} profiles remain diagnostic only. No
+Grover--Rudolph profile is currently promoted to amplified QAE on
+\texttt{ibm\_fez}. At the functional level, however, the data already contain a
+set of defensible direct estimates: five case--functional pairs have absolute
+error below \(5\times 10^{-3}\) with bootstrap coverage of the exact value, and
+seven more have error below \(10^{-2}\) with coverage. This gives a clear
+near-term publication path based on direct Grover--Rudolph probability loading,
+metric-rich distribution benchmarking, and quantity-of-interest postprocessing.
+
+The Phase 7 higher-shot repeats close the first hardware campaign. They show
+that more shots alone do not turn every measured distribution into a stable
+global probability-preparation claim. Among the final direct-distribution
+results, only mitigated \texttt{gr\_affine\_n4} is promoted as a
+paper-quality global distribution result, with TVD 0.028017 and maximum cell
+deviation 0.008197. The localized \texttt{gr\_beta\_bump\_n4} profile remains a
+backend diagnostic distribution, with TVD 0.057598, despite having two useful
+functionals below \(10^{-2}\). The two \(n=3\) raw repeats also reinforce the
+same distinction: several algebraic functionals remain useful, but the global
+probability laws are not uniformly stable under repetition.
+
+The final paper-quality set should therefore be stated at two levels. At the
+distribution level, the defensible hardware claim is the mitigated
+\texttt{gr\_affine\_n4} loader. At the algebraic-probability level, the strongest
+functionals are \(I_p(\sin(\pi x))\) for \texttt{gr\_affine\_n4} and \(I_p(x)\)
+for \texttt{gr\_sin2\_n3}. A second tier of useful results, including selected
+call-payoff and moment functionals, should be reported with explicit bias
+caveats. All rejected or diagnostic entries remain scientifically important:
+they identify backend drift, localized-profile sensitivity, and event-tail
+bias, which are precisely the effects that would be hidden by reporting only a
+single QAE amplitude error.
+
+The first cross-backend Phase 8 test strengthens this conclusion. Repeating the
+mitigated \texttt{gr\_affine\_n4} direct-distribution campaign on
+\texttt{ibm\_kingston} improves the global distribution metrics relative to
+\texttt{ibm\_fez}: TVD decreases from 0.028017 to 0.021823, Hellinger distance
+from 0.023874 to 0.019060, and classical fidelity increases from 0.998860 to
+0.999274. Kingston also reduces the absolute error for every selected
+functional, including the previously diagnostic upper-half event. The upper-half
+event is still not promoted to the primary paper-quality set, but the systematic
+improvement confirms that a nontrivial part of the residual error is backend
+dependent rather than intrinsic to the Grover--Rudolph circuit.
+
+The campaign should now proceed selectively. The affine result is strong enough
+to serve as the cross-backend anchor for the paper. Further QPU spending should
+focus on one of two sharply defined questions: whether the \(n=3\) drift seen on
+\texttt{ibm\_fez} also appears on \texttt{ibm\_kingston}, or whether the
+localized \texttt{gr\_beta\_bump\_n4} instability is backend-specific. Amplified
+QAE should remain deferred until these direct-distribution cross-backend
+controls are understood.
+
+The next methodological step is Phase 9: integration scaling. The goal is to
+test whether the direct Grover--Rudolph workflow remains useful when the
+finite probability law is refined from \(2^3\) and \(2^4\) grid cells to
+\(2^5\) cells. This phase explicitly separates discretization error,
+state-loading error, finite-shot error, and backend-noise-induced error for
+each quantity of interest. This separation is important for the paper: a
+hardware result should not be interpreted as a quantum integration advantage
+unless the classical grid error, the probability-loading error, and the
+quantity-specific hardware bias are all reported. Phase 9 should therefore
+start as a credit-free audit on \texttt{ibm\_kingston}, using the affine
+cross-backend result as the anchor and treating \(n=5\) cases as candidates only
+if their transpiled depth, two-qubit count, noisy TVD, and maximum
+quantity-of-interest error remain below the predeclared thresholds.
+
+The first Phase 9 hardware submission confirms that this route is viable. On
+\texttt{ibm\_kingston}, the mitigated 32-cell affine law achieves TVD 0.033694,
+Hellinger distance 0.031298, classical fidelity 0.998042, and maximum cell
+deviation 0.008438. This promotes \texttt{gr\_affine\_n5} to the first
+paper-quality scaling result at the distribution level. At the functional
+level, however, only
+\(I_p(\sin(\pi x))\) is cleanly compatible with the exact finite-law value, with
+absolute error 0.003601 and bootstrap interval coverage. The call payoff is
+usable with a bias caveat, while the mean, second moment, and upper-half event
+remain diagnostic.
+
+The localized 32-cell stress test then establishes the current boundary of the
+method. Although the \texttt{gr\_beta\_bump\_n5} circuit compiles with depth 162
+and 44 two-qubit gates, the hardware result gives TVD 0.073298, Hellinger
+distance 0.110712, classical fidelity 0.975636, and no quantity-of-interest
+interval coverage. This does not pass the Phase 9 distribution threshold. The
+conclusion is therefore sharper than a uniform success or failure: direct
+Grover--Rudolph sampling scales to 32 cells for the affine law, but localized
+probability profiles remain a backend-sensitive stress regime. Amplified QAE
+should still remain deferred; the next methodological step should compare this
+QPU sampling workflow against classical MC/QMC baselines under the same finite
+laws.
+
+Phase 10 performs that comparison without spending additional QPU credits. It
+shows that the 32-cell affine result is not uniformly competitive with MC at
+the same sample count. The strongest finite-law integral remains
+\(I_p(\sin(\pi x))\), where the QPU absolute error 0.003601 is comparable with
+the MC RMSE 0.003294 for \(M=8192\). The mean, second moment, call payoff, and
+upper-half mass are instead dominated by hardware bias relative to MC. The
+localized beta-like law is worse than MC for every tested quantity and should
+remain a diagnostic stress case. The QMC baseline, implemented through the exact
+finite inverse CDF, is much more accurate than both QPU and MC once the law is
+known. This reinforces the right interpretation of the project at this stage:
+we have demonstrated a reproducible hardware workflow for preparing and
+sampling structured finite laws, but not a quantum integration advantage over
+classical sampling baselines.
+
+The angle-structure classification should now be treated as a design variable
+for the next campaign. The experiments support the distinction between
+QAE-efficient integration and direct Grover--Rudolph distribution integration.
+For QAE-efficient integration, the relevant object is the angle map
+\(\Theta_g=2\arcsin\sqrt{g}\), and low-degree classes
+\(\mathcal{G}^{(d)}_n\) are the natural first candidates because they correspond
+to simpler amplitude-oracle structure. For direct distribution integration,
+high angle degree of the test function \(f\) does not prevent estimating
+\(I_p(f)\) from measured frequencies, but it is a warning that the same
+quantity may be expensive or unstable if recast as an amplified QAE amplitude.
+The next local phase should therefore classify every proposed probability
+profile and every proposed test function before backend submission, then choose
+between direct sampling and amplified QAE according to that structural
+classification and the MC/QMC baseline scale.
+
+This policy has now been made explicit in Phase 11. The decision table promotes
+the 32-cell affine law with \(f(x)=\sin(\pi x)\) as the current paper-quality
+direct-sampling result. It also identifies low-angle \(\sin^2(\pi x)\) pairs,
+such as the upper-half event, as simulator-level amplified-QAE candidates, and
+defers QPU repeats for localized beta-like tail quantities. This is the
+strongest current use of the angle-structure theory in the experimental
+workflow: it does not claim that low angle degree alone implies a quantum
+advantage, but it gives a reproducible pre-submission filter for deciding which
+integrals are structurally appropriate for amplified QAE and which should remain
+in the direct Grover--Rudolph sampling regime.
+
+The Phase 12 local QAE-amplitude audit adds a second filter: the scalar
+amplitude \(a=I_p(f)\) and the selected amplification schedule must be
+informative. The low-angle upper-half tests for the \(\sin^2(\pi x)\) profiles
+have \(a=1/2\), so \(p_k(a)=1/2\) for every Grover level and they are not useful
+QAE estimation tests despite their favorable angle class. The first meaningful
+non-degenerate augmented-QAE candidate is instead the eight-cell
+\(\sin^2(\pi x)\) law with \(f(x)=\sin(\pi x)\). This pair remains simulator
+only for now; a backend-aware noisy audit should precede any QPU submission.
+
+That backend-aware audit has now been performed in Phase 13. On both
+\texttt{ibm\_kingston} and \texttt{ibm\_fez}, the noisy model drives the
+augmented-QAE marked probabilities toward approximately \(1/2\), even though
+the ideal values for \(k=0\) and \(k=1\) are well separated. The full
+\(K=\{0,1,2\}\) schedule is also not viable under the current cost thresholds.
+Thus the dual angle-structure workflow has served its intended purpose: it
+identified a mathematically meaningful QAE candidate, then rejected it before
+QPU spending once backend-aware noise was included. For the next hardware
+campaign, the evidence still favors direct Grover--Rudolph distribution
+sampling and quantity-of-interest postprocessing over amplified QAE.
+
+Phase 14 begins that next direction by testing direct integration scaling
+locally from \(n=4\) to \(n=6\). In a local \texttt{cz}-basis audit, all three
+families reach 64 midpoint cells without exceeding the provisional cost
+thresholds; the \(n=6\) cases require 62 two-qubit gates in the best local
+transpilation. This makes \(n=6\) a plausible target for backend-aware auditing,
+but not yet for QPU execution. The Phase 9 and Phase 10 evidence still matters:
+the affine family is the most credible scaling candidate, while the localized
+beta-like family should be treated primarily as a stress diagnostic unless a
+backend noise audit shows a clear improvement.
+
+The backend-aware Phase 14 audit refines this decision. On
+\texttt{ibm\_kingston}, all three \(n=6\) candidates pass the pre-submission
+thresholds, while on \texttt{ibm\_fez} only the localized beta-like profile
+passes. The recommended next QPU microcampaign is nevertheless the affine
+64-cell law on \texttt{ibm\_kingston}, because it is the direct continuation of
+the 32-cell affine result that already passed the Phase 9--10 paper-quality
+filters. The beta-like 64-cell law should be reserved for a later stress test,
+not used as the main scaling claim.
+
+The executed 64-cell affine campaign confirms this nuanced view. At the
+distribution level the TVD rises to 0.058478, close to the Phase 14 acceptance
+boundary, but the maximum cell deviation remains small. At the integration
+level the smooth quantity \(I_p(\sin(\pi x))\) improves to absolute error
+0.000752 and passes interval coverage, making it the strongest current
+paper-quality direct-integration result. In contrast, the upper-half mass, the
+mean, the second moment, and the call payoff show clear residual bias. Future
+claims should therefore be quantity-specific: the experiment supports direct
+Grover--Rudolph integration for selected smooth quantities on 64 cells, not a
+uniform backend-independent integration advantage.
+
+The Phase 15 Gaussian test reinforces the same conclusion from the opposite
+direction. A smoother centered law with a much shallower circuit improves the
+upper-half mass and the mean, but it worsens \(I_p(\sin(\pi x))\) and does not
+improve the global distribution TVD. The finite-law experiments should
+therefore be presented as a controlled hardware study of probability-law
+preparation and quantity-specific integration, not as a single monotone scaling
+story.
+
+This also clarifies the transition to the next phase. The direct
+Grover--Rudolph workflow estimates \(I_p(f)\) for a prepared law \(p\). The
+angle-structure paper studies a different numerical-integration object:
+quadrature-rule QAE for \(I[g]=\int_0^1 g(x)\,dx\), with explicit left,
+midpoint, right, and Simpson rules. The next experimental block should use the
+finite-law results as hardware context, but should return to the paper's
+quadrature formulation in order to test the encoding-complexity theory
+directly.
+
+That transition has now started with the Phase 15b midpoint-quadrature QAE
+microcampaign on \texttt{ibm\_kingston}. The restored Workflow-A scripts
+separate \(Q_n[g]\), \(I[g]\), MLAE estimation error, total error, circuit
+depth, two-qubit gates, shots, and oracle-query count. The hardware results are
+encouraging: \(g_1\) gives total error 0.001172, \(g_2\) gives total error
+0.000140, and the smooth low-amplitude bump gives total error 0.001568. The
+shifted affine stress case is less accurate, with error 0.010640, and should
+remain a watch case. The main conclusion is therefore positive but precise:
+quadrature-rule MLAE on current IBM hardware is viable for the low-degree
+calibration hierarchy and at least one smooth low-amplitude stress integral,
+but backend-aware admission remains necessary before extending to larger
+grids, Simpson combinations, or non-special affine amplitudes.
+
+The \texttt{ibm\_aachen} repeat sharpens this point. Although
+\texttt{ibm\_aachen} had better average two-qubit and readout calibration
+figures than \texttt{ibm\_kingston} at submission time, it did not improve the
+microcampaign globally. Kingston remains better for \(g_1\), \(g_2\), and the
+shifted affine stress case; Aachen improves only the smooth bump slightly. The
+large affine failure on Aachen, driven by the \(k=1\) amplified probability,
+shows that backend choice for QAE cannot be made from aggregate calibration
+numbers alone. The practical rule for the next phase is to run a backend-aware
+noisy/layout audit for each proposed amplified circuit and to treat
+cross-backend repeats as validation, not as a substitute for circuit-level
+admission tests.

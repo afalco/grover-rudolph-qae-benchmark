@@ -1,0 +1,56 @@
+{
+  "campaign_id": "phase4_gr_affine_n4_k1_repeat_opt3_seed12345_ibm_fez",
+  "description": "Focused repeat of the unstable gr_affine_n4 k=1 amplified circuit using the best credit-free diagnosis candidate.",
+  "backend": "ibm_fez",
+  "shots": 2048,
+  "optimization_level": 3,
+  "implementation": "ucry",
+  "reflection_method": "mcx",
+  "event": "upper_half",
+  "seed": 12345,
+  "submit_to_qpu": false,
+  "runtime_options": {
+    "dynamical_decoupling": {
+      "enable": true,
+      "sequence_type": "XY4",
+      "scheduling_method": "alap"
+    },
+    "twirling": {
+      "enable_gates": true,
+      "enable_measure": true,
+      "num_randomizations": 32,
+      "shots_per_randomization": 64,
+      "strategy": "active-accum"
+    }
+  },
+  "selected_cases": [
+    {
+      "case_id": "gr_affine_n4",
+      "label": "affine positive density, 16 midpoint cells",
+      "num_qubits": 4,
+      "function": {
+        "kind": "affine",
+        "offset": 0.11,
+        "slope": 0.57
+      },
+      "ks": [1],
+      "purpose": "Repeat only k=1 with opt=3, seed=12345 after diagnosis reduced depth from 225 to 152 and two-qubit gates from 51 to 35."
+    }
+  ],
+  "diagnosis_evidence": {
+    "diagnosis_json": "results/phase4/diagnostics/diagnose_gr_affine_k1_20260805T160939Z.json",
+    "previous_hardware_p": 0.173828,
+    "expected_p": 0.052765,
+    "previous_depth": 225,
+    "previous_twoq": 51,
+    "candidate_noisy_p": 0.083740,
+    "candidate_noisy_abs_dev": 0.030976,
+    "candidate_depth": 152,
+    "candidate_twoq": 35
+  },
+  "stopping_rules": [
+    "Submit only this single k=1 circuit.",
+    "Do not submit k=2 unless the repeated k=1 probability moves substantially toward the expected value.",
+    "If repeated k=1 remains near the previous hardware value, treat amplified n=4 MLAE as unstable on the current backend calibration."
+  ]
+}

@@ -1,0 +1,65 @@
+{
+  "campaign_id": "phase15b_quadrature_microcampaign_ibm_aachen",
+  "description": "Cross-backend QPU microcampaign for quadrature-rule MLAE integration of g under uniform midpoint quadrature.",
+  "backend": "ibm_aachen",
+  "shots": 2048,
+  "optimization_level": 2,
+  "seed": 12345,
+  "runtime_options": {
+    "dynamical_decoupling": {
+      "enable": true,
+      "scheduling_method": "alap",
+      "sequence_type": "XY4"
+    },
+    "twirling": {
+      "enable_gates": true,
+      "enable_measure": true,
+      "num_randomizations": 32,
+      "shots_per_randomization": 64,
+      "strategy": "active-accum"
+    }
+  },
+  "selected_jobs": [
+    {
+      "case_id": "g1",
+      "kind": "sin2_half",
+      "family": "calibration",
+      "num_qubits": 2,
+      "rule": "midpoint",
+      "ks": [0, 1],
+      "purpose": "cross-backend repeat of the stable non-degenerate calibration quadrature case"
+    },
+    {
+      "case_id": "g2",
+      "kind": "sin2",
+      "family": "calibration",
+      "num_qubits": 2,
+      "rule": "midpoint",
+      "ks": [0, 1, 2],
+      "purpose": "cross-backend repeat of the quadratic angle-structured calibration with k=2"
+    },
+    {
+      "case_id": "affine_shifted",
+      "kind": "affine",
+      "family": "stress",
+      "offset": 0.11,
+      "slope": 0.57,
+      "num_qubits": 2,
+      "rule": "midpoint",
+      "ks": [0, 1],
+      "purpose": "cross-backend test of the Kingston affine watch case"
+    },
+    {
+      "case_id": "smooth_bump",
+      "kind": "beta_bump",
+      "family": "stress",
+      "alpha": 2.0,
+      "beta": 5.0,
+      "scale": 1.0,
+      "num_qubits": 3,
+      "rule": "midpoint",
+      "ks": [0, 1, 2],
+      "purpose": "cross-backend repeat of the smooth low-amplitude quadrature stress case"
+    }
+  ]
+}

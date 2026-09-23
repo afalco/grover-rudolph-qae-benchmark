@@ -1,0 +1,43 @@
+{
+  "campaign_id": "phase1_g0_repeat_ibm_fez_opt1",
+  "description": "Controlled repeat of the g0 calibration pair after the anomalous k=2 first-campaign result.",
+  "backend": "ibm_fez",
+  "shots": 2048,
+  "optimization_level": 1,
+  "seed": 12345,
+  "submit_to_qpu": false,
+  "rationale": [
+    "The local-only diagnostic showed that both the logical g0 k=2 circuit and the saved transpiled QASM predict p=0.25 exactly.",
+    "The first hardware result for g0 k=2 was p_hat=0.597656, which is inconsistent with a circuit-convention error.",
+    "A repeat should isolate the g0 calibration pair and change compilation settings before spending deeper-circuit credits."
+  ],
+  "selected_jobs": [
+    {
+      "case_id": "g0",
+      "ks": [0, 2],
+      "purpose": "Repeat the amplitude calibration pair with optimization_level=1."
+    }
+  ],
+  "deferred_jobs": [
+    {
+      "case_id": "g1",
+      "ks": [2],
+      "reason": "Do not submit until the g0 k=2 anomaly is resolved."
+    },
+    {
+      "case_id": "g2",
+      "ks": [2],
+      "reason": "Do not submit until the g0 k=2 anomaly is resolved."
+    }
+  ],
+  "phase1_evidence": {
+    "first_campaign_readout": "docs/phase1_first_campaign_readout.md",
+    "first_campaign_results": "results/hardware/phase1_calibration_ibm_fez/20260805T083930Z/fetched_campaign_results.json",
+    "g0_k2_diagnostic": "results/hardware/phase1_calibration_ibm_fez/20260805T083930Z/diagnostics/diagnose_g0_k2.json"
+  },
+  "stopping_rules": [
+    "Prepare this campaign first without --submit and inspect the resulting transpiled depths.",
+    "Run backend-aware diagnose_g0_k2.py before submitting this repeat.",
+    "Submit only if the prepared g0 k=2 circuit has substantially lower depth or a clearer diagnostic rationale than the original depth-180 circuit."
+  ]
+}
