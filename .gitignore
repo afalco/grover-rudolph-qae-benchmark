@@ -30,8 +30,15 @@ build/
 # for reproducibility.
 # Note the 'results/*' form: with 'results/' git would not descend into the
 # directory and the '!' exception below would never be reached.
+# Order matters here: git will not descend into an excluded directory, so each
+# level has to be re-included before the next exception can apply.
 results/*
-!results/hardware/
+!results/*/
+results/*/*
+# Figures referenced from README.md and from docs/.
+!results/*/figures/
+# Raw QPU readouts: the primary evidence behind every table in doc_tex/.
+!results/hardware/**
 data/raw/
 data/processed/
 *.log
