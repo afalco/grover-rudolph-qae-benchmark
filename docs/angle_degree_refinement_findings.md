@@ -120,7 +120,7 @@ of the grid.
 
 ## Suggested use in the paper
 
-The Result 1 table is a candidate figure for the SISC revision or for the FoCM
-companion. It converts the Sobolev decoupling lemma from a technical curiosity
-into the central structural statement: the encoding degree is independent of
-regularity in *both* directions, and the low-degree strata are rigid.
+The Result 1 table is a candidate figure for the SISC revision. It converts the
+Sobolev decoupling lemma from a technical curiosity into the central structural
+statement: the encoding degree is independent of regularity in *both*
+directions, and the low-degree strata are rigid.
